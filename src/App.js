@@ -4,6 +4,8 @@ import AppContainer from './containers/appContainer'
 import Authorize from './authorize'
 import AuthAdapter from './authAdapter'
 import SignUp from './components/signUp'
+import Landing from './components/landing'
+import {BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 class App extends Component {
 
@@ -71,10 +73,15 @@ class App extends Component {
   render() {
     return (
       <div>
-        I am App
-        < Nav />
-        < SignUp />
-        < AppContainer />
+        < Router >
+          <div>
+            I am App
+            < Nav />
+            <Route exact path="/" component={Landing} />
+            <Route path="/home" component={AppContainer} />
+            <Route path="/signup" render={()=> <SignUp />} />
+          </div>
+        < /Router >
       </div>
     );
   }

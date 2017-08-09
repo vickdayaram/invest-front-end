@@ -79,9 +79,9 @@ class App extends Component {
             I am App
             < Nav />
             <Route exact path="/" component={Landing} />
-            <Route path="/home" component={AppContainer} />
-            <Route path="/signup" render={()=> <SignUp />} />
-            <Route path="/login" render={()=> <Login />} />
+            <Route path="/home" component={Authorize(AppContainer)} />
+            <Route path="/signup" render={()=> this.state.auth.isLoggedIn ? <Redirect to="/home" /> : <SignUp onSignUp={this.onSignup}/>} />
+            <Route path="/login" render={()=> this.state.auth.isLoggedIn ? <Redirect to="/home" /> : <Login onLogin={this.onLogin}/>} />
           </div>
         < /Router >
       </div>

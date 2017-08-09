@@ -3,8 +3,26 @@ import { Grid, Button, Form, Segment, Divider } from 'semantic-ui-react'
 
 class SignUpForm extends Component {
 
-  constructor (props) {
-    super(props)
+  state = {
+    username: "",
+    password: ""
+  }
+
+  handleUsername = (event) => {
+    this.setState({
+      username: event.target.value
+    })
+  }
+
+  handlePassword = (event) => {
+    this.setState({
+      password: event.target.value
+    })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.onSignUp(this.state)
   }
 
 
@@ -12,14 +30,14 @@ class SignUpForm extends Component {
     return (
       <Grid centered columns={3}>
         <Grid.Column>
-          <Form >
+          <Form onSubmit={this.handleSubmit}>
             <Form.Field>
               <label>Username</label>
-              <input name='username' placeholder='Username' />
+              <input name='username' placeholder='Username' onChange={this.handleUsername} value={this.state.username}/>
             </Form.Field>
             <Form.Field>
               <label>Password</label>
-              <input type='password' name='password' placeholder='Password'/>
+              <input type='password' name='password' placeholder='Password' onChange={this.handlePassword} value={this.state.password}/>
             </Form.Field>
             <Button size='huge' type='submit'>Sign Up</Button>
           </Form>

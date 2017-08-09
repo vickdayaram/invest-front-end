@@ -1,6 +1,6 @@
 import React from 'react'
 import Holdings from '../components/holdings'
-import AccountDisplay from '../components/accountDisplay'
+import AccountDisplay from '../components/accountdisplay'
 
 class Accounts extends React.Component {
 

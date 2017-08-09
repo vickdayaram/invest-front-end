@@ -2,7 +2,7 @@ import React from 'react'
 import Welcome from '../components/welcome'
 import Accounts from './accounts'
 
-class HomePage extends React.Component {
+class AppContainer extends React.Component {
 
   constructor(props){
     super(props)
@@ -19,4 +19,4 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage
+export default AppContainer

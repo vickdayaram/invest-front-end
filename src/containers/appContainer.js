@@ -6,16 +6,21 @@ import { Route } from 'react-router-dom'
 
 class AppContainer extends React.Component {
 
-  constructor(props){
-    super(props)
+  state = {
+    current_user: ""
+  }
+
+  setCurrentUser = (current_user) => {
+    this.setState({
+      current_user: current_user
+    })
   }
 
   render(){
     return (
       <div>
-        HomePage Container
-        < Welcome />
-        < Accounts />
+        < Welcome current_user={this.state.current_user}/>
+        < Accounts setCurrentUser={this.setCurrentUser}/>
       </div>
     )
   }

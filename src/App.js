@@ -78,7 +78,6 @@ class App extends Component {
       <div>
         < Router history={history} >
           <div>
-            I am App
             < Nav />
             <Route exact path="/" component={Landing} />
             <Route exact path="/home" component={Authorize(AppContainer)} />

@@ -9,7 +9,7 @@ class AccountDisplay extends React.Component {
   render(){
     return(
       <div>
-        Account Type: ira, current balance: 100
+        Not doing anything right now
       </div>
     )
   }

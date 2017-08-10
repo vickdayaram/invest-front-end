@@ -8,8 +8,8 @@ class Welcome extends React.Component {
 
   render(){
     return(
-      <div>
-        Welcome Back User, and some market information
+      <div className="welcome">
+        Welcome Back {this.props.current_user}, and some market information
       </div>
     )
   }

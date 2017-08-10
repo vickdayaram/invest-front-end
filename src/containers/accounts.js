@@ -13,7 +13,7 @@ class Accounts extends React.Component {
       accounts: {}
     }
   }
-  
+
   componentDidMount = () => {
     fetch(`${baseUrl}/getaccounts`, {
       method: 'GET',
@@ -27,6 +27,7 @@ class Accounts extends React.Component {
 
   setUser = () => {
     this.props.setCurrentUser(this.state.accounts.username)
+    console.log(this.state.accounts)
   }
 
   headers () {

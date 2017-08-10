@@ -11,7 +11,7 @@ class Holding extends React.Component {
       <div>
         name: {this.props.holding.holding.name}
         shares: {this.props.holding.holding.shares}
-        shares: {this.props.holding.holding.symbol}
+        symbol: {this.props.holding.holding.symbol}
       </div>
     )
   }

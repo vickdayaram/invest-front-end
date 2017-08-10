@@ -20,7 +20,6 @@ class AccountBody extends React.Component {
       <div className="accountdisplay">
         <Menu tabular>
         <Menu.Item name={account_type} active={activeItem === account_type} onClick={this.handleItemClick} />
-        <Menu.Item name='photos' active={activeItem === 'photos'} onClick={this.handleItemClick} />
         </Menu>
         <Segment attached='bottom'>
         {this.props.account.holdings.map((holding) => {

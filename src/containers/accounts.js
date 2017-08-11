@@ -27,7 +27,6 @@ class Accounts extends React.Component {
 
   setUser = () => {
     this.props.setCurrentUser(this.state.accounts.username)
-    console.log(this.state.accounts)
   }
 
   headers () {

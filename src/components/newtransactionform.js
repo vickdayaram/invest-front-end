@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Form, Grid } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
-
-
-const baseUrl = 'http://localhost:3000/api/v1'
+import { getAccounts } from '../apiAdapter'
+import { sendTransaction } from '../apiAdapter'
 
 class NewTransactionForm extends Component {
 
@@ -19,10 +18,7 @@ class NewTransactionForm extends Component {
   }
 
   componentDidMount = () => {
-    fetch(`${baseUrl}/getaccounts`, {
-      method: 'GET',
-      headers: this.headers(),
-    }).then(res => res.json())
+    getAccounts()
     .then((jsonObject) => this.formatAccountsToOptions(jsonObject))
   }
 
@@ -73,12 +69,7 @@ class NewTransactionForm extends Component {
       investment: this.state.investment,
       amount: this.state.amount
     }
-    fetch(`${baseUrl}/transact`, {
-      method: 'POST',
-      headers: this.headers(),
-      body: JSON.stringify(transactionRequest)
-    }).then(res => res.json())
-      .then((res) => console.log(res))
+    sendTransaction(transactionRequest)
     .then(() => this.redirectToHome())
   }
 
@@ -86,14 +77,6 @@ class NewTransactionForm extends Component {
     this.setState({
       status: true
     })
-  }
-
-  headers () {
-    return {
-      'content-type': 'application/json',
-      'accept': 'application/json',
-      'Authorization': localStorage.getItem('jwt')
-    }
   }
 
   render() {

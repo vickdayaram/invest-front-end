@@ -2,7 +2,6 @@ import React from 'react'
 import Holding from './holding'
 import { Menu, Segment, Table } from 'semantic-ui-react'
 
-const baseUrl = 'http://localhost:3000/api/v1'
 
 class AccountBody extends React.Component {
 
@@ -13,7 +12,7 @@ class AccountBody extends React.Component {
 
   componentDidMount = () => {
     let accountBalance = this.state.accountBalance
-    
+
   }
 
   calculateTotal = (balance) => {

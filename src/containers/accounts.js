@@ -1,24 +1,18 @@
 import React from 'react'
 import AccountBody from '../components/accountbody'
 import AccountDisplay from '../components/accountdisplay'
-
-
-const baseUrl = 'http://localhost:3000/api/v1'
+import { getAccounts } from '../apiAdapter'
 
 class Accounts extends React.Component {
 
-  constructor(props){
-    super(props)
-    this.state = {
+
+  state = {
       accounts: {}
     }
-  }
+
 
   componentDidMount = () => {
-    fetch(`${baseUrl}/getaccounts`, {
-      method: 'GET',
-      headers: this.headers(),
-    }).then(res => res.json())
+    getAccounts()
     .then((jsonObject) => this.setState({
       accounts: jsonObject
     }))
@@ -29,14 +23,6 @@ class Accounts extends React.Component {
     this.props.setCurrentUser(this.state.accounts.username)
   }
 
-  headers () {
-    return {
-      'content-type': 'application/json',
-      'accept': 'application/json',
-      'Authorization': localStorage.getItem('jwt')
-    }
-  }
-
   render(){
     return (
       <div className="accountscontainer">
@@ -44,7 +30,7 @@ class Accounts extends React.Component {
         {this.state.accounts.accounts ?
         this.state.accounts.accounts.map((account) =>{
           return < AccountBody account={account} portfolioTotal={this.props.portfolioTotal}/>})
-        : null}
+        : <div> Loading </div>}
       </div>
     )
   }

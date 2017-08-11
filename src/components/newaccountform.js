@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Form, Grid } from 'semantic-ui-react'
-import history from './history'
 import { Redirect } from 'react-router'
 
 

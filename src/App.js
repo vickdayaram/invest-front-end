@@ -8,7 +8,6 @@ import Login from './components/login'
 import Landing from './components/landing'
 import NewAccountForm from './components/newaccountform'
 import {BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
-import history from './components/history'
 import NewTransactionForm from './components/newtransactionform'
 
 class App extends Component {
@@ -77,7 +76,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        < Router history={history} >
+        < Router >
           <div>
             < Nav />
             <Route exact path="/" component={Landing} />

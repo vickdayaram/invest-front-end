@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Grid } from 'semantic-ui-react'
+import { Form, Grid, Button, Statistic } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
 import { getAccounts } from '../apiAdapter'
 import { sendTransaction } from '../apiAdapter'
@@ -124,8 +124,8 @@ class NewTransactionForm extends Component {
       { key: 'BNDX', text: 'BNDX', value: 'BNDX' },
     ]
     return (
-      <div>
-      <Grid centered columns={3}>
+      <div className="accountscontainer">
+      <Grid centered columns={2}>
         <Grid.Column>
           <Form onSubmit={this.handlePriceCheck}>
             <Form.Select label='Select Your Account' options={options} placeholder='Select Your Account' onChange={this.handleAccountSelect} />
@@ -134,13 +134,23 @@ class NewTransactionForm extends Component {
             <Form.Input label='Shares'onChange={this.handleShares}  />
             <Form.Checkbox label='I agree to the Terms and Conditions' />
             <Form.Button> Estimate Transaction Total </Form.Button>
-            {this.state.checkedPrice ?
-            <div>
-              <div> Your Transaction Estimate ${this.state.estimate.toLocaleString()} </div>
-              <Form.Button onClick={this.handleSubmit}> Submit </Form.Button>
-            </div>
-            : null}
           </Form>
+        </Grid.Column>
+        <Grid.Column>
+        <Grid centered columns={2}>
+
+
+        <Grid.Column textAlign="center" verticalAlign="center">
+          {this.state.checkedPrice ?
+          <div className="estimate">
+            <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
+            <Button size="massive" positive onClick={this.handleSubmit}> Submit Trade </Button>
+          </div>
+          : null}
+        </Grid.Column>
+
+
+        </Grid>
         </Grid.Column>
       </Grid>
       {this.state.status ? < Redirect to="/home" /> : null}

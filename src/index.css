@@ -21,3 +21,15 @@ body {
   font-family: 'Saira Condensed', sans-serif;
   font-size: 50px;
 }
+
+.estimate {
+  margin-top: 50px;
+}
+
+.login {
+  margin-top: 500px;
+} 
+
+.background {
+  background-image: url('https://www.compoundstockearnings.com/img/slider_img.png')
+}

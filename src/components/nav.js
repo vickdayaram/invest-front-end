@@ -15,6 +15,7 @@ class Nav extends React.Component {
 
     return (
       <Menu>
+        {this.props.isLoggedIn ?
         <Menu.Item
           name='Logout'
           active={activeItem === 'Logout'}
@@ -23,7 +24,20 @@ class Nav extends React.Component {
         >
           < NavLink to="/logout"> Logout </NavLink>
         </Menu.Item>
-
+        : null
+       }
+        {this.props.isLoggedIn ?
+        <Menu.Item
+          name='Home'
+          active={activeItem === 'Home'}
+          onClick={this.handleItemClick}
+          position="right"
+        >
+          < NavLink to="/home"> Home </NavLink>
+        </Menu.Item>
+        : null
+       }
+       {this.props.isLoggedIn ?
         <Menu.Item
           name='Open an Account'
           active={activeItem === 'Open an Account'}
@@ -32,7 +46,9 @@ class Nav extends React.Component {
         >
           < NavLink to="/newaccount"> Open an Account </NavLink>
         </Menu.Item>
-
+        : null
+      }
+      {this.props.isLoggedIn ?
         <Menu.Item
           name='Transact'
           active={activeItem === 'Transact'}
@@ -41,6 +57,8 @@ class Nav extends React.Component {
         >
           < NavLink to="/transact"> Transact </NavLink>
         </Menu.Item>
+        : null
+      }
       </Menu>
     )
   }

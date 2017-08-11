@@ -9,6 +9,7 @@ import Landing from './components/landing'
 import NewAccountForm from './components/newaccountform'
 import {BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import history from './components/history'
+import NewTransactionForm from './components/newtransactionform'
 
 class App extends Component {
 
@@ -96,6 +97,10 @@ class App extends Component {
 
             <Route exact path="/newaccount" render={() => {
             return (< NewAccountForm />)}} />
+
+            <Route exact path="/transact" render={() => {
+            return (< NewTransactionForm />)}} />
+
           </div>
         < /Router >
       </div>

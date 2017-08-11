@@ -32,6 +32,15 @@ class Nav extends React.Component {
         >
           < NavLink to="/newaccount"> Open an Account </NavLink>
         </Menu.Item>
+
+        <Menu.Item
+          name='Transact'
+          active={activeItem === 'Transact'}
+          onClick={this.handleItemClick}
+          position="right"
+        >
+          < NavLink to="/transact"> Transact </NavLink>
+        </Menu.Item>
       </Menu>
     )
   }

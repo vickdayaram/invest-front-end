@@ -1,31 +1,55 @@
 import React from 'react'
 import Holding from './holding'
-import { Menu, Segment } from 'semantic-ui-react'
+import { Menu, Segment, Table } from 'semantic-ui-react'
 
-const baseUrl = 'http://localhost:3000/api/v1'
 
 class AccountBody extends React.Component {
 
   state = {
     holdings: [],
-    activeItem: this.props.account.account.account_type
+    accountBalance: 0
   }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  componentDidMount = () => {
+    let accountBalance = this.state.accountBalance
+
+  }
+
+  calculateTotal = (balance) => {
+    let addingBalance = this.state.accountBalance + parseInt(balance)
+    this.setState({
+      accountBalance: addingBalance
+    })
+  }
 
   render(){
-    const { activeItem } = this.state
     const account_type = this.props.account.account.account_type
+    const account_number = this.props.account.account.account_number
     return(
       <div className="accountdisplay">
         <Menu tabular>
-        <Menu.Item name={account_type} active={activeItem === account_type} onClick={this.handleItemClick} />
-        <Menu.Item name='photos' active={activeItem === 'photos'} onClick={this.handleItemClick} />
+        <Menu.Item name={account_type + "   Account Number: " + account_number} position="right" />
         </Menu>
         <Segment attached='bottom'>
+        <Table celled>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell textAlign="center">Symbol</Table.HeaderCell>
+            <Table.HeaderCell textAlign="center">Name</Table.HeaderCell>
+            <Table.HeaderCell textAlign="center">Shares</Table.HeaderCell>
+            <Table.HeaderCell textAlign="center">Value</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
         {this.props.account.holdings.map((holding) => {
-          return < Holding holding={holding} />
+          return < Holding holding={holding} calculateTotal={this.calculateTotal} />
         })}
+          <Table.Row>
+            <Table.Cell active="true"> </Table.Cell>
+            <Table.Cell active="true"> </Table.Cell>
+            <Table.Cell textAlign="center" active="true"> Account Balance </Table.Cell>
+            <Table.Cell textAlign="center" active="true"> $ {this.state.accountBalance.toLocaleString()} </Table.Cell>
+          </Table.Row>
+        </Table>
         </Segment>
       </div>
     )

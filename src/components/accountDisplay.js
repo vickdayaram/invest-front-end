@@ -9,7 +9,6 @@ class AccountDisplay extends React.Component {
   render(){
     return(
       <div>
-        Not doing anything right now
       </div>
     )
   }

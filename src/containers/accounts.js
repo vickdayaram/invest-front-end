@@ -41,11 +41,10 @@ class Accounts extends React.Component {
   render(){
     return (
       <div className="accountscontainer">
-        Accounts container
         < AccountDisplay current_user={this.state.accounts.username}/>
         {this.state.accounts.accounts ?
         this.state.accounts.accounts.map((account) =>{
-          return < AccountBody account={account}/>})
+          return < AccountBody account={account} portfolioTotal={this.props.portfolioTotal}/>})
         : null}
       </div>
     )

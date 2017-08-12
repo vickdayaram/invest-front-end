@@ -1,7 +1,8 @@
 import React from 'react'
 import Welcome from '../components/welcome'
 import Accounts from './accounts'
-import { Route } from 'react-router-dom'
+import PerformanceContainer from './performancecontainer'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 class AppContainer extends React.Component {
 
@@ -27,8 +28,11 @@ class AppContainer extends React.Component {
   render(){
     return (
       <div className="home">
-        < Welcome current_user={this.state.current_user}/>
-        < Accounts setCurrentUser={this.setCurrentUser} portfolioTotal={this.portfolioTotal}/>
+
+          < Welcome current_user={this.state.current_user}/>
+          < Accounts setCurrentUser={this.setCurrentUser} portfolioTotal={this.portfolioTotal}/>
+
+
       </div>
     )
   }

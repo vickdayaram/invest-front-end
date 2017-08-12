@@ -11,7 +11,7 @@ body {
 }
 
 .accountdisplay {
-  margin-top: 25px
+  margin-top: 50px;
 }
 
 .welcome {
@@ -28,8 +28,17 @@ body {
 
 .login {
   margin-top: 500px;
-} 
+}
 
 .background {
-  background-image: url('https://www.compoundstockearnings.com/img/slider_img.png')
+  background-image: url('https://www.compoundstockearnings.com/img/slider_img.png');
+  height: 800px;
+}
+
+.home {
+  margin-top: 100px;
+}
+
+.nav {
+  height: 75px;
 }

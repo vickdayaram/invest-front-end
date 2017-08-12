@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Segment } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 class Nav extends React.Component {
@@ -14,7 +14,10 @@ class Nav extends React.Component {
     const { activeItem } = this.state
 
     return (
-      <Menu color="blue">
+      <Menu className="ui inverted menu nav" color="blue">
+        <Menu.Item>
+        </Menu.Item>
+
         {this.props.isLoggedIn ?
         <Menu.Item
           name='Logout'

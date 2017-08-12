@@ -38,8 +38,8 @@ class SignUpForm extends Component {
             <Form.Field>
               <label>Password</label>
               <input type='password' name='password' placeholder='Password' onChange={this.handlePassword} value={this.state.password}/>
-            </Form.Field>
-            <Button size='huge' type='submit'>Sign Up</Button>
+            </Form.Field> 
+              <Button size='huge' type='submit'>Sign Up</Button>
           </Form>
         </Grid.Column>
       </Grid>

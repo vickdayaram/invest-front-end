@@ -11,7 +11,7 @@ body {
 }
 
 .accountdisplay {
-  margin-top: 25px
+  margin-top: 50px;
 }
 
 .welcome {
@@ -20,4 +20,25 @@ body {
   margin-right: 100px;
   font-family: 'Saira Condensed', sans-serif;
   font-size: 50px;
+}
+
+.estimate {
+  margin-top: 50px;
+}
+
+.login {
+  margin-top: 500px;
+}
+
+.background {
+  background-image: url('https://www.compoundstockearnings.com/img/slider_img.png');
+  height: 800px;
+}
+
+.home {
+  margin-top: 100px;
+}
+
+.nav {
+  height: 75px;
 }

@@ -8,7 +8,6 @@ import Login from './components/login'
 import Landing from './components/landing'
 import NewAccountForm from './components/newaccountform'
 import {BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
-import history from './components/history'
 import NewTransactionForm from './components/newtransactionform'
 
 class App extends Component {
@@ -77,9 +76,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        < Router history={history} >
+        < Router >
           <div>
-            < Nav />
+            < Nav isLoggedIn={this.state.auth.isLoggedIn}/>
             <Route exact path="/" component={Landing} />
             <Route exact path="/home" component={Authorize(AppContainer)} />
 
@@ -95,11 +94,9 @@ class App extends Component {
             this.handleLogout()
             return (<Redirect to="/"/>)}} />
 
-            <Route exact path="/newaccount" render={() => {
-            return (< NewAccountForm />)}} />
+            <Route exact path="/newaccount" component={Authorize(NewAccountForm)}/>
 
-            <Route exact path="/transact" render={() => {
-            return (< NewTransactionForm />)}} />
+            <Route exact path="/transact" component={Authorize(NewTransactionForm)}/>
 
           </div>
         < /Router >

@@ -10,11 +10,6 @@ class AccountBody extends React.Component {
     accountBalance: 0
   }
 
-  componentDidMount = () => {
-    let accountBalance = this.state.accountBalance
-
-  }
-
   calculateTotal = (balance) => {
     let addingBalance = this.state.accountBalance + parseInt(balance)
     this.setState({

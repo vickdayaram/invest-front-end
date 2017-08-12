@@ -9,7 +9,7 @@ class Welcome extends React.Component {
   render(){
     return(
       <div className="welcome">
-        Welcome Back {this.props.current_user}, and some market information
+        Welcome {this.props.current_user}, and some market information
       </div>
     )
   }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Icon, Label, Menu, Table } from 'semantic-ui-react'
-const apiKey = "NKIEQH9ZHQ1ZFJVL"
+import { fetchAlphaVantage } from '../apiAdapter'
 
 class Holding extends React.Component {
 
@@ -13,9 +13,8 @@ class Holding extends React.Component {
       this.setMoneyMarketFundValue()
       return
     }
-    let url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.props.holding.holding.symbol}&interval=15min&outputsize=full&apikey=NKIEQH9ZHQ1ZFJVL`
-    fetch(url)
-    .then( res => res.json())
+    let symbol = this.props.holding.holding.symbol
+    fetchAlphaVantage(symbol)
     .then( jsonObject => this.calculateValue(jsonObject))
   }
 
@@ -28,11 +27,11 @@ class Holding extends React.Component {
   }
 
   calculateValue = (jsonObject) => {
-    let keysArray = Object.keys(jsonObject["Time Series (15min)"])
+    let keysArray = Object.keys(jsonObject["Time Series (1min)"])
     let firstKey = keysArray.shift()
-    let secondKeysArray = Object.keys(jsonObject["Time Series (15min)"][firstKey])
-    let secondKey = secondKeysArray.filter((key) => key.includes("close"))
-    let sharePrice = jsonObject["Time Series (15min)"][firstKey][secondKey]
+    let secondKeysArray = Object.keys(jsonObject["Time Series (1min)"][firstKey])
+    let secondKey = secondKeysArray.filter((key) => key.includes("open"))
+    let sharePrice = jsonObject["Time Series (1min)"][firstKey][secondKey]
     let value = (sharePrice * this.props.holding.holding.shares).toFixed(2)
     this.setState({
       value: parseInt(value)
@@ -46,8 +45,8 @@ class Holding extends React.Component {
         <Table.Row>
           <Table.Cell textAlign="center"> {this.props.holding.holding.symbol} </Table.Cell>
           <Table.Cell textAlign="center"> {this.props.holding.holding.name} </Table.Cell>
-          <Table.Cell textAlign="center"> {this.props.holding.holding.shares} </Table.Cell>
-          <Table.Cell textAlign="center"> {this.state.value.toLocaleString()} </Table.Cell>
+          <Table.Cell textAlign="center"> {this.props.holding.holding.shares.toLocaleString()} </Table.Cell>
+          <Table.Cell textAlign="center"> $ {this.state.value.toLocaleString()} </Table.Cell>
         </Table.Row>
 
     )

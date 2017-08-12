@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Grid } from 'semantic-ui-react'
-import history from './history'
 import { Redirect } from 'react-router'
+import { sendNewAccount } from '../apiAdapter'
 
 
 const baseUrl = 'http://localhost:3000/api/v1'
@@ -39,11 +39,7 @@ class NewAccountForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    fetch(`${baseUrl}/newaccount`, {
-      method: 'POST',
-      headers: this.headers(),
-      body: JSON.stringify(this.state)
-    }).then(res => res.json())
+    sendNewAccount(this.state)
     .then(() => this.redirectToHome())
   }
 
@@ -51,14 +47,6 @@ class NewAccountForm extends Component {
     this.setState({
       status: true
     })
-  }
-
-  headers () {
-    return {
-      'content-type': 'application/json',
-      'accept': 'application/json',
-      'Authorization': localStorage.getItem('jwt')
-    }
   }
 
   render() {

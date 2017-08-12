@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { Form, Grid } from 'semantic-ui-react'
-import history from './history'
+import { Form, Grid, Button, Statistic } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
-
-
-const baseUrl = 'http://localhost:3000/api/v1'
+import { getAccounts } from '../apiAdapter'
+import { sendTransaction } from '../apiAdapter'
+import { fetchAlphaVantage } from '../apiAdapter'
 
 class NewTransactionForm extends Component {
 
@@ -15,15 +14,15 @@ class NewTransactionForm extends Component {
     transaction: "",
     investment: "",
     amount: "",
-    status: false
+    status: false,
+    checkedPrice: false,
+    shares: 0,
+    estimate: 0
 
   }
 
   componentDidMount = () => {
-    fetch(`${baseUrl}/getaccounts`, {
-      method: 'GET',
-      headers: this.headers(),
-    }).then(res => res.json())
+    getAccounts()
     .then((jsonObject) => this.formatAccountsToOptions(jsonObject))
   }
 
@@ -66,20 +65,36 @@ class NewTransactionForm extends Component {
     })
   }
 
+  handlePriceCheck = (event) => {
+    event.preventDefault()
+    this.setState({
+      checkedPrice: true
+    })
+    fetchAlphaVantage(this.state.investment)
+    .then( jsonObject => this.calculateValue(jsonObject))
+  }
+
+  calculateValue = (jsonObject) => {
+    let keysArray = Object.keys(jsonObject["Time Series (1min)"])
+    let firstKey = keysArray.shift()
+    let secondKeysArray = Object.keys(jsonObject["Time Series (1min)"][firstKey])
+    let secondKey = secondKeysArray.filter((key) => key.includes("open"))
+    let sharePrice = jsonObject["Time Series (1min)"][firstKey][secondKey]
+    let estimate = this.state.shares * sharePrice
+    this.setState({
+      estimate: estimate
+    })
+  }
+
   handleSubmit = (event) => {
     event.preventDefault()
     let transactionRequest = {
       account: this.state.account,
       transaction: this.state.transaction,
       investment: this.state.investment,
-      amount: this.state.amount
+      shares: this.state.shares
     }
-    fetch(`${baseUrl}/transact`, {
-      method: 'POST',
-      headers: this.headers(),
-      body: JSON.stringify(transactionRequest)
-    }).then(res => res.json())
-      .then((res) => console.log(res))
+    sendTransaction(transactionRequest)
     .then(() => this.redirectToHome())
   }
 
@@ -89,12 +104,10 @@ class NewTransactionForm extends Component {
     })
   }
 
-  headers () {
-    return {
-      'content-type': 'application/json',
-      'accept': 'application/json',
-      'Authorization': localStorage.getItem('jwt')
-    }
+  handleShares = (event) => {
+    this.setState({
+      shares: event.target.value
+    })
   }
 
   render() {
@@ -111,18 +124,33 @@ class NewTransactionForm extends Component {
       { key: 'BNDX', text: 'BNDX', value: 'BNDX' },
     ]
     return (
-      <div>
-      New transaction form template to begin
-      <Grid centered columns={3}>
+      <div className="accountscontainer">
+      <Grid centered columns={2}>
         <Grid.Column>
-          <Form onSubmit={this.handleSubmit}>
+          <Form onSubmit={this.handlePriceCheck}>
             <Form.Select label='Select Your Account' options={options} placeholder='Select Your Account' onChange={this.handleAccountSelect} />
             <Form.Select label='Select Your Transaction' options={transactionType} placeholder='Select Transaction' onChange={this.handleTransactionSelect} />
             <Form.Select label='Select Investment' options={investments} placeholder='Select Investment' onChange={this.handleInvestmentSelect} />
-            <Form.Input label='Amount' placeholder='$' onChange={this.handleAmount}  />
+            <Form.Input label='Shares'onChange={this.handleShares}  />
             <Form.Checkbox label='I agree to the Terms and Conditions' />
-            <Form.Button>Submit</Form.Button>
+            <Form.Button> Estimate Transaction Total </Form.Button>
           </Form>
+        </Grid.Column>
+        <Grid.Column>
+        <Grid centered columns={2}>
+
+
+        <Grid.Column textAlign="center" verticalAlign="center">
+          {this.state.checkedPrice ?
+          <div className="estimate">
+            <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
+            <Button size="massive" positive onClick={this.handleSubmit}> Submit Trade </Button>
+          </div>
+          : null}
+        </Grid.Column>
+
+
+        </Grid>
         </Grid.Column>
       </Grid>
       {this.state.status ? < Redirect to="/home" /> : null}

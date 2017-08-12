@@ -26,7 +26,7 @@ class AppContainer extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className="home">
         < Welcome current_user={this.state.current_user}/>
         < Accounts setCurrentUser={this.setCurrentUser} portfolioTotal={this.portfolioTotal}/>
       </div>

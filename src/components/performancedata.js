@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Grid } from 'semantic-ui-react'
+import { Form, Grid, Statistic } from 'semantic-ui-react'
 import { fetchSectorPerformance } from '../apiAdapter'
 import { HorizontalBar } from 'react-chartjs-2'
 
@@ -71,7 +71,7 @@ const options = [
   { key: '5 Day Performance', text: '5 Day Performance', value: '5 Day Performance' },
   { key: '1 Month Performance', text: '1 Month Performance', value: '1 Month Performance' },
   { key: '3 Month Performance', text: '3 Month Performance', value: '3 Month Performance' },
-  { key: 'Year-to-Date Performance', text: 'Year-to-Date Performance', value: 'Year-to-Date Performance' },
+  { key: 'Year-to-Date (YTD) Performance', text: 'Year-to-Date (YTD) Performance', value: 'Year-to-Date (YTD) Performance' },
   { key: '1 Year Performance', text: '1 Year Performance', value: '1 Year Performance' },
   { key: '3 Year Performance', text: '3 Year Performance', value: '3 Year Performance' },
   { key: '5 Year Performance', text: '5 Year Performance', value: '5 Year Performance' },
@@ -83,7 +83,8 @@ class PerformanceData extends Component {
   state = {
     data: [],
     range: "",
-    chartData:[]
+    chartData:[],
+    topSector: ""
   }
 
   componentDidMount = () => {
@@ -110,8 +111,10 @@ class PerformanceData extends Component {
 
   structureData = (rawData, selected) => {
     let labels = Object.keys(rawData)
-    let data = Object.values(rawData).map((value) => parseFloat(value))
+    let data = Object.values(rawData).map((value) => parseFloat(value).toFixed(2))
     let backgroundColor = []
+    let topSector = labels[0]
+    let topSectorPercentGain = data[0]
     for(let i = 0; i < data.length; i++){
       if(data[i] > 0){
         backgroundColor.push('rgb(60, 180, 75)')
@@ -129,7 +132,9 @@ class PerformanceData extends Component {
             }]
         }
     this.setState({
-      chartData: chartData
+      chartData: chartData,
+      topSector: topSector,
+      topSectorPercentGain: topSectorPercentGain
     })
   }
 
@@ -137,25 +142,47 @@ class PerformanceData extends Component {
     const { value } = this.state
     return (
       <div>
-      <Grid centered columns={3}>
-        <Grid.Column>
-          <Form >
-            <Form.Select label='Performance Range' options={options} placeholder='Performance Range' onChange={this.handlePerformanceRange} />
-          </Form>
-        </Grid.Column>
-        <Grid.Column>
-        </Grid.Column>
-      </Grid>
-        {this.state.range.length > 0 ?
-          <div className="barChart">
-          < HorizontalBar data={this.state.chartData} width={1000}
-            height={500}
-            options={chartOptions}
-            />
-          </div>
-          : <div> Please select a range </div>
 
-        }
+      <div className="performanceSearch">
+      <Grid centered columns={3}>
+        <Grid.Row>
+        <Grid.Column width={10} textAlign="left">
+        {this.state.range.length > 0 ?
+        <div className="performance"> Top Sector: {this.state.topSector} </div> : <div className="performance"> </div>}
+        </Grid.Column>
+
+        <Grid.Column width={1}>
+
+        </Grid.Column>
+
+        <Grid.Column width={5} textAlign="center">
+        {this.state.range.length > 0 ?
+        <Statistic color="green" value={this.state.topSectorPercentGain + "%"} /> : null}
+        </Grid.Column>
+       </Grid.Row>
+      <Grid.Row>
+        <Grid.Column width={2}>
+        </Grid.Column>
+        <Grid.Column width={12}>
+        <Form >
+          <Form.Select label='Performance Range' options={options} placeholder='Performance Range' onChange={this.handlePerformanceRange} />
+        </Form>
+        </Grid.Column>
+        <Grid.Column width={2}>
+        </Grid.Column>
+      </Grid.Row>
+      </Grid>
+      <div>
+      {this.state.range.length > 0 ?
+        <div className="center">
+        < HorizontalBar data={this.state.chartData} width={700}
+          height={500}
+          options={chartOptions}
+          />
+        </div>
+        : null}
+      </div>
+      </div>
       </div>
 
     )

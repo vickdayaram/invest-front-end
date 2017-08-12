@@ -12,7 +12,7 @@ class PerformanceContainer extends React.Component {
 
   render(){
     return (
-      <div className="accountscontainer">
+      <div className="performanceContainer">
         < PerformanceData />
       </div>
     )

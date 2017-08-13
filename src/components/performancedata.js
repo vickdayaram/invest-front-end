@@ -30,7 +30,7 @@ const chartOptions = {
               {
                   ticks: {
                      callback: function(label, index, labels) {
-                       return label + "%";
+                       return label.toFixed(2) + "%";
                      }
                   }
               }
@@ -111,7 +111,7 @@ class PerformanceData extends Component {
 
   structureData = (rawData, selected) => {
     let labels = Object.keys(rawData)
-    let data = Object.values(rawData).map((value) => parseFloat(value).toFixed(2))
+    let data = Object.values(rawData).map((value) => parseFloat(value))
     let backgroundColor = []
     let topSector = labels[0]
     let topSectorPercentGain = data[0]

@@ -11,6 +11,7 @@ class NewTransactionForm extends Component {
     accounts: [],
     accountOptions: [],
     account: "",
+    account_id: 0,
     transaction: "",
     investment: "",
     currentInvestment: "",
@@ -36,9 +37,9 @@ class NewTransactionForm extends Component {
     let accounts = jsonObject.accounts
     for(let i = 0; i < accounts.length; i++ ){
       accountOptions.push({
-        key: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + " Funds Available To Trade: " + accounts[i].holdings[0].holding.shares,
-        text: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + " Funds Available To Trade: " + accounts[i].holdings[0].holding.shares,
-        value: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + " Funds Available To Trade: " + accounts[i].holdings[0].holding.shares
+        key: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + "-" + accounts[i].account.id + " Funds Available To Trade: " + accounts[i].holdings[0].holding.shares,
+        text: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + "-" + accounts[i].account.id + " Funds Available To Trade: " + accounts[i].holdings[0].holding.shares,
+        value: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + "-" + accounts[i].account.id + " Funds Available To Trade: " + accounts[i].holdings[0].holding.shares
       })
     }
     this.setState({
@@ -103,10 +104,12 @@ class NewTransactionForm extends Component {
   handleAccountSelect = (event) => {
     let fundsAvailable = parseInt(event.target.innerText.split(" ").pop())
     let accountNumber = parseInt(event.target.innerText.split(" ")[3])
+    let account_id = parseInt(event.target.innerText.split(" ")[3].split("-").pop())
     this.setState({
         account: event.target.innerText,
         fundsAvailable: fundsAvailable,
-        selectedAccountNumber: accountNumber
+        selectedAccountNumber: accountNumber,
+        account_id: account_id
     })
   }
 
@@ -156,7 +159,7 @@ class NewTransactionForm extends Component {
       investment = this.state.currentInvestment
     }
     let transactionRequest = {
-      account: this.state.account,
+      account_id: this.state.account_id,
       transaction: this.state.transaction,
       investment: investment,
       shares: this.state.shares

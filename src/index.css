@@ -61,3 +61,8 @@ body {
 .center {
   text-align: center;
 }
+
+.accountHeader {
+  background-color: #FF9900;
+  height: 75px;
+}

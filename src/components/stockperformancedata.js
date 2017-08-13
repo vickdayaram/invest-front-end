@@ -109,7 +109,7 @@ class StockPerformanceData extends Component {
         </Grid.Column>
         <Grid.Column width={12}>
         <Form >
-          <Form.Select label='Performance Range' options={options} placeholder='Symbol Select' onChange={this.handleSymbolSelect} />
+          <Form.Select label='Symbol' options={options} placeholder='Symbol Select' onChange={this.handleSymbolSelect} />
         </Form>
         </Grid.Column>
         <Grid.Column width={2}>

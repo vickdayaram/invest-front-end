@@ -10,6 +10,7 @@ import NewAccountForm from './components/newaccountform'
 import {BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import NewTransactionForm from './components/newtransactionform'
 import PerformanceContainer from './containers/performancecontainer'
+import StockPerformanceData from './components/stockperformancedata'
 
 class App extends Component {
 
@@ -98,6 +99,7 @@ class App extends Component {
             <Route exact path="/newaccount" component={NewAccountForm}/>
             <Route exact path="/transact" component={NewTransactionForm}/>
             <Route exact path="/performance" component={PerformanceContainer}/>
+            <Route exact path="/stockperformance" component={StockPerformanceData}/>
 
           </div>
         < /Router >

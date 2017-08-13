@@ -9,6 +9,7 @@ import Landing from './components/landing'
 import NewAccountForm from './components/newaccountform'
 import {BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import NewTransactionForm from './components/newtransactionform'
+import PerformanceContainer from './containers/performancecontainer'
 
 class App extends Component {
 
@@ -94,9 +95,9 @@ class App extends Component {
             this.handleLogout()
             return (<Redirect to="/"/>)}} />
 
-            <Route exact path="/newaccount" component={Authorize(NewAccountForm)}/>
-
-            <Route exact path="/transact" component={Authorize(NewTransactionForm)}/>
+            <Route exact path="/newaccount" component={NewAccountForm}/>
+            <Route exact path="/transact" component={NewTransactionForm}/>
+            <Route exact path="/performance" component={PerformanceContainer}/>
 
           </div>
         < /Router >

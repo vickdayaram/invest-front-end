@@ -36,7 +36,7 @@ class AccountBody extends React.Component {
           </Table.Row>
         </Table.Header>
         {this.props.account.holdings.map((holding) => {
-          return < Holding holding={holding} calculateTotal={this.calculateTotal} />
+          return < Holding holding={holding} calculateTotal={this.calculateTotal} portfolioTotal={this.props.portfolioTotal} />
         })}
           <Table.Row>
             <Table.Cell active="true"> </Table.Cell>

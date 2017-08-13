@@ -37,6 +37,7 @@ class Holding extends React.Component {
       value: parseInt(value)
     })
     this.props.calculateTotal(value)
+    this.props.portfolioTotal(value)
   }
 
   render(){

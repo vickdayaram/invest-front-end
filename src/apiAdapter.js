@@ -38,3 +38,9 @@ export const fetchAlphaVantage = (symbol) => {
   return (fetch(url)
   .then( res => res.json()))
 }
+
+export const fetchSectorPerformance = () => {
+  let url = `https://www.alphavantage.co/query?function=SECTOR&apikey=NKIEQH9ZHQ1ZFJVL`
+  return (fetch(url)
+  .then( res => res.json()))
+}

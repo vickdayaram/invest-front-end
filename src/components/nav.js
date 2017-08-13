@@ -17,18 +17,6 @@ class Nav extends React.Component {
       <Menu className="ui inverted menu nav" color="blue">
         <Menu.Item>
         </Menu.Item>
-
-        {this.props.isLoggedIn ?
-        <Menu.Item
-          name='Logout'
-          active={activeItem === 'Logout'}
-          onClick={this.handleItemClick}
-          position="right"
-        >
-          < NavLink to="/logout"> Logout </NavLink>
-        </Menu.Item>
-        : null
-       }
         {this.props.isLoggedIn ?
         <Menu.Item
           name='Home'
@@ -62,6 +50,28 @@ class Nav extends React.Component {
         </Menu.Item>
         : null
       }
+      {this.props.isLoggedIn ?
+        <Menu.Item
+          name='US Performance by Sector'
+          active={activeItem === 'US Performance by Sector'}
+          onClick={this.handleItemClick}
+          position="right"
+        >
+          < NavLink to="/performance"> US Performance by Sector </NavLink>
+        </Menu.Item>
+        : null
+      }
+      {this.props.isLoggedIn ?
+      <Menu.Item
+        name='Logout'
+        active={activeItem === 'Logout'}
+        onClick={this.handleItemClick}
+        position="right"
+      >
+        < NavLink to="/logout"> Logout </NavLink>
+      </Menu.Item>
+      : null
+     }
       </Menu>
     )
   }

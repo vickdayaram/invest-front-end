@@ -107,6 +107,7 @@ class PerformanceData extends Component {
     let dataKey = keys.filter((key) => key.includes(selected))
     let rawData = this.state.data[dataKey]
     this.structureData(rawData, selected)
+    debugger
   }
 
   structureData = (rawData, selected) => {
@@ -146,18 +147,17 @@ class PerformanceData extends Component {
       <div className="performanceSearch">
       <Grid centered columns={3}>
         <Grid.Row>
-        <Grid.Column width={10} textAlign="left">
-        {this.state.range.length > 0 ?
-        <div className="performance"> Top Sector: {this.state.topSector} </div> : <div className="performance"> </div>}
-        </Grid.Column>
-
-        <Grid.Column width={1}>
+        <Grid.Column width={1} textAlign="left">
 
         </Grid.Column>
 
-        <Grid.Column width={5} textAlign="center">
+        <Grid.Column width={14} textAlign="center">
         {this.state.range.length > 0 ?
-        <Statistic color="green" value={this.state.topSectorPercentGain + "%"} /> : null}
+        <div className="performance"> Top Sector: {this.state.topSector + " "} <Statistic size="small"color="green" value={this.state.topSectorPercentGain + "%"} /> </div> : <div className="performance"> </div>}
+        </Grid.Column>
+
+        <Grid.Column width={1} textAlign="center">
+
         </Grid.Column>
        </Grid.Row>
       <Grid.Row>

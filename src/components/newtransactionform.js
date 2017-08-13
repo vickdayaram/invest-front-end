@@ -14,6 +14,7 @@ class NewTransactionForm extends Component {
     transaction: "",
     investment: "",
     currentInvestment: "",
+    currentShares: 0,
     amount: "",
     status: false,
     checkedPrice: false,
@@ -23,7 +24,6 @@ class NewTransactionForm extends Component {
     resultingBalance: 0,
     selectedAccountNumber: 0,
     investmentOptions: []
-
   }
 
   componentDidMount = () => {
@@ -72,7 +72,7 @@ class NewTransactionForm extends Component {
     this.setState({
         transaction: event.target.innerText
     })
-    if(event.target.innetText === "SELL"){
+    if(event.target.innerText === "SELL"){
       this.formatInvestmentsToOptions()
     }
   }
@@ -84,8 +84,11 @@ class NewTransactionForm extends Component {
   }
 
   handleCurrentInvestmentSelect = (event) => {
+    let investment = event.target.innerText.split(" ")[0]
+    let shares = event.target.innerText.split(" ").pop()
     this.setState({
-        currentInvestment: event.target.innerText
+        currentInvestment: investment,
+        currentShares: shares
     })
   }
 
@@ -112,7 +115,13 @@ class NewTransactionForm extends Component {
     this.setState({
       checkedPrice: true
     })
-    fetchAlphaVantage(this.state.investment)
+    let investment = ""
+    if(this.state.transaction === "BUY"){
+      investment = this.state.investment
+    } else {
+      investment = this.state.currentInvestment
+    }
+    fetchAlphaVantage(investment)
     .then( jsonObject => this.calculateValue(jsonObject))
   }
 
@@ -124,23 +133,32 @@ class NewTransactionForm extends Component {
     let sharePrice = jsonObject["Time Series (1min)"][firstKey][secondKey]
     let estimate = this.state.shares * sharePrice
     let resultingBalance
+    let resultingShares = 0
     if(this.state.transaction === "BUY"){
       resultingBalance = this.state.fundsAvailable - estimate
     } else {
       resultingBalance = this.state.fundsAvailable + estimate
+      resultingShares = this.state.currentShares - this.state.shares
     }
     this.setState({
       estimate: estimate,
-      resultingBalance: resultingBalance
+      resultingBalance: resultingBalance,
+      resultingShares: resultingShares
     })
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
+    let investment
+    if(this.state.transaction === "BUY"){
+      investment = this.state.investment
+    } else {
+      investment = this.state.currentInvestment
+    }
     let transactionRequest = {
       account: this.state.account,
       transaction: this.state.transaction,
-      investment: this.state.investment,
+      investment: investment,
       shares: this.state.shares
     }
     sendTransaction(transactionRequest)
@@ -159,6 +177,47 @@ class NewTransactionForm extends Component {
     })
   }
 
+  renderBuy = () => {
+    if(this.state.checkedPrice === true && this.state.transaction === "BUY" && this.state.resultingBalance < 0){
+      return(
+        <div className="estimate">
+          <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
+          <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" />
+          <div> not enough cash </div>
+        </div>
+        )
+      } else if(this.state.checkedPrice === true && this.state.transaction === "BUY" && this.state.resultingBalance > 0) {
+      return(
+        <div className="estimate">
+          <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
+          <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" />
+          <Button size="large" positive onClick={this.handleSubmit}> Submit Trade </Button>
+        </div>
+        )
+     }
+   }
+
+   renderSell = () => {
+     if(this.state.checkedPrice === true && this.state.transaction === "SELL" && this.state.resultingShares < 0){
+       return(
+       <div className="estimate">
+         <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
+         <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" />
+         <div> Not enough shares to cover the trade! </div>
+       </div>
+       )
+     } else if(this.state.checkedPrice === true && this.state.transaction === "SELL" && this.state.resultingShares > 0){
+       return(
+       <div className="estimate">
+         <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
+         <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" />
+         <Button size="large" positive onClick={this.handleSubmit}> Submit Trade </Button>
+       </div>
+       )
+     }
+   }
+
+
   render() {
     const { value } = this.state
     const options = this.state.accountOptions
@@ -173,7 +232,7 @@ class NewTransactionForm extends Component {
       { key: 'VXUS', text: 'VXUS', value: 'VXUS' },
       { key: 'BNDX', text: 'BNDX', value: 'BNDX' },
     ]
-    const investments = []
+
 
     return (
       <div className="accountscontainer">
@@ -182,7 +241,11 @@ class NewTransactionForm extends Component {
           <Form onSubmit={this.handlePriceCheck}>
             <Form.Select label='Select Your Account' options={options} placeholder='Select Your Account' onChange={this.handleAccountSelect} />
             <Form.Select label='Select Your Transaction' options={transactionType} placeholder='Select Transaction' onChange={this.handleTransactionSelect} />
+            {this.state.transaction === "BUY" ?
             <Form.Select label='Select Investment' options={investmentsConst} placeholder='Select Investment' onChange={this.handleInvestmentSelect} />
+            :
+            <Form.Select label='Select Investment' options={investmentOptions} placeholder='Select Investment' onChange={this.handleCurrentInvestmentSelect} />
+             }
             <Form.Input label='Shares'onChange={this.handleShares}  />
             <Form.Checkbox label='I agree to the Terms and Conditions' />
             <Form.Button> Estimate Transaction Total </Form.Button>
@@ -193,15 +256,11 @@ class NewTransactionForm extends Component {
 
 
         <Grid.Column textAlign="center" verticalAlign="center">
-          {this.state.checkedPrice ?
-          <div className="estimate">
-            <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
-            <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" />
-            {this.state.resultingBalance < 0 ?
-            <div> not enough cash </div>
-            : <Button size="large" positive onClick={this.handleSubmit}> Submit Trade </Button>}
-          </div>
-          : null}
+          {this.state.transaction === "BUY" ?
+           this.renderBuy()
+           :
+           this.renderSell()
+           }
         </Grid.Column>
 
 

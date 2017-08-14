@@ -4,6 +4,7 @@ import Accounts from './accounts'
 import PerformanceContainer from './performancecontainer'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { fetchTotalAndAllocation } from '../apiAdapter'
+import { Image } from 'semantic-ui-react'
 
 class AppContainer extends React.Component {
 
@@ -67,11 +68,18 @@ class AppContainer extends React.Component {
   render(){
     return (
       <div className="home">
-
+          {isNaN(this.state.portfolioTotal) ?
+          <div className="landingHeader center">
+            <div> Thanks for signing up! </div>
+            <div className="landingBody"> Check out the Nav links above to get Started </div>
+            <Image className="accountscontainer" src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
+          </div>
+              :
+          <div>
           < Welcome current_user={this.state.current_user} portfolioTotal={this.state.portfolioTotal} chartData={this.state.chartData}/>
           < Accounts  />
-
-
+          </div>
+          }
       </div>
     )
   }

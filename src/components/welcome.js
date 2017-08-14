@@ -37,10 +37,17 @@ class Welcome extends React.Component {
   render(){
     return(
       <div className="welcome">
-        <div className="welcomeHeader"> Welcome {this.props.current_user} </div>
+        <div className="balancesText"> Welcome {this.props.current_user} </div>
 
+        <div className="dashboard">
         <Table celled textAlign="center" size="small">
           <Table.Header>
+            <Table.HeaderCell
+            className="accountHeader"
+            colSpan="2"
+            textAlign="center"
+            > Portfolio Dashboard
+            </Table.HeaderCell>
             <Table.Row>
               <Table.HeaderCell width={8}>Current Portfolio Allocation</Table.HeaderCell>
               <Table.HeaderCell width={8}>Total Portfolio Value</Table.HeaderCell>
@@ -54,7 +61,7 @@ class Welcome extends React.Component {
             </Table.Row>
           </Table.Body>
         </Table>
-
+        </div>
       </div>
     )
   }

@@ -7,7 +7,7 @@ body {
 .accountscontainer {
   margin-left: 200px;
   margin-right: 200px;
-  margin-top: 150px;
+  margin-top: 125px;
 }
 
 .accountdisplay {
@@ -44,7 +44,7 @@ body {
 }
 
 .home {
-  margin-top: 100px;
+  margin-top: 200px;
 }
 
 .nav {
@@ -77,6 +77,16 @@ body {
 
 .welcomeHeader {
   text-align: center;
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 45px;
+}
+
+.dashboard {
+  padding-top: 50px;
+}
+
+.balancesText {
+  text-align: left;
   font-family: 'Saira Condensed', sans-serif;
   font-size: 45px;
 }

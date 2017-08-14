@@ -60,7 +60,7 @@ class NewAccountForm extends Component {
             <Form.Input label='Initial Deposit' placeholder='$' onChange={this.handleDeposit}  />
             <Form.Select label='Account Type' options={options} placeholder='Account Type' onChange={this.handleAccountType} />
             <Form.Checkbox label='I agree to the Terms and Conditions' />
-            <Form.Button>Submit</Form.Button>
+            <Form.Button primary={true} fluid={true}>Submit</Form.Button>
           </Form>
         </Grid.Column>
         <Grid.Column>

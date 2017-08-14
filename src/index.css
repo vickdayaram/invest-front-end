@@ -7,7 +7,7 @@ body {
 .accountscontainer {
   margin-left: 200px;
   margin-right: 200px;
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 .accountdisplay {
@@ -15,18 +15,17 @@ body {
 }
 
 .welcome {
-  margin-top: 35px;
-  margin-left: 100px;
-  margin-right: 100px;
-  font-family: 'Saira Condensed', sans-serif;
-  font-size: 45px;
+  margin-top: 50px;
+  margin-left: 200px;
+  margin-right: 200px;
 }
 
 .estimate {
-  
+
 }
 
 .landingHeader {
+  margin-top: 35px;
   font-family: 'Saira Condensed', sans-serif;
   font-size: 60px;
 }
@@ -39,7 +38,7 @@ body {
 
 .background {
   height: 800px;
-  margin-top: 75px;
+  margin-top: 115px;
   margin-left: 100px;
   margin-right: 100px;
 }
@@ -59,7 +58,7 @@ body {
 }
 
 .performanceSearch {
-  margin-top: 50px;
+  margin-top: 100px;
 }
 
 .performanceContainer {
@@ -74,4 +73,10 @@ body {
 .accountHeader {
   background-color: #FF9900;
   height: 75px;
+}
+
+.welcomeHeader {
+  text-align: center;
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 45px;
 }

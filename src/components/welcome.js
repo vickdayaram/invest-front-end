@@ -1,5 +1,6 @@
 import React from 'react'
 import { Doughnut } from 'react-chartjs-2'
+import { Table, Statistic } from 'semantic-ui-react'
 
 const sample =  {
             labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -36,8 +37,24 @@ class Welcome extends React.Component {
   render(){
     return(
       <div className="welcome">
-        Welcome {this.props.current_user}, Portfolio Total: ${parseInt(this.props.portfolioTotal).toLocaleString()}
-        < Doughnut data={this.props.chartData} options={chartOptions} height={250} width={250}/>
+        <div className="welcomeHeader"> Welcome {this.props.current_user} </div>
+
+        <Table celled textAlign="center" size="small">
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell width={8}>Current Portfolio Allocation</Table.HeaderCell>
+              <Table.HeaderCell width={8}>Total Portfolio Value</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+
+          <Table.Body>
+            <Table.Row>
+              <Table.Cell width={8}> < Doughnut data={this.props.chartData} options={chartOptions} height={250} width={250}/> </Table.Cell>
+              <Table.Cell width={8}> <Statistic value={`$${parseInt(this.props.portfolioTotal).toLocaleString()}`} /> </Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
+
       </div>
     )
   }

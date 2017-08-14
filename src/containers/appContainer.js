@@ -21,7 +21,13 @@ class AppContainer extends React.Component {
       portfolioTotal: json["portfolio_total"],
       currentAllocation: json["allocation"]
     }))
-    .then(() => this.formatChartData())
+    .then(() => {
+      if(!this.state.portfolioTotal){
+        return
+      } else {
+        this.formatChartData()
+      }
+    })
   }
 
   formatChartData = () => {

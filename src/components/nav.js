@@ -14,8 +14,8 @@ class Nav extends React.Component {
     const { activeItem } = this.state
 
     return (
-      <Menu className="ui inverted menu nav" color="blue">
-    
+      <Menu className="ui inverted menu nav" color="blue" fixed="top">
+
         {this.props.isLoggedIn ?
         <Menu.Item
           name='Home'

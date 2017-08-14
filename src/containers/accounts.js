@@ -17,6 +17,11 @@ class Accounts extends React.Component {
       accounts: jsonObject
     }))
     .then(() => this.setUser())
+    .then(() => this.sendPortfolioTotal())
+  }
+
+  sendPortfolioTotal = () => {
+    this.props.portfolioTotal(this.state.accounts["portfolio_total"])
   }
 
   setUser = () => {
@@ -29,7 +34,7 @@ class Accounts extends React.Component {
         < AccountDisplay current_user={this.state.accounts.username}/>
         {this.state.accounts.accounts ?
         this.state.accounts.accounts.map((account) =>{
-          return < AccountBody account={account} portfolioTotal={this.props.portfolioTotal}/>})
+          return < AccountBody account={account} />})
         : <div> Loading </div>}
       </div>
     )

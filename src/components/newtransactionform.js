@@ -186,48 +186,41 @@ class NewTransactionForm extends Component {
     )
   }
 
-  renderBuy = () => {
+  whatShouldWeDisplay = () => {
+    if(this.state.transaction === "BUY"){
     if(this.state.checkedPrice === true && this.state.resultingBalance < 0){
       return(
-        <div className="estimate">
-          <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
-          <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" />
-          <div> not enough cash </div>
-        </div>
+        "Not Enough Cash"
         )
       } else if(this.state.checkedPrice === true && this.state.resultingBalance > 0) {
       return(
-        <div className="estimate">
-          <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
-          <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" />
-          <Button size="large" positive onClick={this.handleSubmit}> Submit Trade </Button>
-        </div>
+        "Display Button"
         )
      }
-   }
-
-   renderSell = () => {
+   } else {
      if(this.state.checkedPrice === true && this.state.resultingShares < 0){
        return(
-       <div className="estimate">
-         <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
-         <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" />
-         <div className="landingBody"> Not enough shares to cover the trade! </div>
-       </div>
+       "Not Enough Shares"
        )
      } else if(this.state.checkedPrice === true && this.state.resultingShares > 0){
        return(
-       <div className="estimate">
-         <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
-         <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" />
-         <Button size="large" positive onClick={this.handleSubmit}> Submit Trade </Button>
-       </div>
+       "Display Button"
        )
      }
    }
+  }
 
 
   renderTable = (renderFunction) => {
+    let message = ""
+    let whatShouldWeDisplay = this.whatShouldWeDisplay()
+    if(whatShouldWeDisplay === "Not Enough Cash"){
+      message = "Not Enough Cash"
+    } else if(whatShouldWeDisplay === "Not Enough Shares"){
+      message = "Not Enough Shares"
+    } else {
+      message = "Display Button"
+    }
     return (
       <div className="estimate">
         <Table celled size="large" textAlign="center">
@@ -248,7 +241,11 @@ class NewTransactionForm extends Component {
          <Table.Cell> <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" /></Table.Cell>
        </Table.Row>
        <Table.Row>
-         <Table.Cell colSpan={2}> </Table.Cell>
+          {message === "Display Button" ?
+          <Table.Cell colSpan={2}> <Button size="large" positive onClick={this.handleSubmit}> Submit Trade </Button> </Table.Cell>
+          :
+          <Table.Cell colSpan={2}> <div> {message} </div> </Table.Cell>
+          }
        </Table.Row>
        </Table.Body>
        </Table>
@@ -292,18 +289,11 @@ class NewTransactionForm extends Component {
         </Grid.Column>
         <Grid.Column>
 
-
-
         <Grid.Column textAlign="center" verticalAlign="center">
-          {this.state.transaction === "BUY" ?
-           this.renderBuy()
-           :
-           this.renderSell()
-           }
            {this.state.checkedPrice === false ?
            this.renderImage()
            :
-            null
+           this.renderTable()
            }
         </Grid.Column>
 

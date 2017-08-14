@@ -17,12 +17,11 @@ class AppContainer extends React.Component {
     })
   }
 
-  portfolioTotal = (accountBalance) => {
-    let addingBalance = this.state.portfolioTotal + parseInt(accountBalance)
+  portfolioTotal = (portfolioTotal) => {
     this.setState({
-      portfolioTotal: addingBalance
+      portfolioTotal: portfolioTotal
     })
-    console.log(addingBalance)
+    console.log(portfolioTotal)
   }
 
   render(){

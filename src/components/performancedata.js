@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Grid, Statistic } from 'semantic-ui-react'
+import { Form, Grid, Statistic, Image } from 'semantic-ui-react'
 import { fetchSectorPerformance } from '../apiAdapter'
 import { HorizontalBar } from 'react-chartjs-2'
 
@@ -146,20 +146,8 @@ class PerformanceData extends Component {
 
       <div className="performanceSearch">
       <Grid centered columns={3}>
-        <Grid.Row>
-        <Grid.Column width={1} textAlign="left">
 
-        </Grid.Column>
 
-        <Grid.Column width={14} textAlign="center">
-        {this.state.range.length > 0 ?
-        <div className="performance"> Top Sector: {this.state.topSector + " "} <Statistic size="small"color="green" value={this.state.topSectorPercentGain + "%"} /> </div> : <div className="performance"> </div>}
-        </Grid.Column>
-
-        <Grid.Column width={1} textAlign="center">
-
-        </Grid.Column>
-       </Grid.Row>
       <Grid.Row>
         <Grid.Column width={2}>
         </Grid.Column>
@@ -171,6 +159,21 @@ class PerformanceData extends Component {
         <Grid.Column width={2}>
         </Grid.Column>
       </Grid.Row>
+
+      <Grid.Row>
+      <Grid.Column width={1} textAlign="left">
+
+      </Grid.Column>
+
+      <Grid.Column width={14} textAlign="center">
+      {this.state.range.length > 0 ?
+      <div className="performance"> Top Sector: {this.state.topSector + " "} <Statistic size="small"color="green" value={this.state.topSectorPercentGain + "%"} /> </div> : <div className="performance"> </div>}
+      </Grid.Column>
+
+      <Grid.Column width={1} textAlign="center">
+
+      </Grid.Column>
+     </Grid.Row>
       </Grid>
       <div>
       {this.state.range.length > 0 ?
@@ -180,7 +183,11 @@ class PerformanceData extends Component {
           options={chartOptions}
           />
         </div>
-        : null}
+        :
+        <div className="performanceSearch">
+          <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
+        </div>
+      }
       </div>
       </div>
       </div>

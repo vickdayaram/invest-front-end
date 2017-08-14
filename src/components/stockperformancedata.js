@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Grid, Statistic } from 'semantic-ui-react'
+import { Form, Grid, Statistic, Image } from 'semantic-ui-react'
 import { fetchStockPerformance } from '../apiAdapter'
 import { Line } from 'react-chartjs-2'
 
@@ -126,7 +126,10 @@ class StockPerformanceData extends Component {
           height={500}
           width={700}
           />
-          : null
+          :
+          <div className="performanceSearch">
+            <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
+          </div>
         }
         </div>
 

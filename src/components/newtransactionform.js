@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Grid, Button, Statistic } from 'semantic-ui-react'
+import { Form, Grid, Button, Statistic, Image, Table } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
 import { getAccounts } from '../apiAdapter'
 import { sendTransaction } from '../apiAdapter'
@@ -180,6 +180,12 @@ class NewTransactionForm extends Component {
     })
   }
 
+  renderImage = () => {
+    return(
+      <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
+    )
+  }
+
   renderBuy = () => {
     if(this.state.checkedPrice === true && this.state.transaction === "BUY" && this.state.resultingBalance < 0){
       return(
@@ -206,7 +212,7 @@ class NewTransactionForm extends Component {
        <div className="estimate">
          <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
          <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" />
-         <div> Not enough shares to cover the trade! </div>
+         <div className="landingBody"> Not enough shares to cover the trade! </div>
        </div>
        )
      } else if(this.state.checkedPrice === true && this.state.transaction === "SELL" && this.state.resultingShares > 0){
@@ -219,6 +225,36 @@ class NewTransactionForm extends Component {
        )
      }
    }
+
+
+  renderTable = (estimatedTrade, estimatedValue, action) => {
+    return (
+      <div className="estimate">
+        <Table celled size="large" textAlign="center">
+        <Table.Header>
+           <Table.Row>
+             <Table.HeaderCell>Details</Table.HeaderCell>
+             <Table.HeaderCell>Values</Table.HeaderCell>
+           </Table.Row>
+        </Table.Header>
+
+       <Table.Body>
+       <Table.Row>
+         <Table.Cell> Estimated Trade </Table.Cell>
+         <Table.Cell> {estimatedTrade}</Table.Cell>
+       </Table.Row>
+       <Table.Row>
+         <Table.Cell> Estimated Cash Value </Table.Cell>
+         <Table.Cell> {estimatedValue} </Table.Cell>
+       </Table.Row>
+       <Table.Row>
+         <Table.Cell colSpan={2}> {action} </Table.Cell>
+       </Table.Row>
+       </Table.Body>
+       </Table>
+      </div>
+    )
+  }
 
 
   render() {
@@ -251,11 +287,11 @@ class NewTransactionForm extends Component {
              }
             <Form.Input label='Shares'onChange={this.handleShares}  />
             <Form.Checkbox label='I agree to the Terms and Conditions' />
-            <Form.Button> Estimate Transaction Total </Form.Button>
+            <Form.Button primary={true} fluid={true} color="green"> Estimate Transaction Total </Form.Button>
           </Form>
         </Grid.Column>
         <Grid.Column>
-        <Grid centered columns={2}>
+
 
 
         <Grid.Column textAlign="center" verticalAlign="center">
@@ -264,10 +300,15 @@ class NewTransactionForm extends Component {
            :
            this.renderSell()
            }
+           {this.state.checkedPrice === false ?
+           this.renderImage()
+           :
+            null
+           }
         </Grid.Column>
 
 
-        </Grid>
+
         </Grid.Column>
       </Grid>
       {this.state.status ? < Redirect to="/home" /> : null}

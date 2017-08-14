@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Grid } from 'semantic-ui-react'
+import { Form, Grid, Image } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
 import { sendNewAccount } from '../apiAdapter'
 
@@ -52,8 +52,8 @@ class NewAccountForm extends Component {
   render() {
     const { value } = this.state
     return (
-      <div>
-      <Grid centered columns={3}>
+      <div className="accountscontainer">
+      <Grid centered columns={2}>
         <Grid.Column>
           <Form onSubmit={this.handleSubmit}>
             <Form.Input label='Where the money is coming from?' placeholder='Bank Name' onChange={this.handleBankName} />
@@ -62,6 +62,9 @@ class NewAccountForm extends Component {
             <Form.Checkbox label='I agree to the Terms and Conditions' />
             <Form.Button>Submit</Form.Button>
           </Form>
+        </Grid.Column>
+        <Grid.Column>
+          <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
         </Grid.Column>
       </Grid>
       {this.state.status ? < Redirect to="/home" /> : null}

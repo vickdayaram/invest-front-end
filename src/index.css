@@ -23,11 +23,18 @@ body {
 }
 
 .estimate {
-  margin-top: 50px;
+  
 }
 
-.login {
-  margin-top: 100px;
+.landingHeader {
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 60px;
+}
+
+.landingBody {
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 30px;
+  margin-top: 30px;
 }
 
 .background {

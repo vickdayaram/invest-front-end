@@ -15,9 +15,7 @@ class Nav extends React.Component {
 
     return (
       <Menu className="ui inverted menu nav" color="blue">
-        <Menu.Item>
-        <Image src="https://image.freepik.com/free-icon/piggy-bank-with-dollar-coin_318-37770.jpg" size="mini" shape="rounded" />
-        </Menu.Item>
+    
         {this.props.isLoggedIn ?
         <Menu.Item
           name='Home'

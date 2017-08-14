@@ -16,16 +16,6 @@ class Accounts extends React.Component {
     .then((jsonObject) => this.setState({
       accounts: jsonObject
     }))
-    .then(() => this.setUser())
-    .then(() => this.sendPortfolioTotal())
-  }
-
-  sendPortfolioTotal = () => {
-    this.props.portfolioTotal(this.state.accounts["portfolio_total"])
-  }
-
-  setUser = () => {
-    this.props.setCurrentUser(this.state.accounts.username)
   }
 
   render(){

@@ -33,6 +33,13 @@ export const sendNewAccount = (newAccount) => {
   )
 }
 
+export const fetchTotalAndAllocation = () => {
+  return (fetch(`${baseUrl}/me`, {
+    method: 'GET',
+    headers: headers(),
+  }).then(res => res.json()))
+}
+
 export const fetchAlphaVantage = (symbol) => {
   let url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=1min&outputsize=full&apikey=NKIEQH9ZHQ1ZFJVL`
   return (fetch(url)

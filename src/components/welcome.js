@@ -9,7 +9,7 @@ class Welcome extends React.Component {
   render(){
     return(
       <div className="welcome">
-        Welcome {this.props.current_user}, portfolioTotal: ${this.props.portfolioTotal.toLocaleString()}
+        Welcome {this.props.current_user}, Portfolio Total: ${parseInt(this.props.portfolioTotal).toLocaleString()}
       </div>
     )
   }

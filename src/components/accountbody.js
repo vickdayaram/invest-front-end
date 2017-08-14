@@ -20,14 +20,20 @@ class AccountBody extends React.Component {
   render(){
     const account_type = this.props.account.account.account_type
     const account_number = this.props.account.account.account_number
+    const account_id = this.props.account.account.id
     return(
       <div className="accountdisplay">
-        <Menu tabular>
-        <Menu.Item name={account_type + "   Account Number: " + account_number} position="right" />
-        </Menu>
         <Segment attached='bottom'>
         <Table celled>
         <Table.Header>
+          <Table.Row>
+          <Table.HeaderCell
+          className="accountHeader"
+          colSpan="4"
+          textAlign="right"
+          > {account_type + "   Account Number: " + account_number + "-" + account_id}
+          </Table.HeaderCell>
+          </Table.Row>
           <Table.Row>
             <Table.HeaderCell textAlign="center">Symbol</Table.HeaderCell>
             <Table.HeaderCell textAlign="center">Name</Table.HeaderCell>

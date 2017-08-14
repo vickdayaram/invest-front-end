@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Grid, Button, Statistic } from 'semantic-ui-react'
+import { Form, Grid, Button, Statistic, Image, Table } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
 import { getAccounts } from '../apiAdapter'
 import { sendTransaction } from '../apiAdapter'
@@ -11,6 +11,7 @@ class NewTransactionForm extends Component {
     accounts: [],
     accountOptions: [],
     account: "",
+    account_id: 0,
     transaction: "",
     investment: "",
     currentInvestment: "",
@@ -36,9 +37,9 @@ class NewTransactionForm extends Component {
     let accounts = jsonObject.accounts
     for(let i = 0; i < accounts.length; i++ ){
       accountOptions.push({
-        key: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + " Funds Available To Trade: " + accounts[i].holdings[0].holding.shares,
-        text: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + " Funds Available To Trade: " + accounts[i].holdings[0].holding.shares,
-        value: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + " Funds Available To Trade: " + accounts[i].holdings[0].holding.shares
+        key: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + "-" + accounts[i].account.id + " Funds Available To Trade: " + accounts[i].holdings[0].holding.shares,
+        text: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + "-" + accounts[i].account.id + " Funds Available To Trade: " + accounts[i].holdings[0].holding.shares,
+        value: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + "-" + accounts[i].account.id + " Funds Available To Trade: " + accounts[i].holdings[0].holding.shares
       })
     }
     this.setState({
@@ -103,10 +104,12 @@ class NewTransactionForm extends Component {
   handleAccountSelect = (event) => {
     let fundsAvailable = parseInt(event.target.innerText.split(" ").pop())
     let accountNumber = parseInt(event.target.innerText.split(" ")[3])
+    let account_id = parseInt(event.target.innerText.split(" ")[3].split("-").pop())
     this.setState({
         account: event.target.innerText,
         fundsAvailable: fundsAvailable,
-        selectedAccountNumber: accountNumber
+        selectedAccountNumber: accountNumber,
+        account_id: account_id
     })
   }
 
@@ -156,7 +159,7 @@ class NewTransactionForm extends Component {
       investment = this.state.currentInvestment
     }
     let transactionRequest = {
-      account: this.state.account,
+      account_id: this.state.account_id,
       transaction: this.state.transaction,
       investment: investment,
       shares: this.state.shares
@@ -177,8 +180,14 @@ class NewTransactionForm extends Component {
     })
   }
 
+  renderImage = () => {
+    return(
+      <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
+    )
+  }
+
   renderBuy = () => {
-    if(this.state.checkedPrice === true && this.state.transaction === "BUY" && this.state.resultingBalance < 0){
+    if(this.state.checkedPrice === true && this.state.resultingBalance < 0){
       return(
         <div className="estimate">
           <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
@@ -186,7 +195,7 @@ class NewTransactionForm extends Component {
           <div> not enough cash </div>
         </div>
         )
-      } else if(this.state.checkedPrice === true && this.state.transaction === "BUY" && this.state.resultingBalance > 0) {
+      } else if(this.state.checkedPrice === true && this.state.resultingBalance > 0) {
       return(
         <div className="estimate">
           <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
@@ -198,15 +207,15 @@ class NewTransactionForm extends Component {
    }
 
    renderSell = () => {
-     if(this.state.checkedPrice === true && this.state.transaction === "SELL" && this.state.resultingShares < 0){
+     if(this.state.checkedPrice === true && this.state.resultingShares < 0){
        return(
        <div className="estimate">
          <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
          <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" />
-         <div> Not enough shares to cover the trade! </div>
+         <div className="landingBody"> Not enough shares to cover the trade! </div>
        </div>
        )
-     } else if(this.state.checkedPrice === true && this.state.transaction === "SELL" && this.state.resultingShares > 0){
+     } else if(this.state.checkedPrice === true && this.state.resultingShares > 0){
        return(
        <div className="estimate">
          <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
@@ -216,6 +225,36 @@ class NewTransactionForm extends Component {
        )
      }
    }
+
+
+  renderTable = (renderFunction) => {
+    return (
+      <div className="estimate">
+        <Table celled size="large" textAlign="center">
+        <Table.Header>
+           <Table.Row>
+             <Table.HeaderCell>Details</Table.HeaderCell>
+             <Table.HeaderCell>Values</Table.HeaderCell>
+           </Table.Row>
+        </Table.Header>
+
+       <Table.Body>
+       <Table.Row>
+         <Table.Cell> Estimated Trade </Table.Cell>
+         <Table.Cell> <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" /></Table.Cell>
+       </Table.Row>
+       <Table.Row>
+         <Table.Cell> Estimated Cash Value </Table.Cell>
+         <Table.Cell> <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" /></Table.Cell>
+       </Table.Row>
+       <Table.Row>
+         <Table.Cell colSpan={2}> </Table.Cell>
+       </Table.Row>
+       </Table.Body>
+       </Table>
+      </div>
+    )
+  }
 
 
   render() {
@@ -248,11 +287,11 @@ class NewTransactionForm extends Component {
              }
             <Form.Input label='Shares'onChange={this.handleShares}  />
             <Form.Checkbox label='I agree to the Terms and Conditions' />
-            <Form.Button> Estimate Transaction Total </Form.Button>
+            <Form.Button primary={true} fluid={true} color="green"> Estimate Transaction Total </Form.Button>
           </Form>
         </Grid.Column>
         <Grid.Column>
-        <Grid centered columns={2}>
+
 
 
         <Grid.Column textAlign="center" verticalAlign="center">
@@ -261,10 +300,15 @@ class NewTransactionForm extends Component {
            :
            this.renderSell()
            }
+           {this.state.checkedPrice === false ?
+           this.renderImage()
+           :
+            null
+           }
         </Grid.Column>
 
 
-        </Grid>
+
         </Grid.Column>
       </Grid>
       {this.state.status ? < Redirect to="/home" /> : null}

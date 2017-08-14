@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu, Segment } from 'semantic-ui-react'
+import { Menu, Segment, Image } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 class Nav extends React.Component {
@@ -15,8 +15,7 @@ class Nav extends React.Component {
 
     return (
       <Menu className="ui inverted menu nav" color="blue">
-        <Menu.Item>
-        </Menu.Item>
+    
         {this.props.isLoggedIn ?
         <Menu.Item
           name='Home'
@@ -58,6 +57,17 @@ class Nav extends React.Component {
           position="right"
         >
           < NavLink to="/performance"> US Performance by Sector </NavLink>
+        </Menu.Item>
+        : null
+      }
+      {this.props.isLoggedIn ?
+        <Menu.Item
+          name='US Performance by Stock'
+          active={activeItem === 'US Performance by Stock'}
+          onClick={this.handleItemClick}
+          position="right"
+        >
+          < NavLink to="/stockperformance"> US Performance by Stock </NavLink>
         </Menu.Item>
         : null
       }

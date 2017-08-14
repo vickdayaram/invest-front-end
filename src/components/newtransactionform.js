@@ -187,7 +187,7 @@ class NewTransactionForm extends Component {
   }
 
   renderBuy = () => {
-    if(this.state.checkedPrice === true && this.state.transaction === "BUY" && this.state.resultingBalance < 0){
+    if(this.state.checkedPrice === true && this.state.resultingBalance < 0){
       return(
         <div className="estimate">
           <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
@@ -195,7 +195,7 @@ class NewTransactionForm extends Component {
           <div> not enough cash </div>
         </div>
         )
-      } else if(this.state.checkedPrice === true && this.state.transaction === "BUY" && this.state.resultingBalance > 0) {
+      } else if(this.state.checkedPrice === true && this.state.resultingBalance > 0) {
       return(
         <div className="estimate">
           <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
@@ -207,7 +207,7 @@ class NewTransactionForm extends Component {
    }
 
    renderSell = () => {
-     if(this.state.checkedPrice === true && this.state.transaction === "SELL" && this.state.resultingShares < 0){
+     if(this.state.checkedPrice === true && this.state.resultingShares < 0){
        return(
        <div className="estimate">
          <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
@@ -215,7 +215,7 @@ class NewTransactionForm extends Component {
          <div className="landingBody"> Not enough shares to cover the trade! </div>
        </div>
        )
-     } else if(this.state.checkedPrice === true && this.state.transaction === "SELL" && this.state.resultingShares > 0){
+     } else if(this.state.checkedPrice === true && this.state.resultingShares > 0){
        return(
        <div className="estimate">
          <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" />
@@ -227,7 +227,7 @@ class NewTransactionForm extends Component {
    }
 
 
-  renderTable = (estimatedTrade, estimatedValue, action) => {
+  renderTable = (renderFunction) => {
     return (
       <div className="estimate">
         <Table celled size="large" textAlign="center">
@@ -241,14 +241,14 @@ class NewTransactionForm extends Component {
        <Table.Body>
        <Table.Row>
          <Table.Cell> Estimated Trade </Table.Cell>
-         <Table.Cell> {estimatedTrade}</Table.Cell>
+         <Table.Cell> <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" /></Table.Cell>
        </Table.Row>
        <Table.Row>
          <Table.Cell> Estimated Cash Value </Table.Cell>
-         <Table.Cell> {estimatedValue} </Table.Cell>
+         <Table.Cell> <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" /></Table.Cell>
        </Table.Row>
        <Table.Row>
-         <Table.Cell colSpan={2}> {action} </Table.Cell>
+         <Table.Cell colSpan={2}> </Table.Cell>
        </Table.Row>
        </Table.Body>
        </Table>

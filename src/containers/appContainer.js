@@ -44,11 +44,11 @@ class AppContainer extends React.Component {
       labels.push(label)
       data.push(value)
       if(label === "MM"){
-        backgroundColor.push('#E0E1DD')
+        backgroundColor.push('#1B9112')
       } else if(label === "VTI" || label === "VXUS"){
-        backgroundColor.push('#0D1B2A')
+        backgroundColor.push('#C61919')
       } else {
-        backgroundColor.push('#0D3B66')
+        backgroundColor.push('#202759')
       }
     }
     let chartData  =  {

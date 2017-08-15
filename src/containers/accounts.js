@@ -16,20 +16,15 @@ class Accounts extends React.Component {
     .then((jsonObject) => this.setState({
       accounts: jsonObject
     }))
-    .then(() => this.setUser())
-  }
-
-  setUser = () => {
-    this.props.setCurrentUser(this.state.accounts.username)
   }
 
   render(){
     return (
       <div className="accountscontainer">
-        < AccountDisplay current_user={this.state.accounts.username}/>
+        <div className="balancesText"> Balances and Holdings </div>
         {this.state.accounts.accounts ?
         this.state.accounts.accounts.map((account) =>{
-          return < AccountBody account={account} portfolioTotal={this.props.portfolioTotal}/>})
+          return < AccountBody account={account} />})
         : <div> Loading </div>}
       </div>
     )

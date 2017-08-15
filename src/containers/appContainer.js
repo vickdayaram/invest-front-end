@@ -52,7 +52,7 @@ class AppContainer extends React.Component {
       }
     }
 
-  
+
     let chartData  =  {
                 labels: labels,
                 datasets: [{

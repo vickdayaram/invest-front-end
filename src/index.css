@@ -86,7 +86,26 @@ body {
 }
 
 .balancesText {
+  text-align: center;
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 35px;
+}
+
+.welcomeText {
   text-align: left;
   font-family: 'Saira Condensed', sans-serif;
-  font-size: 45px;
+  font-size: 50px;
+}
+
+.portfolioHeader {
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 35px;
+  height: 15px;
+  text-align: center;
+}
+
+.welcome2 {
+  margin-top: 50px;
+  margin-left: 75px;
+  margin-right: 75px;
 }

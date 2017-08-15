@@ -51,6 +51,8 @@ class AppContainer extends React.Component {
         backgroundColor.push('#202759')
       }
     }
+
+  
     let chartData  =  {
                 labels: labels,
                 datasets: [{

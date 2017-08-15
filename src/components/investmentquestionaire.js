@@ -7,7 +7,7 @@ const conservative =  {
             labels: ["VTI", "VXUS", "BND", "BNDX"],
             datasets: [{
             label: "Conservative Allocation",
-            backgroundColor: 'rgb(60, 180, 75)',
+            backgroundColor: ["#C61919", "#C61919", "#202759", "#202759"],
             borderColor: 'rgb(255, 99, 132)',
             data: [24, 16, 42, 18],
         }]
@@ -16,7 +16,7 @@ const moderate =  {
             labels: ["VTI", "VXUS", "BND", "BNDX"],
             datasets: [{
             label: "Moderate Allocation",
-            backgroundColor: 'rgb(60, 180, 75)',
+            backgroundColor: ["#C61919", "#C61919", "#202759", "#202759"],
             borderColor: 'rgb(255, 99, 132)',
             data: [30, 20, , 35, 15],
         }]
@@ -25,7 +25,7 @@ const aggressive =  {
             labels: ["VTI", "VXUS", "BND", "BNDX"],
             datasets: [{
             label: "Aggressive Allocation",
-            backgroundColor: 'rgb(60, 180, 75)',
+            backgroundColor: ["#C61919", "#C61919", "#202759", "#202759"],
             borderColor: 'rgb(255, 99, 132)',
             data: [36, 14, 24, 16],
         }]

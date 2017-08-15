@@ -51,6 +51,17 @@ class Nav extends React.Component {
       }
       {this.props.isLoggedIn ?
         <Menu.Item
+          name='Portfolio Recommendation Tool'
+          active={activeItem === 'Portfolio Recommendation Tool'}
+          onClick={this.handleItemClick}
+          position="right"
+        >
+          < NavLink to="/investmentquestionaire"> Portfolio Recommendation Tool </NavLink>
+        </Menu.Item>
+        : null
+      }
+      {this.props.isLoggedIn ?
+        <Menu.Item
           name='US Performance by Sector'
           active={activeItem === 'US Performance by Sector'}
           onClick={this.handleItemClick}

@@ -107,7 +107,6 @@ class PerformanceData extends Component {
     let dataKey = keys.filter((key) => key.includes(selected))
     let rawData = this.state.data[dataKey]
     this.structureData(rawData, selected)
-    debugger
   }
 
   structureData = (rawData, selected) => {

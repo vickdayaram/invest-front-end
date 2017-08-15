@@ -7,10 +7,13 @@ import SignUp from './components/signup'
 import Login from './components/login'
 import Landing from './components/landing'
 import NewAccountForm from './components/newaccountform'
+import InvestmentQuestionaire from './components/investmentquestionaire'
 import {BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import NewTransactionForm from './components/newtransactionform'
 import PerformanceContainer from './containers/performancecontainer'
 import StockPerformanceData from './components/stockperformancedata'
+import Transactions from './containers/transactions'
+
 
 class App extends Component {
 
@@ -100,6 +103,8 @@ class App extends Component {
             <Route exact path="/transact" component={NewTransactionForm}/>
             <Route exact path="/performance" component={PerformanceContainer}/>
             <Route exact path="/stockperformance" component={StockPerformanceData}/>
+            <Route exact path="/investmentquestionaire" component={InvestmentQuestionaire}/>
+            <Route exact path="/transactions" component={Transactions}/>
 
           </div>
         < /Router >

@@ -83,7 +83,6 @@ class StockPerformanceData extends Component {
     let rawData = jsonObject["Monthly Time Series"]
     let labels = Object.keys(rawData)
     let data = Object.values(rawData).map((value) => parseFloat(value["1. open"]))
-    debugger
     let chartData = {
                 labels: labels.reverse(),
                 datasets: [{

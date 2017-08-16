@@ -1,6 +1,6 @@
 const localhost = 'http://localhost:3000/api/v1'
 const herokuUrl = 'https://hidden-sea-22172.herokuapp.com/api/v1'
-const baseUrl = herokuUrl
+const baseUrl = 'https://hidden-sea-22172.herokuapp.com/api/v1'
 
 export default class AuthAdapter {
   static login (loginParams) {

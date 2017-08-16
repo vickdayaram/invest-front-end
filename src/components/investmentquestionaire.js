@@ -18,7 +18,7 @@ const moderate =  {
             label: "Moderate Allocation",
             backgroundColor: ["#C61919", "#C61919", "#202759", "#202759"],
             borderColor: 'rgb(255, 99, 132)',
-            data: [30, 20, , 35, 15],
+            data: [30, 20, 35, 15],
         }]
     }
 const aggressive =  {

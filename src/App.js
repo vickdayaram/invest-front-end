@@ -99,12 +99,12 @@ class App extends Component {
             this.handleLogout()
             return (<Redirect to="/"/>)}} />
 
-            <Route exact path="/newaccount" component={NewAccountForm}/>
-            <Route exact path="/transact" component={NewTransactionForm}/>
-            <Route exact path="/performance" component={PerformanceContainer}/>
-            <Route exact path="/stockperformance" component={StockPerformanceData}/>
-            <Route exact path="/investmentquestionaire" component={InvestmentQuestionaire}/>
-            <Route exact path="/transactions" component={Transactions}/>
+            <Route exact path="/newaccount" component={Authorize(NewAccountForm)}/>
+            <Route exact path="/transact" component={Authorize(NewTransactionForm)}/>
+            <Route exact path="/performance" component={Authorize(PerformanceContainer)}/>
+            <Route exact path="/stockperformance" component={Authorize(StockPerformanceData)}/>
+            <Route exact path="/investmentquestionaire" component={Authorize(InvestmentQuestionaire)}/>
+            <Route exact path="/transactions" component={Authorize(Transactions)}/>
 
           </div>
         < /Router >

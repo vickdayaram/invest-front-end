@@ -264,14 +264,15 @@ class NewTransactionForm extends Component {
 
   renderModal = () => {
     return (
-      <Modal size="tiny" open={this.state.openModal} onClose={this.close}>
+      <Modal size="small" open={this.state.openModal} onClose={this.close}>
           <Modal.Header>
+          <div className="center"> Transaction Submitted </div>
           </Modal.Header>
           <Modal.Content>
-            <p> Your Trade has been successfully submitted, thanks for your business!</p>
+            <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="medium" centered={true}/>
           </Modal.Content>
           <Modal.Actions>
-            <Button positive icon='checkmark' labelPosition='center' content='Home' onClick={this.redirectToHome}/>
+            <div className="center"><Button positive fluid={true} icon='checkmark' labelPosition='center' content='Home' onClick={this.redirectToHome}/> </div>
           </Modal.Actions>
       </Modal>
     )

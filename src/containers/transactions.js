@@ -28,7 +28,7 @@ class Transactions extends React.Component {
 
   handleAccountSelect = (event) => {
     let accountSelect = event.target.innerText
-    let transactionData = this.state.allTransactions[accountSelect]
+    let transactionData = this.state.allTransactions[accountSelect].reverse()
     this.setState({
       transactionData: transactionData
     })
@@ -46,7 +46,7 @@ class Transactions extends React.Component {
           </Grid.Column>
           <Grid.Column width={12}>
           <Form >
-            <Form.Select label='Symbol' options={accounts} placeholder='Symbol Select' onChange={this.handleAccountSelect} />
+            <Form.Select label='Account' options={accounts} placeholder='Select Account' onChange={this.handleAccountSelect} />
           </Form>
           </Grid.Column>
           <Grid.Column width={2}>

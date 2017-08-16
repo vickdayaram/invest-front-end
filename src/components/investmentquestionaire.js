@@ -87,7 +87,7 @@ class InvestorQuestionaire extends Component {
   displayRecommendation = () => {
     let data = this.state.chartData
     return(
-      < Doughnut data={data} options={chartOptions} height={200} width={200}/>
+      <Doughnut data={data} options={chartOptions} height={200} width={200}/>
     )
   }
 
@@ -95,7 +95,7 @@ class InvestorQuestionaire extends Component {
 
   handleFirstQuestionChange = (e, { value }) => {
     this.setState({ firstQuestion: value })
-  } 
+  }
 
   handleSecondQuestionChange = (e, { value }) => {
     this.setState({ secondQuestion: value })

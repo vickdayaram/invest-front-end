@@ -57,11 +57,13 @@ class NewTransactionForm extends Component {
     for(let i = 0; i < accounts.length; i++){
       if(accounts[i].account.account_number === currentAccount){
         for(let k = 0; k < accounts[i].holdings.length; k++){
-          investmentOptions.push({
-            key: accounts[i].holdings[k].holding.symbol + " Current Shares: " + accounts[i].holdings[k].holding.shares,
-            text: accounts[i].holdings[k].holding.symbol + " Current Shares: " + accounts[i].holdings[k].holding.shares,
-            value: accounts[i].holdings[k].holding.symbol + " Current Shares: " + accounts[i].holdings[k].holding.shares
-          })
+          if(accounts[i].holdings[k].holding.symbol != "MM"){
+            investmentOptions.push({
+              key: accounts[i].holdings[k].holding.symbol + " Current Shares: " + accounts[i].holdings[k].holding.shares,
+              text: accounts[i].holdings[k].holding.symbol + " Current Shares: " + accounts[i].holdings[k].holding.shares,
+              value: accounts[i].holdings[k].holding.symbol + " Current Shares: " + accounts[i].holdings[k].holding.shares
+            })
+          }
         }
       }
     }
@@ -166,12 +168,18 @@ class NewTransactionForm extends Component {
       shares: this.state.shares
     }
     sendTransaction(transactionRequest)
-    .then(() => this.redirectToHome())
+    .then(() => this.displayModal())
   }
 
   redirectToHome = () => {
     this.setState({
       status: true
+    })
+  }
+
+  displayModal = () => {
+    this.setState({
+      openModal: true
     })
   }
 
@@ -258,18 +266,14 @@ class NewTransactionForm extends Component {
     return (
       <Modal size="tiny" open={this.state.openModal} onClose={this.close}>
           <Modal.Header>
-            Delete Your Account
           </Modal.Header>
           <Modal.Content>
-            <p>Are you sure you want to delete your account</p>
+            <p> Your Trade has been successfully submitted, thanks for your business!</p>
           </Modal.Content>
           <Modal.Actions>
-            <Button negative>
-              No
-            </Button>
-            <Button positive icon='checkmark' labelPosition='right' content='Yes' />
+            <Button positive icon='checkmark' labelPosition='center' content='Home' onClick={this.redirectToHome}/>
           </Modal.Actions>
-        </Modal>
+      </Modal>
     )
   }
 
@@ -292,6 +296,7 @@ class NewTransactionForm extends Component {
 
     return (
       <div className="accountscontainer">
+      {this.renderModal()}
       <Grid centered columns={2}>
         <Grid.Column>
           <Form onSubmit={this.handlePriceCheck}>

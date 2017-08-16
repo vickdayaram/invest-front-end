@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Grid, Image } from 'semantic-ui-react'
+import { Form, Grid, Image, Modal, Button } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
 import { sendNewAccount } from '../apiAdapter'
 
@@ -16,7 +16,8 @@ class NewAccountForm extends Component {
     bankname: "",
     deposit: "",
     type: "",
-    status: false
+    status: false,
+    openModal: false
   }
 
   handleBankName = (event) => {
@@ -40,7 +41,7 @@ class NewAccountForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     sendNewAccount(this.state)
-    .then(() => this.redirectToHome())
+    .then(() => this.displayModal())
   }
 
   redirectToHome = () => {
@@ -49,10 +50,32 @@ class NewAccountForm extends Component {
     })
   }
 
+  displayModal = () => {
+    this.setState({
+      openModal: true
+    })
+  }
+
+  renderModal = () => {
+    return (
+      <Modal size="tiny" open={this.state.openModal} onClose={this.close}>
+          <Modal.Header>
+          </Modal.Header>
+          <Modal.Content>
+            <p> Your Account has been successfully opened, thanks for your business!</p>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button positive icon='checkmark' labelPosition='center' content='Home' onClick={this.redirectToHome}/>
+          </Modal.Actions>
+      </Modal>
+     )
+  }
+
   render() {
     const { value } = this.state
     return (
       <div className="accountscontainer">
+      {this.renderModal()}
       <Grid centered columns={2}>
         <Grid.Column>
           <Form onSubmit={this.handleSubmit}>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Grid, Button, Statistic, Image, Table } from 'semantic-ui-react'
+import { Form, Grid, Button, Statistic, Image, Table, Modal } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
 import { getAccounts } from '../apiAdapter'
 import { sendTransaction } from '../apiAdapter'
@@ -24,7 +24,8 @@ class NewTransactionForm extends Component {
     fundsAvailable: 0,
     resultingBalance: 0,
     selectedAccountNumber: 0,
-    investmentOptions: []
+    investmentOptions: [],
+    openModal: false
   }
 
   componentDidMount = () => {
@@ -250,6 +251,25 @@ class NewTransactionForm extends Component {
        </Table.Body>
        </Table>
       </div>
+    )
+  }
+
+  renderModal = () => {
+    return (
+      <Modal size="tiny" open={this.state.openModal} onClose={this.close}>
+          <Modal.Header>
+            Delete Your Account
+          </Modal.Header>
+          <Modal.Content>
+            <p>Are you sure you want to delete your account</p>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button negative>
+              No
+            </Button>
+            <Button positive icon='checkmark' labelPosition='right' content='Yes' />
+          </Modal.Actions>
+        </Modal>
     )
   }
 

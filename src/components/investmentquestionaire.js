@@ -31,9 +31,7 @@ const aggressive =  {
         }]
     }
 
-    const chartOptions = {
-      // Elements options apply to all of the options unless overridden in a dataset
-      // In this case, we are setting the border of each bar to be 2px wide and green
+const chartOptions = {
       maintainAspectRatio: false,
       title:{
         display: true,
@@ -95,9 +93,17 @@ class InvestorQuestionaire extends Component {
 
 
 
-  handleFirstQuestionChange = (e, { value }) => this.setState({ firstQuestion: value })
-  handleSecondQuestionChange = (e, { value }) => this.setState({ secondQuestion: value })
-  handleThirdQuestionChange = (e, { value }) => this.setState({ thirdQuestion: value })
+  handleFirstQuestionChange = (e, { value }) => {
+    this.setState({ firstQuestion: value })
+  } 
+
+  handleSecondQuestionChange = (e, { value }) => {
+    this.setState({ secondQuestion: value })
+  }
+
+  handleThirdQuestionChange = (e, { value }) => {
+    this.setState({ thirdQuestion: value })
+  }
 
 
 

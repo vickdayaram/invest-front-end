@@ -27,7 +27,6 @@ class App extends Component {
     }
   }
 
-
   onLogin = (loginParams) => {
   AuthAdapter.login(loginParams)
     .then( res => {

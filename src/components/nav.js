@@ -51,6 +51,17 @@ class Nav extends React.Component {
       }
       {this.props.isLoggedIn ?
         <Menu.Item
+          name='Transaction History'
+          active={activeItem === 'Transaction History'}
+          onClick={this.handleItemClick}
+          position="right"
+        >
+          < NavLink to="/transactions"> Transaction History </NavLink>
+        </Menu.Item>
+        : null
+      }
+      {this.props.isLoggedIn ?
+        <Menu.Item
           name='Portfolio Recommendation Tool'
           active={activeItem === 'Portfolio Recommendation Tool'}
           onClick={this.handleItemClick}

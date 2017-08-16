@@ -15,8 +15,6 @@ const sample =  {
 
 
 const chartOptions = {
-  // Elements options apply to all of the options unless overridden in a dataset
-  // In this case, we are setting the border of each bar to be 2px wide and green
   maintainAspectRatio: false,
   title:{
     display: true,

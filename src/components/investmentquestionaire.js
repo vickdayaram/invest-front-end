@@ -34,7 +34,7 @@ const aggressive =  {
 const chartOptions = {
       maintainAspectRatio: false,
       title:{
-        display: true,
+        display: false,
         text: "Recommended Allocation",
         fontSize: 25,
         position: "top",
@@ -87,7 +87,10 @@ class InvestorQuestionaire extends Component {
   displayRecommendation = () => {
     let data = this.state.chartData
     return(
-      <Doughnut data={data} options={chartOptions} height={200} width={200}/>
+      <div>
+        <div> Recommended Allocation: {this.state.riskTolerance} </div>
+        <Doughnut data={data} options={chartOptions} height={200} width={200}/>
+      </div>
     )
   }
 

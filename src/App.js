@@ -27,6 +27,16 @@ class App extends Component {
     }
   }
 
+  componentDidMount = () => {
+    if(localStorage.getItem('jwt')){
+      this.setState({
+        auth:{
+          isLoggedIn: true,
+        }
+      })
+    }
+  }
+
   onLogin = (loginParams) => {
   AuthAdapter.login(loginParams)
     .then( res => {

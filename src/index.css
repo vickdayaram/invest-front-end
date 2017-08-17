@@ -115,3 +115,7 @@ body {
   margin-left: 75px;
   margin-right: 75px;
 }
+
+.modal {
+  background-color: blue;
+}

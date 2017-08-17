@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Grid, Button, Statistic, Image, Table, Modal, Loader } from 'semantic-ui-react'
+import { Form, Grid, Button, Statistic, Image, Table, Modal, Loader, Message } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
 import { getAccounts } from '../apiAdapter'
 import { sendTransaction } from '../apiAdapter'
@@ -25,7 +25,8 @@ class NewTransactionForm extends Component {
     resultingBalance: 0,
     selectedAccountNumber: 0,
     investmentOptions: [],
-    openModal: false
+    openModal: false,
+    errors: false
   }
 
   componentDidMount = () => {
@@ -83,7 +84,8 @@ class NewTransactionForm extends Component {
 
   handleInvestmentSelect = (event) => {
     this.setState({
-        investment: event.target.innerText
+        investment: event.target.innerText,
+        errors: false
     })
   }
 
@@ -92,7 +94,8 @@ class NewTransactionForm extends Component {
     let shares = event.target.innerText.split(" ").pop()
     this.setState({
         currentInvestment: investment,
-        currentShares: shares
+        currentShares: shares,
+        errors: false
     })
   }
 
@@ -100,7 +103,8 @@ class NewTransactionForm extends Component {
 
   handleAmount = (event) => {
     this.setState({
-        amount: event.target.value
+        amount: event.target.value,
+        errors: false
     })
   }
 
@@ -112,12 +116,44 @@ class NewTransactionForm extends Component {
         account: event.target.innerText,
         fundsAvailable: fundsAvailable,
         selectedAccountNumber: accountNumber,
-        account_id: account_id
+        account_id: account_id,
+        errors: false
     })
+  }
+
+  checkForErrors = () => {
+    let id = this.state.account_id
+    let transaction = this.state.transaction
+    let investment = this.state.investment
+    let shares = this.state.shares
+    if(id === 0){
+      return true
+    } else if(transaction === 0){
+      return true
+    } else if(investment === 0){
+      return true
+    } else if(!(parseInt(shares) > 0)){
+      return true
+    } else {
+      return false
+    }
+  }
+
+  renderErrors = () => {
+    return (
+          <Message negative><Message.Header><div className="center"> {"Please Make Sure to select all fields. Also make sure to enter a positive number for shares"} </div></Message.Header></Message>
+    )
   }
 
   handlePriceCheck = (event) => {
     event.preventDefault()
+    let error = this.checkForErrors()
+    if(error){
+      this.setState({
+        errors: true
+      })
+      return
+    }
     this.setState({
       checkedPrice: true,
       estimate: 0,
@@ -152,7 +188,8 @@ class NewTransactionForm extends Component {
     this.setState({
       estimate: estimate,
       resultingBalance: resultingBalance,
-      resultingShares: resultingShares
+      resultingShares: resultingShares,
+      errors: false
     })
   }
 
@@ -188,7 +225,8 @@ class NewTransactionForm extends Component {
 
   handleShares = (event) => {
     this.setState({
-      shares: event.target.value
+      shares: event.target.value,
+      errors: false
     })
   }
 
@@ -315,6 +353,7 @@ class NewTransactionForm extends Component {
       <div className="accountscontainer">
       {this.renderModal()}
       <Grid centered columns={2}>
+      <Grid.Row>
         <Grid.Column>
           <Form onSubmit={this.handlePriceCheck}>
             <Form.Select label='Select Your Account' options={options} placeholder='Select Your Account' onChange={this.handleAccountSelect} />
@@ -342,6 +381,15 @@ class NewTransactionForm extends Component {
 
 
         </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+        <Grid.Column>
+          {this.state.errors ?
+          this.renderErrors()
+          :
+          null}
+        </Grid.Column>
+        </Grid.Row>
       </Grid>
       {this.state.status ? < Redirect to="/home" /> : null}
       </div>

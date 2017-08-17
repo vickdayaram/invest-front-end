@@ -42,9 +42,9 @@ class App extends Component {
   AuthAdapter.login(loginParams)
     .then( res => {
       //check for an error message
-      if( res.error ){
+      if( res.errors ){
          this.setState({
-           errors: res.error
+           errors: res.errors
          })
       }else{
         localStorage.setItem('jwt', res.jwt)
@@ -64,11 +64,10 @@ class App extends Component {
   AuthAdapter.signUp(signUpParams)
     .then( res => {
       //check for an error message
-      if( res.error ){
+      if( res.errors ){
         this.setState({
-          errors: res.error
+          errors: res.errors
         })
-        debugger
       }else{
         localStorage.setItem('jwt', res.jwt)
         this.setState({
@@ -108,7 +107,7 @@ class App extends Component {
 
             <Route path="/login"
             render={()=> this.state.auth.isLoggedIn ?
-            <Redirect to="/home" /> : <Login onLogin={this.onLogin}/>} errors={this.state.errors}/>
+            <Redirect to="/home" /> : <Login onLogin={this.onLogin} errors={this.state.errors}/>} />
 
             <Route path="/logout" render={() => {
             this.handleLogout()

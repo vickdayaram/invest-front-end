@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Button, Form, Segment, Divider, Image } from 'semantic-ui-react'
+import { Grid, Button, Form, Segment, Divider, Image, Message } from 'semantic-ui-react'
 
 class SignUpForm extends Component {
 
@@ -23,6 +23,16 @@ class SignUpForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.onSignUp(this.state)
+  }
+
+  renderErrors = () => {
+    return (
+      this.props.errors.map((error) => {
+        return (
+          <Message negative><Message.Header><div className="center"> {error} </div></Message.Header></Message>
+        )
+      })
+    )
   }
 
 
@@ -50,8 +60,8 @@ class SignUpForm extends Component {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column stretched={true}>
-              {this.props.errors.length ? 
-              <div> this.props.errors </div>
+              {this.props.errors.length ?
+              this.renderErrors()
               :
               null}
               </Grid.Column>

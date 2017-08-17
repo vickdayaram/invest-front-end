@@ -23,7 +23,8 @@ class App extends Component {
       auth: {
         isLoggedIn: false,
         user: ''
-      }
+      },
+      errors: ""
     }
   }
 
@@ -42,7 +43,9 @@ class App extends Component {
     .then( res => {
       //check for an error message
       if( res.error ){
-         console.log(res.error)
+         this.setState({
+           errors: res.error
+         })
       }else{
         localStorage.setItem('jwt', res.jwt)
         this.setState({
@@ -62,7 +65,10 @@ class App extends Component {
     .then( res => {
       //check for an error message
       if( res.error ){
-        console.log("do nothing")
+        this.setState({
+          errors: res.error
+        })
+        debugger
       }else{
         localStorage.setItem('jwt', res.jwt)
         this.setState({
@@ -98,11 +104,11 @@ class App extends Component {
 
             <Route path="/signup"
             render={()=> this.state.auth.isLoggedIn ?
-            <Redirect to="/home" /> : <SignUp onSignUp={this.onSignup}/>} />
+            <Redirect to="/home" /> : <SignUp onSignUp={this.onSignup} errors={this.state.errors}/>} />
 
             <Route path="/login"
             render={()=> this.state.auth.isLoggedIn ?
-            <Redirect to="/home" /> : <Login onLogin={this.onLogin}/>} />
+            <Redirect to="/home" /> : <Login onLogin={this.onLogin}/>} errors={this.state.errors}/>
 
             <Route path="/logout" render={() => {
             this.handleLogout()

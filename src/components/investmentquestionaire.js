@@ -87,8 +87,8 @@ class InvestorQuestionaire extends Component {
   displayRecommendation = () => {
     let data = this.state.chartData
     return(
-      <div>
-        <div> Recommended Allocation: {this.state.riskTolerance} </div>
+      <div className="recommendation">
+        <div className="recommendationText"> Recommended Allocation: {this.state.riskTolerance} </div>
         <Doughnut data={data} options={chartOptions} height={200} width={200}/>
       </div>
     )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Grid, Button, Statistic, Image, Table, Modal } from 'semantic-ui-react'
+import { Form, Grid, Button, Statistic, Image, Table, Modal, Loader } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
 import { getAccounts } from '../apiAdapter'
 import { sendTransaction } from '../apiAdapter'
@@ -119,7 +119,10 @@ class NewTransactionForm extends Component {
   handlePriceCheck = (event) => {
     event.preventDefault()
     this.setState({
-      checkedPrice: true
+      checkedPrice: true,
+      estimate: 0,
+      resultingBalance: 0,
+      resultingShares: 0
     })
     let investment = ""
     if(this.state.transaction === "BUY"){
@@ -243,17 +246,30 @@ class NewTransactionForm extends Component {
        <Table.Body>
        <Table.Row>
          <Table.Cell> Estimated Trade </Table.Cell>
-         <Table.Cell> <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" /></Table.Cell>
+         {this.state.estimate > 0 ?
+           <Table.Cell> <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" /></Table.Cell>
+           :
+           <Table.Cell> <div className="transactionLoader"> < Loader size="massive" active inline="centered" /></div></Table.Cell>
+         }
        </Table.Row>
        <Table.Row>
-         <Table.Cell> Estimated Cash Value </Table.Cell>
-         <Table.Cell> <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" /></Table.Cell>
+          <Table.Cell> Estimated Cash Value </Table.Cell>
+          {this.state.resultingBalance > 0 || this.state.resultingBalance < 0 ?
+            <Table.Cell> <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" /></Table.Cell>
+            :
+            <Table.Cell> <div className="transactionLoader"> < Loader size="massive" active inline="centered" /></div></Table.Cell>
+          }
        </Table.Row>
        <Table.Row>
-          {message === "Display Button" ?
+          {message === "Display Button" && this.state.estimate > 0 ?
           <Table.Cell colSpan={2}> <Button size="large" positive onClick={this.handleSubmit}> Submit Trade </Button> </Table.Cell>
           :
+          null
+          }
+          {message === "Not Enough Cash" || message === "Not Enough Shares" ?
           <Table.Cell colSpan={2}> <div> {message} </div> </Table.Cell>
+          :
+          null
           }
        </Table.Row>
        </Table.Body>

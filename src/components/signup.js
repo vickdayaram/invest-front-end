@@ -30,6 +30,7 @@ class SignUpForm extends Component {
     return (
       <div className="background">
         <Grid centered columns={3}>
+          <Grid.Row>
           <Grid.Column>
             <Form onSubmit={this.handleSubmit}>
               <Form.Field>
@@ -46,6 +47,15 @@ class SignUpForm extends Component {
             <Grid.Column textAlign="center">
             <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
             </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column stretched={true}>
+              {this.props.errors.length ? 
+              <div> this.props.errors </div>
+              :
+              null}
+              </Grid.Column>
+            </Grid.Row>
         </Grid>
       </div>
     )

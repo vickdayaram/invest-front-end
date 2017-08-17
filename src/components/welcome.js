@@ -1,6 +1,6 @@
 import React from 'react'
 import { Doughnut } from 'react-chartjs-2'
-import { Table, Statistic } from 'semantic-ui-react'
+import { Table, Statistic, Loader } from 'semantic-ui-react'
 
 const sample =  {
             labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -34,11 +34,6 @@ const sample =  {
 
 class Welcome extends React.Component {
 
-  state = {
-    chartData: {}
-  }
-
-
 
 
   render(){
@@ -63,8 +58,17 @@ class Welcome extends React.Component {
 
           <Table.Body>
             <Table.Row>
-              <Table.Cell textAlign="center" width={8}> < Doughnut data={this.props.chartData} options={chartOptions} height={200} width={200}/> </Table.Cell>
-              <Table.Cell textAlign="center" width={8}> <Statistic size="small" value={`$${parseInt(this.props.portfolioTotal).toLocaleString()}`} /> </Table.Cell>
+              {Object.keys(this.props.chartData).length > 0 ?
+                <Table.Cell textAlign="center" width={8}> < Doughnut data={this.props.chartData} options={chartOptions} height={200} width={200}/> </Table.Cell>
+                :
+                <Table.Cell textAlign="center" width={8}> <div className="welcomeLoader"> < Loader size="massive" active inline="centered" /> </div> </Table.Cell>
+              }
+              {Object.keys(this.props.chartData).length > 0 ?
+                <Table.Cell textAlign="center" width={8}> <Statistic size="small" value={`$${parseInt(this.props.portfolioTotal).toLocaleString()}`} /> </Table.Cell>
+                :
+                <Table.Cell textAlign="center" width={8}> <div className="welcomeLoader"> < Loader size="massive" active inline="centered" /> </div> </Table.Cell>
+              }
+
             </Table.Row>
           </Table.Body>
         </Table>

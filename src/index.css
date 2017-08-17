@@ -91,6 +91,12 @@ body {
   font-size: 35px;
 }
 
+.recommendationText {
+  text-align: center;
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 30px;
+}
+
 .welcomeText {
   text-align: left;
   font-family: 'Saira Condensed', sans-serif;
@@ -118,4 +124,19 @@ body {
 
 .modal {
   background-color: blue;
+}
+
+.recommendation {
+  height: 500px;
+}
+
+.welcomeLoader {
+  height: 125px;
+  margin-top:75px;
+}
+
+.transactionLoader {
+  height: 65px;
+  width: 250px;
+  margin-top: 25px;
 }

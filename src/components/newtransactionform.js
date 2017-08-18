@@ -52,7 +52,6 @@ class NewTransactionForm extends Component {
       accountOptions: accountOptions,
       accounts: accounts
     })
-    console.log(accounts)
   }
 
 
@@ -371,7 +370,6 @@ class NewTransactionForm extends Component {
             <Form.Select label='Select Your Transaction' options={transactionType} placeholder='Select Transaction' onChange={this.handleTransactionSelect} />
             {this.state.transaction === "BUY" ?
             <div>
-            <Form.Select label='Select Investment' options={investmentsConst} placeholder='Select Investment' onChange={this.handleInvestmentSelect} />
             <div className="transactionsearch"><TransactionSearch handleSymbolSelect={this.handleInvestmentSelect} /></div>
             </div>
 

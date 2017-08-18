@@ -2,18 +2,6 @@ import React from 'react'
 
 export const stockData = [
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "PIH",
     "description": "1347 Property Insurance Holdings, Inc.",
     "LastSale": 7.1,
@@ -23,18 +11,6 @@ export const stockData = [
     "Sector": "Finance",
     "Industry": "Property-Casualty Insurers",
     "Summary Quote": "http://www.nasdaq.com/title/pih",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -50,18 +26,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "FLWS",
     "description": "1-800 FLOWERS.COM, Inc.",
     "LastSale": 8.85,
@@ -71,18 +35,6 @@ export const stockData = [
     "Sector": "Consumer Services",
     "Industry": "Other Specialty Stores",
     "Summary Quote": "http://www.nasdaq.com/title/flws",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -98,18 +50,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "SRCE",
     "description": "1st Source Corporation",
     "LastSale": 46.42,
@@ -119,18 +59,6 @@ export const stockData = [
     "Sector": "Finance",
     "Industry": "Major Banks",
     "Summary Quote": "http://www.nasdaq.com/title/srce",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -146,18 +74,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "TWOU",
     "description": "2U, Inc.",
     "LastSale": 46.09,
@@ -167,18 +83,6 @@ export const stockData = [
     "Sector": "Technology",
     "Industry": "Computer Software: Prepackaged Software",
     "Summary Quote": "http://www.nasdaq.com/title/twou",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -194,18 +98,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "CAFD",
     "description": "8point3 Energy Partners LP",
     "LastSale": 14.1,
@@ -218,18 +110,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "EGHT",
     "description": "8x8 Inc",
     "LastSale": 13.1,
@@ -239,18 +119,6 @@ export const stockData = [
     "Sector": "Public Utilities",
     "Industry": "Telecommunications Equipment",
     "Summary Quote": "http://www.nasdaq.com/title/eght",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {

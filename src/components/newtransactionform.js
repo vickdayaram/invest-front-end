@@ -4,6 +4,7 @@ import { Redirect } from 'react-router'
 import { getAccounts } from '../apiAdapter'
 import { sendTransaction } from '../apiAdapter'
 import { fetchAlphaVantage } from '../apiAdapter'
+import TransactionSearch from './transactionsearch'
 
 class NewTransactionForm extends Component {
 
@@ -26,13 +27,16 @@ class NewTransactionForm extends Component {
     selectedAccountNumber: 0,
     investmentOptions: [],
     openModal: false,
-    errors: false
+    errors: false,
+    name: ""
   }
+
 
   componentDidMount = () => {
     getAccounts()
     .then((jsonObject) => this.formatAccountsToOptions(jsonObject))
   }
+
 
   formatAccountsToOptions = (jsonObject) => {
     let accountOptions = []
@@ -50,6 +54,7 @@ class NewTransactionForm extends Component {
     })
     console.log(accounts)
   }
+
 
   formatInvestmentsToOptions = () => {
     let investmentOptions = []
@@ -73,6 +78,7 @@ class NewTransactionForm extends Component {
     })
   }
 
+
   handleTransactionSelect = (event) => {
     this.setState({
         transaction: event.target.innerText
@@ -82,12 +88,15 @@ class NewTransactionForm extends Component {
     }
   }
 
-  handleInvestmentSelect = (event) => {
+
+  handleInvestmentSelect = (symbol, name) => {
     this.setState({
-        investment: event.target.innerText,
+        investment: symbol,
+        investmentName: name,
         errors: false
     })
   }
+
 
   handleCurrentInvestmentSelect = (event) => {
     let investment = event.target.innerText.split(" ")[0]
@@ -124,13 +133,14 @@ class NewTransactionForm extends Component {
   checkForErrors = () => {
     let id = this.state.account_id
     let transaction = this.state.transaction
-    let investment = this.state.investment
+    let investment = this.state.investment.length
     let shares = this.state.shares
+    let currentInvestment = this.state.currentInvestment.length
     if(id === 0){
       return true
     } else if(transaction === 0){
       return true
-    } else if(investment === 0){
+    } else if(investment === 0 && currentInvestment === 0){
       return true
     } else if(!(parseInt(shares) > 0)){
       return true
@@ -205,6 +215,7 @@ class NewTransactionForm extends Component {
       account_id: this.state.account_id,
       transaction: this.state.transaction,
       investment: investment,
+      name: this.state.investmentName,
       shares: this.state.shares
     }
     sendTransaction(transactionRequest)
@@ -359,12 +370,15 @@ class NewTransactionForm extends Component {
             <Form.Select label='Select Your Account' options={options} placeholder='Select Your Account' onChange={this.handleAccountSelect} />
             <Form.Select label='Select Your Transaction' options={transactionType} placeholder='Select Transaction' onChange={this.handleTransactionSelect} />
             {this.state.transaction === "BUY" ?
+            <div>
             <Form.Select label='Select Investment' options={investmentsConst} placeholder='Select Investment' onChange={this.handleInvestmentSelect} />
+            <div className="transactionsearch"><TransactionSearch handleSymbolSelect={this.handleInvestmentSelect} /></div>
+            </div>
+
             :
             <Form.Select label='Select Investment' options={investmentOptions} placeholder='Select Investment' onChange={this.handleCurrentInvestmentSelect} />
              }
             <Form.Input label='Shares'onChange={this.handleShares}  />
-            <Form.Checkbox label='I agree to the Terms and Conditions' />
             <Form.Button primary={true} fluid={true} color="green"> Estimate Transaction Total </Form.Button>
           </Form>
         </Grid.Column>

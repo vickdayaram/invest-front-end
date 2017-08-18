@@ -12,8 +12,9 @@ class TransactionSearch extends Component {
 
   handleResultSelect = (e, { result }) => {
     let symbol = result.title
+    let name = result.description
     this.setState({ value: result.title })
-    this.props.handleSymbolSelect(symbol)
+    this.props.handleSymbolSelect(symbol, name)
     console.log(result.title)
   }
 

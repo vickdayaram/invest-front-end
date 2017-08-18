@@ -150,3 +150,7 @@ body {
 .blackfont {
   color: black;
 }
+
+.transactionsearch {
+  width: 400px;
+}

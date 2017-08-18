@@ -140,3 +140,8 @@ body {
   width: 250px;
   margin-top: 25px;
 }
+
+.transactionSearchBar {
+  text-align: left;
+  width: 1000px;
+}

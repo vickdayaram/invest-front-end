@@ -152,7 +152,7 @@ class PerformanceData extends Component {
         </Grid.Column>
         <Grid.Column width={12}>
         <Form >
-          <Form.Select label='Performance Range' options={options} placeholder='Performance Range' onChange={this.handlePerformanceRange} />
+          <Form.Select options={options} placeholder='Performance Range' onChange={this.handlePerformanceRange} />
         </Form>
         </Grid.Column>
         <Grid.Column width={2}>
@@ -176,14 +176,14 @@ class PerformanceData extends Component {
       </Grid>
       <div>
       {this.state.range.length > 0 ?
-        <div className="center">
+        <div className="center performanceSearch performanceContainer">
         < HorizontalBar data={this.state.chartData} width={700}
           height={500}
           options={chartOptions}
           />
         </div>
         :
-        <div className="performanceSearch">
+        <div className="loaderDisplay">
           <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
         </div>
       }

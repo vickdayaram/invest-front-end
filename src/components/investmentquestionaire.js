@@ -9,7 +9,7 @@ const conservative =  {
             label: "Conservative Allocation",
             backgroundColor: ["#C61919", "#C61919", "#202759", "#202759"],
             borderColor: 'rgb(255, 99, 132)',
-            data: [24, 16, 42, 18],
+            data: [24, 16, 42, 18]
         }]
     }
 const moderate =  {
@@ -18,7 +18,7 @@ const moderate =  {
             label: "Moderate Allocation",
             backgroundColor: ["#C61919", "#C61919", "#202759", "#202759"],
             borderColor: 'rgb(255, 99, 132)',
-            data: [30, 20, 35, 15],
+            data: [30, 20, 35, 15]
         }]
     }
 const aggressive =  {
@@ -27,7 +27,7 @@ const aggressive =  {
             label: "Aggressive Allocation",
             backgroundColor: ["#C61919", "#C61919", "#202759", "#202759"],
             borderColor: 'rgb(255, 99, 132)',
-            data: [36, 14, 24, 16],
+            data: [36, 14, 24, 16]
         }]
     }
 
@@ -62,7 +62,7 @@ class InvestorQuestionaire extends Component {
     secondQuestion: "",
     thirdQuestion: "",
     riskTolerance: "",
-    chartData: {}
+    chartData: {},
   }
 
 
@@ -76,22 +76,47 @@ class InvestorQuestionaire extends Component {
 
   makeRecommendation = (totalScore) => {
     if(totalScore < 10){
-      this.setState({riskTolerance: "Conservative", chartData: conservative})
+      this.setState({riskTolerance: "Conservative"})
     } else if(totalScore > 10 && totalScore < 20){
-      this.setState({riskTolerance: "Moderate", chartData: moderate})
-    } else {
-      this.setState({riskTolerance: "Aggressive", chartData: aggressive})
+      this.setState({riskTolerance: "Moderate"})
+    } else if(totalScore > 20 ){
+      this.setState({riskTolerance: "Aggressive"})
     }
   }
 
-  displayRecommendation = () => {
-    let data = this.state.chartData
+  displayAggressive = () => {
     return(
       <div className="recommendation">
         <div className="recommendationText"> Recommended Allocation: {this.state.riskTolerance} </div>
-        <Doughnut data={data} options={chartOptions} height={200} width={200}/>
+        <Doughnut data={aggressive} options={chartOptions} height={200} width={200}/>
       </div>
     )
+  }
+  displayModerate = () => {
+    return(
+      <div className="recommendation">
+        <div className="recommendationText"> Recommended Allocation: {this.state.riskTolerance} </div>
+        <Doughnut data={moderate} options={chartOptions} height={200} width={200}/>
+      </div>
+    )
+  }
+  displayConservative = () => {
+    return(
+      <div className="recommendation">
+        <div className="recommendationText"> Recommended Allocation: {this.state.riskTolerance} </div>
+        <Doughnut data={conservative} options={chartOptions} height={200} width={200}/>
+      </div>
+    )
+  }
+
+  displayRecommendation = () => {
+    if(this.state.riskTolerance === "Conservative"){
+      return this.displayConservative()
+    } else if(this.state.riskTolerance === "Moderate"){
+      return this.displayModerate()
+    } else if(this.state.riskTolerance === "Aggressive"){
+      return this.displayAggressive()
+    }
   }
 
 

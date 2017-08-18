@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Grid, Image, Modal, Button } from 'semantic-ui-react'
+import { Form, Grid, Image, Modal, Button, Message } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
 import { sendNewAccount } from '../apiAdapter'
 
@@ -15,31 +15,58 @@ class NewAccountForm extends Component {
     deposit: "",
     type: "",
     status: false,
-    openModal: false
+    openModal: false,
+    errors: false
   }
 
   handleBankName = (event) => {
     this.setState({
-      bankname: event.target.value
+      bankname: event.target.value,
+      errors: false
     })
   }
 
   handleDeposit = (event) => {
+    let deposit = event.target.value.split(",").join("")
     this.setState({
-      deposit: event.target.value
+      deposit: deposit,
+      errors: false
     })
   }
 
   handleAccountType = (event) => {
     this.setState({
-      type: event.target.innerText
+      type: event.target.innerText,
+      errors: false
     })
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
+    let errors = this.checkForErrors()
+    if(errors){
+      this.setState({
+        errors: true
+      })
+      return
+    }
     sendNewAccount(this.state)
     .then(() => this.displayModal())
+  }
+
+  checkForErrors = () => {
+    let deposit = this.state.deposit
+    let type = this.state.type
+    let bankname = this.state.bankname
+    if(!(parseInt(deposit) > 0)){
+      return true
+    } else if(type.length === 0){
+      return true
+    } else if(bankname.length === 0){
+      return true
+    } else {
+      return false
+    }
   }
 
   redirectToHome = () => {
@@ -70,12 +97,19 @@ class NewAccountForm extends Component {
      )
   }
 
+  renderErrors = () => {
+    return (
+          <Message negative><Message.Header><div className="center"> {"Please Make Sure to fill out all fields. Also make sure to enter a positive number for your deposit"} </div></Message.Header></Message>
+    )
+  }
+
   render() {
     const { value } = this.state
     return (
       <div className="accountscontainer">
       {this.renderModal()}
       <Grid centered columns={2}>
+        <Grid.Row>
         <Grid.Column>
           <Form onSubmit={this.handleSubmit}>
             <Form.Input label='Where the money is coming from?' placeholder='Bank Name' onChange={this.handleBankName} />
@@ -88,6 +122,13 @@ class NewAccountForm extends Component {
         <Grid.Column>
           <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
         </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          {this.state.errors ?
+          this.renderErrors()
+          :
+          null}
+        </Grid.Row>
       </Grid>
       {this.state.status ? < Redirect to="/home" /> : null}
       </div>

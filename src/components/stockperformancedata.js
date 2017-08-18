@@ -119,7 +119,7 @@ class StockPerformanceData extends Component {
         </Grid.Column>
       </Grid.Row>
       </Grid>
-      <div>
+      </div>
 
         <div className="center performanceSearch performanceContainer">
         {this.state.symbol ?
@@ -134,9 +134,7 @@ class StockPerformanceData extends Component {
             <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
           </div>
         }
-        </div>
-
-      </div>
+      
       </div>
       </div>
 

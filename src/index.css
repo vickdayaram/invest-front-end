@@ -20,10 +20,6 @@ body {
   margin-right: 200px;
 }
 
-.estimate {
-
-}
-
 .landingHeader {
   margin-top: 35px;
   font-family: 'Saira Condensed', sans-serif;
@@ -144,4 +140,13 @@ body {
 .transactionSearchBar {
   text-align: left;
   width: 1000px;
+}
+
+.searchBar {
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 15px;
+}
+
+.blackfont {
+  color: black;
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Menu, Segment, Image } from 'semantic-ui-react'
-import { NavLink } from 'react-router-dom'
+import { Menu, Segment, Image, Dropdown } from 'semantic-ui-react'
+import { NavLink, Link } from 'react-router-dom'
 
 class Nav extends React.Component {
 
@@ -15,84 +15,38 @@ class Nav extends React.Component {
 
     return (
       <Menu className="ui inverted menu nav" color="blue" fixed="top">
-
-        {this.props.isLoggedIn ?
-        <Menu.Item
-          name='Home'
-          active={activeItem === 'Home'}
-          onClick={this.handleItemClick}
-          position="right"
-        >
-          < NavLink to="/home"> Home </NavLink>
-        </Menu.Item>
-        : null
-       }
-       {this.props.isLoggedIn ?
-        <Menu.Item
-          name='Open an Account'
-          active={activeItem === 'Open an Account'}
-          onClick={this.handleItemClick}
-          position="right"
-        >
-          < NavLink to="/newaccount"> Open an Account </NavLink>
-        </Menu.Item>
-        : null
-      }
+      <Menu.Item
+      >
+      <div className="recommendationText"> Investment Tracker </div>
+      </Menu.Item>
       {this.props.isLoggedIn ?
-        <Menu.Item
-          name='Transact'
-          active={activeItem === 'Transact'}
-          onClick={this.handleItemClick}
-          position="right"
-        >
-          < NavLink to="/transact"> Transact </NavLink>
-        </Menu.Item>
-        : null
-      }
+        <Dropdown item text='Accounts'>
+        <Dropdown.Menu position="right">
+          <Dropdown.Item>< NavLink to="/home"><div className="blackfont">Balances and Holdings</div></NavLink></Dropdown.Item>
+          <Dropdown.Item>< NavLink to="/newaccount"><div className="blackfont"> Open an Account </div></NavLink></Dropdown.Item>
+          <Dropdown.Item>< NavLink to="/transact"><div className="blackfont"> Trade </div></NavLink></Dropdown.Item>
+          <Dropdown.Item>< NavLink to="/transactions"><div className="blackfont"> Transaction History </div></NavLink></Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+      : null
+     }
       {this.props.isLoggedIn ?
-        <Menu.Item
-          name='Transaction History'
-          active={activeItem === 'Transaction History'}
-          onClick={this.handleItemClick}
-          position="right"
-        >
-          < NavLink to="/transactions"> Transaction History </NavLink>
-        </Menu.Item>
-        : null
-      }
+        <Dropdown item text='Performance'>
+        <Dropdown.Menu>
+          <Dropdown.Item>< NavLink to="/stockperformance"><div className="blackfont"> US Performance by Stock </div></NavLink></Dropdown.Item>
+          <Dropdown.Item>< NavLink to="/performance"><div className="blackfont"> US Performance by Sector </div></NavLink></Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+      : null
+     }
       {this.props.isLoggedIn ?
-        <Menu.Item
-          name='Portfolio Recommendation Tool'
-          active={activeItem === 'Portfolio Recommendation Tool'}
-          onClick={this.handleItemClick}
-          position="right"
-        >
-          < NavLink to="/investmentquestionaire"> Portfolio Recommendation Tool </NavLink>
-        </Menu.Item>
-        : null
-      }
-      {this.props.isLoggedIn ?
-        <Menu.Item
-          name='US Performance by Sector'
-          active={activeItem === 'US Performance by Sector'}
-          onClick={this.handleItemClick}
-          position="right"
-        >
-          < NavLink to="/performance"> US Performance by Sector </NavLink>
-        </Menu.Item>
-        : null
-      }
-      {this.props.isLoggedIn ?
-        <Menu.Item
-          name='US Performance by Stock'
-          active={activeItem === 'US Performance by Stock'}
-          onClick={this.handleItemClick}
-          position="right"
-        >
-          < NavLink to="/stockperformance"> US Performance by Stock </NavLink>
-        </Menu.Item>
-        : null
-      }
+        <Dropdown item text='Tools'>
+        <Dropdown.Menu>
+          <Dropdown.Item>< NavLink to="/investmentquestionaire"> <div className="blackfont"> Retirement Income Portfolios </div></NavLink></Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+      : null
+     }
       {this.props.isLoggedIn ?
       <Menu.Item
         name='Logout'

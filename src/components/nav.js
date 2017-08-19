@@ -31,7 +31,7 @@ class Nav extends React.Component {
       : null
      }
       {this.props.isLoggedIn ?
-        <Dropdown item text='Performance'>
+        <Dropdown item text='Market Performance'>
         <Dropdown.Menu>
           <Dropdown.Item>< NavLink to="/stockperformance"><div className="blackfont"> US Performance by Stock </div></NavLink></Dropdown.Item>
           <Dropdown.Item>< NavLink to="/performance"><div className="blackfont"> US Performance by Sector </div></NavLink></Dropdown.Item>

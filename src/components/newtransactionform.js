@@ -380,7 +380,7 @@ class NewTransactionForm extends Component {
             <Form.Button primary={true} fluid={true} color="green"> Estimate Transaction Total </Form.Button>
           </Form>
         </Grid.Column>
-        <Grid.Column>
+
 
         <Grid.Column textAlign="center" verticalAlign="center">
            {this.state.checkedPrice === false ?
@@ -392,7 +392,7 @@ class NewTransactionForm extends Component {
 
 
 
-        </Grid.Column>
+        
         </Grid.Row>
         <Grid.Row>
         <Grid.Column>

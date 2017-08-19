@@ -80,6 +80,10 @@ class InvestorQuestionaire extends Component {
         < NewAccountForm riskTolerance={this.state.riskTolerance} cancel={this.cancelImplement} />
         :
         <Grid centered columns={3}>
+          <Grid.Row>
+          <div className="portfolioHeader"> Retirement Portfolio Generator </div>
+          </Grid.Row>
+          <Grid.Row>
           <Grid.Column>
             <Form onSubmit={this.handleSubmit}>
               <Form.Field>
@@ -113,6 +117,7 @@ class InvestorQuestionaire extends Component {
            null
           }
           </Grid.Column>
+          </Grid.Row>
         </Grid>
         }
       </div>

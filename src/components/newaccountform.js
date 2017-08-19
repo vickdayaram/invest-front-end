@@ -124,7 +124,7 @@ class NewAccountForm extends Component {
             <Form.Input label='Initial Deposit' placeholder='$' onChange={this.handleDeposit}  />
             <Form.Select label='Account Type' options={options} placeholder='Account Type' onChange={this.handleAccountType} />
             <Form.Button primary={true} fluid={true}>Submit</Form.Button>
-            {this.props.riskTolerance.length === 0 ?
+            {this.props.riskTolerance.length > 0 ?
             <Form.Button primary={true} fluid={true} onClick={this.props.cancel}> Back to Recommendation </Form.Button>
             : null
             }

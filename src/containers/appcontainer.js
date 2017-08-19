@@ -38,6 +38,7 @@ class AppContainer extends React.Component {
     let backgroundColor = []
     let label = ""
     let value = ""
+    let val = Math.floor(1000 + Math.random() * 9000)
     for(let i = 0; i < rawData.length; i++){
       let label = Object.keys(rawData[i]).pop()
       let value = Object.values(rawData[i]).pop().toFixed(2)
@@ -45,13 +46,12 @@ class AppContainer extends React.Component {
       data.push(value)
       if(label === "MM"){
         backgroundColor.push('#1B9112')
-      } else if(label === "VTI" || label === "VXUS"){
+      } else if( i % 2 == 0){
         backgroundColor.push('#C61919')
       } else {
         backgroundColor.push('#202759')
       }
     }
-
 
     let chartData  =  {
                 labels: labels,

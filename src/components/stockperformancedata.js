@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Form, Grid, Statistic, Image } from 'semantic-ui-react'
 import { fetchStockPerformance } from '../apiAdapter'
 import { Line } from 'react-chartjs-2'
+import TransactionSearch from './transactionsearch'
 
 const sample =  {
             labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -22,6 +23,9 @@ const chartOptions = {
     fontSize: 25,
     position: "top",
     fontColor: "black"
+  },
+  legend: {
+    display: false
   },
   scales: {
             xAxes: [
@@ -67,8 +71,8 @@ class StockPerformanceData extends Component {
     chartData:[]
   }
 
-  handleSymbolSelect = (event) => {
-    let symbol = event.target.innerText
+  handleSymbolSelect = (symbol) => {
+
     this.setState({
       symbol: symbol
     })
@@ -97,7 +101,7 @@ class StockPerformanceData extends Component {
   render() {
     const { value } = this.state
     return (
-      <div>
+      <div className="performanceContainer">
 
       <div className="performanceSearch">
       <Grid centered columns={3}>
@@ -106,14 +110,16 @@ class StockPerformanceData extends Component {
         </Grid.Column>
         <Grid.Column width={12}>
         <Form >
-          <Form.Select label='Symbol' options={options} placeholder='Symbol Select' onChange={this.handleSymbolSelect} />
+          <Form.Input>
+          <TransactionSearch handleSymbolSelect={this.handleSymbolSelect} />
+          </Form.Input>
         </Form>
         </Grid.Column>
         <Grid.Column width={2}>
         </Grid.Column>
       </Grid.Row>
       </Grid>
-      <div>
+      </div>
 
         <div className="center performanceSearch performanceContainer">
         {this.state.symbol ?
@@ -124,13 +130,11 @@ class StockPerformanceData extends Component {
           width={700}
           />
           :
-          <div className="performanceSearch">
+          <div className="loaderDisplay">
             <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
           </div>
         }
-        </div>
-
-      </div>
+      
       </div>
       </div>
 

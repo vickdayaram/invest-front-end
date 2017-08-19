@@ -120,7 +120,7 @@ class NewAccountForm extends Component {
         <Grid.Row>
         <Grid.Column>
           <Form onSubmit={this.handleSubmit}>
-            <Form.Input label='Where the money is coming from?' placeholder='Bank Name' onChange={this.handleBankName} />
+            <Form.Input label='Where the money is coming from?' placeholder='Pretend Bank Name' onChange={this.handleBankName} />
             <Form.Input label='Initial Deposit' placeholder='$' onChange={this.handleDeposit}  />
             <Form.Select label='Account Type' options={options} placeholder='Account Type' onChange={this.handleAccountType} />
             <Form.Button primary={true} fluid={true}>Submit</Form.Button>

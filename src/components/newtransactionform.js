@@ -402,6 +402,7 @@ class NewTransactionForm extends Component {
           null}
         </Grid.Column>
         </Grid.Row>
+        
       </Grid>
       {this.state.status ? < Redirect to="/balancesandholdings" /> : null}
       </div>

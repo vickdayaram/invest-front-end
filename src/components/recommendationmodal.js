@@ -88,12 +88,23 @@ class RecommendationModal extends Component {
     this.props.closeModal()
   }
 
+  handleDisplay = () => {
+    let riskTolerance = this.props.riskTolerance
+    if(riskTolerance === "Conservative"){
+      return displayConservative()
+    } else if (riskTolerance === "Moderate"){
+      return displayModerate()
+    } else if (riskTolerance === "Aggressive"){
+      return displayAggressive()
+    }
+  }
+
   render(){
   return (
   <Modal open={this.props.open}>
     <Modal.Header>Profile Picture</Modal.Header>
     <Modal.Content image scrolling>
-      {displayConservative()}
+      {this.handleDisplay()}
 
       <Modal.Description>
         <Header>Modal Header</Header>

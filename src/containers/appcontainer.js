@@ -5,6 +5,7 @@ import PerformanceContainer from './performancecontainer'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { fetchTotalAndAllocation } from '../apiAdapter'
 import { Image } from 'semantic-ui-react'
+import Gradient from 'gradient-color'
 
 class AppContainer extends React.Component {
 
@@ -31,11 +32,22 @@ class AppContainer extends React.Component {
     })
   }
 
+  generateGradient = (rawData) => {
+    let n = rawData.length
+    return (
+      Gradient([
+        '#313B72',
+        '#3E92CC',
+        '#EBEBEB'
+      ], n)
+    )
+  }
+
   formatChartData = () => {
     let rawData = this.state.currentAllocation
     let labels = []
     let data = []
-    let backgroundColor = []
+    let backgroundColor = this.generateGradient(rawData)
     let label = ""
     let value = ""
     let val = Math.floor(1000 + Math.random() * 9000)
@@ -44,13 +56,6 @@ class AppContainer extends React.Component {
       let value = Object.values(rawData[i]).pop().toFixed(2)
       labels.push(label)
       data.push(value)
-      if(label === "MM"){
-        backgroundColor.push('#1B9112')
-      } else if( i % 2 == 0){
-        backgroundColor.push('#C61919')
-      } else {
-        backgroundColor.push('#202759')
-      }
     }
 
     let chartData  =  {
@@ -79,7 +84,6 @@ class AppContainer extends React.Component {
               :
           <div>
           < Welcome current_user={this.state.current_user} portfolioTotal={this.state.portfolioTotal} chartData={this.state.chartData}/>
-          < Accounts  />
           </div>
           }
       </div>

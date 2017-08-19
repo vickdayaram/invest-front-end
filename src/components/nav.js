@@ -22,10 +22,11 @@ class Nav extends React.Component {
       {this.props.isLoggedIn ?
         <Dropdown item text='Accounts'>
         <Dropdown.Menu position="right">
-          <Dropdown.Item>< NavLink to="/home"><div className="blackfont">Balances and Holdings</div></NavLink></Dropdown.Item>
+          <Dropdown.Item>< NavLink to="/home"><div className="blackfont">Accounts Overview</div></NavLink></Dropdown.Item>
+          <Dropdown.Item>< NavLink to="/balancesandholdings"><div className="blackfont"> Balances and Holdings </div></NavLink></Dropdown.Item>
+          <Dropdown.Item>< NavLink to="/transactions"><div className="blackfont"> Transaction History </div></NavLink></Dropdown.Item>
           <Dropdown.Item>< NavLink to="/newaccount"><div className="blackfont"> Open an Account </div></NavLink></Dropdown.Item>
           <Dropdown.Item>< NavLink to="/transact"><div className="blackfont"> Trade </div></NavLink></Dropdown.Item>
-          <Dropdown.Item>< NavLink to="/transactions"><div className="blackfont"> Transaction History </div></NavLink></Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       : null

@@ -392,7 +392,7 @@ class NewTransactionForm extends Component {
 
 
 
-        
+
         </Grid.Row>
         <Grid.Row>
         <Grid.Column>
@@ -403,7 +403,7 @@ class NewTransactionForm extends Component {
         </Grid.Column>
         </Grid.Row>
       </Grid>
-      {this.state.status ? < Redirect to="/home" /> : null}
+      {this.state.status ? < Redirect to="/balancesandholdings" /> : null}
       </div>
 
     )

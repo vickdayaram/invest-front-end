@@ -14,6 +14,7 @@ import PerformanceContainer from './containers/performancecontainer'
 import StockPerformanceData from './components/stockperformancedata'
 import Transactions from './containers/transactions'
 import TransactionSearch from './components/transactionsearch'
+import Accounts from './containers/accounts'
 
 
 class App extends Component {
@@ -120,7 +121,8 @@ class App extends Component {
             <Route exact path="/stockperformance" component={Authorize(StockPerformanceData)}/>
             <Route exact path="/investmentquestionaire" component={Authorize(InvestmentQuestionaire)}/>
             <Route exact path="/transactions" component={Authorize(Transactions)}/>
-            <Route exact path="/transactionsearch" component={TransactionSearch}/>
+            <Route exact path="/transactionsearch" component={Authorize(TransactionSearch)}/>
+            <Route exact path="/balancesandholdings" component={Authorize(Accounts)}/>
 
           </div>
         < /Router >

@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #E8E9F3;
 }
 
 .accountscontainer {
@@ -40,7 +41,7 @@ body {
 }
 
 .home {
-  margin-top: 200px;
+  margin-top: 100px;
 }
 
 .nav {
@@ -82,7 +83,7 @@ body {
 }
 
 .balancesText {
-  text-align: center;
+  text-align: left;
   font-family: 'Saira Condensed', sans-serif;
   font-size: 35px;
 }
@@ -95,6 +96,11 @@ body {
 
 .welcomeText {
   text-align: left;
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 50px;
+}
+
+.welcomeText3 {
   font-family: 'Saira Condensed', sans-serif;
   font-size: 50px;
 }
@@ -157,4 +163,12 @@ body {
 
 .portfoliodetails {
   padding: 10px;
+}
+
+.welcomebackground {
+  background-color: rgb(247,247,247);
+  margin-left: 200px;
+  margin-right: 200px;
+  height: 800px;
+  padding-top: 50px;
 }

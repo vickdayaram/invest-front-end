@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Button, Form, Segment, Divider, Image } from 'semantic-ui-react'
 import { Doughnut } from 'react-chartjs-2'
+import RecommendationModal from './recommendationmodal'
 
 
 const conservative =  {
@@ -63,6 +64,7 @@ class InvestorQuestionaire extends Component {
     thirdQuestion: "",
     riskTolerance: "",
     chartData: {},
+    openModal: false
   }
 
 
@@ -72,6 +74,15 @@ class InvestorQuestionaire extends Component {
     let thirdScore = parseInt(this.state.thirdQuestion)
     let totalScore = firstScore + secondScore + thirdScore
     this.makeRecommendation(totalScore)
+    this.setState({
+      openModal: true
+    })
+  }
+
+  handleClose = () => {
+    this.setState({
+      openModal: false
+    })
   }
 
   makeRecommendation = (totalScore) => {
@@ -170,7 +181,7 @@ class InvestorQuestionaire extends Component {
           </Grid.Column>
           <Grid.Column textAlign="center">
           {this.state.riskTolerance.length > 0 ?
-           this.displayRecommendation()
+           < RecommendationModal open={this.state.openModal} closeModal={this.handleClose}/>
            :
            <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
           }

@@ -28,7 +28,7 @@ const aggressive =  {
             label: "Aggressive Allocation",
             backgroundColor: ["#C61919", "#C61919", "#202759", "#202759"],
             borderColor: 'rgb(255, 99, 132)',
-            data: [36, 14, 24, 16]
+            data: [36, 24, 28, 12]
         }]
     }
 
@@ -81,11 +81,16 @@ const displayConservative = () => {
 class RecommendationModal extends Component {
 
   state = {
-    open: true
+    open: true,
+    redirect: false
   }
 
   handleClose = () => {
     this.props.closeModal()
+  }
+
+  handleImplement = () => {
+    this.props.implement()
   }
 
   handleDisplay = () => {
@@ -113,11 +118,11 @@ class RecommendationModal extends Component {
       </Modal.Description>
     </Modal.Content>
     <Modal.Actions>
-      <Button primary>
-        Proceed <Icon name='right chevron' />
-      </Button>
       <Button primary onClick={this.handleClose}>
         Back to Questionaire <Icon name='right chevron' />
+      </Button>
+      <Button primary onClick={this.handleImplement}>
+        Proceed to Implement <Icon name='right chevron' />
       </Button>
     </Modal.Actions>
   </Modal>

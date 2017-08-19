@@ -5,8 +5,7 @@ import { sendNewAccount } from '../apiAdapter'
 
 
 const options = [
-  { key: 'IRA', text: 'IRA', value: 'IRA' },
-  { key: 'Individual', text: 'Individual', value: 'Individual' },
+  { key: 'Individual', text: 'Individual', value: 'Individual' }
 ]
 
 class NewAccountForm extends Component {
@@ -16,7 +15,16 @@ class NewAccountForm extends Component {
     type: "",
     status: false,
     openModal: false,
-    errors: false
+    errors: false,
+    riskTolerance: ""
+  }
+
+  componentDidMount = () => {
+    if(this.props.riskTolerance.length > 0){
+      this.setState({
+        riskTolerance: this.props.riskTolerance
+      })
+    }
   }
 
   handleBankName = (event) => {
@@ -115,8 +123,11 @@ class NewAccountForm extends Component {
             <Form.Input label='Where the money is coming from?' placeholder='Bank Name' onChange={this.handleBankName} />
             <Form.Input label='Initial Deposit' placeholder='$' onChange={this.handleDeposit}  />
             <Form.Select label='Account Type' options={options} placeholder='Account Type' onChange={this.handleAccountType} />
-            <Form.Checkbox label='I agree to the Terms and Conditions' />
             <Form.Button primary={true} fluid={true}>Submit</Form.Button>
+            {this.props.riskTolerance.length === 0 ?
+            <Form.Button primary={true} fluid={true} onClick={this.props.cancel}> Back to Recommendation </Form.Button>
+            : null
+            }
           </Form>
         </Grid.Column>
         <Grid.Column>

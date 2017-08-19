@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Button, Form, Segment, Divider, Image } from 'semantic-ui-react'
 import RecommendationModal from './recommendationmodal'
+import NewAccountForm from './newaccountform'
 
 class InvestorQuestionaire extends Component {
 
@@ -10,7 +11,8 @@ class InvestorQuestionaire extends Component {
     thirdQuestion: "",
     riskTolerance: "",
     chartData: {},
-    openModal: false
+    openModal: false,
+    implement: false
   }
 
 
@@ -28,6 +30,18 @@ class InvestorQuestionaire extends Component {
   handleClose = () => {
     this.setState({
       openModal: false
+    })
+  }
+
+  implement = () => {
+    this.setState({
+      implement: true
+    })
+  }
+
+  cancelImplement = () => {
+    this.setState({
+      implement: false
     })
   }
 
@@ -62,6 +76,9 @@ class InvestorQuestionaire extends Component {
 
     return (
       <div className="background">
+        {this.state.implement ?
+        < NewAccountForm riskTolerance={this.state.riskTolerance} cancel={this.cancelImplement} />
+        :
         <Grid centered columns={3}>
           <Grid.Column>
             <Form onSubmit={this.handleSubmit}>
@@ -91,12 +108,13 @@ class InvestorQuestionaire extends Component {
           <Grid.Column textAlign="center">
           <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
           {this.state.riskTolerance.length > 0 ?
-           < RecommendationModal open={this.state.openModal} closeModal={this.handleClose} riskTolerance={this.state.riskTolerance}/>
+           < RecommendationModal open={this.state.openModal} closeModal={this.handleClose} riskTolerance={this.state.riskTolerance} implement={this.implement}/>
            :
            null
           }
           </Grid.Column>
         </Grid>
+        }
       </div>
     )
   }

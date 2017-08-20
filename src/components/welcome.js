@@ -1,7 +1,6 @@
 import React from 'react'
 import { Doughnut } from 'react-chartjs-2'
 import { Table, Statistic, Loader, Grid } from 'semantic-ui-react'
-import Gradient from 'gradient-color'
 import formatCurrency from 'format-currency'
 
     const chartOptions = {

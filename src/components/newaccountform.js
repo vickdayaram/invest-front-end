@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Form, Grid, Image, Modal, Button, Message } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
 import { sendNewAccount } from '../apiAdapter'
+import NumberFormat from 'react-number-format'
 
 
 const options = [
@@ -35,7 +36,7 @@ class NewAccountForm extends Component {
   }
 
   handleDeposit = (event) => {
-    let deposit = event.target.value.split(",").join("")
+    let deposit = event.target.value.split(",").join("").slice(1)
     this.setState({
       deposit: deposit,
       errors: false
@@ -121,7 +122,7 @@ class NewAccountForm extends Component {
         <Grid.Column>
           <Form onSubmit={this.handleSubmit}>
             <Form.Input label='Where the money is coming from?' placeholder='Pretend Bank Name' onChange={this.handleBankName} />
-            <Form.Input label='Initial Deposit' placeholder='$' onChange={this.handleDeposit}  />
+            <NumberFormat value={this.state.deposit} onChange={this.handleDeposit} thousandSeparator={true} prefix="$" placeholder="$"/>
             <Form.Select label='Account Type' options={options} placeholder='Account Type' onChange={this.handleAccountType} />
             <Form.Button primary={true} fluid={true}>Submit</Form.Button>
             {this.state.riskTolerance.length > 0 ?

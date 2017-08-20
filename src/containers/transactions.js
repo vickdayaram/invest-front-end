@@ -19,7 +19,7 @@ class Transactions extends React.Component {
   handleTransactionSearch = (event) => {
     let search = event.target.value
     let transactionData = this.state.transactionData
-    let searcher = new FuzzySearch(transactionData, ['holding', 'price', 'shares', 'date'], {
+    let searcher = new FuzzySearch(transactionData, ['holding', 'price', 'shares', 'date', 'type'], {
     caseSensitive: false,
     });
     if(search.length > 0){

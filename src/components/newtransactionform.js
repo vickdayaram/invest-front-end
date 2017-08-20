@@ -5,6 +5,9 @@ import { getAccounts } from '../apiAdapter'
 import { sendTransaction } from '../apiAdapter'
 import { fetchAlphaVantage } from '../apiAdapter'
 import TransactionSearch from './transactionsearch'
+import formatCurrency from 'format-currency'
+
+const options = { format: '%s%v', symbol: '$' }
 
 class NewTransactionForm extends Component {
 
@@ -43,9 +46,9 @@ class NewTransactionForm extends Component {
     let accounts = jsonObject.accounts
     for(let i = 0; i < accounts.length; i++ ){
       accountOptions.push({
-        key: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + "-" + accounts[i].account.id + " Funds Available To Trade: " + accounts[i].holdings[0].holding.shares,
-        text: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + "-" + accounts[i].account.id + " Funds Available To Trade: " + accounts[i].holdings[0].holding.shares,
-        value: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + "-" + accounts[i].account.id + " Funds Available To Trade: " + accounts[i].holdings[0].holding.shares
+        key: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + "-" + accounts[i].account.id + " Funds Available To Trade: " + formatCurrency(accounts[i].holdings[0].holding.shares, options),
+        text: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + "-" + accounts[i].account.id + " Funds Available To Trade: " + formatCurrency(accounts[i].holdings[0].holding.shares, options),
+        value: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + "-" + accounts[i].account.id + " Funds Available To Trade: " + formatCurrency(accounts[i].holdings[0].holding.shares, options)
       })
     }
     this.setState({
@@ -117,7 +120,7 @@ class NewTransactionForm extends Component {
   }
 
   handleAccountSelect = (event) => {
-    let fundsAvailable = parseInt(event.target.innerText.split(" ").pop())
+    let fundsAvailable = parseFloat(event.target.innerText.split(" ").pop().slice(1).split(",").join(""))
     let accountNumber = parseInt(event.target.innerText.split(" ")[3])
     let account_id = parseInt(event.target.innerText.split(" ")[3].split("-").pop())
     this.setState({
@@ -295,7 +298,7 @@ class NewTransactionForm extends Component {
        <Table.Row>
          <Table.Cell> Estimated Trade </Table.Cell>
          {this.state.estimate > 0 ?
-           <Table.Cell> <Statistic value={`$${this.state.estimate.toLocaleString()}`} label="Estimated Value" /></Table.Cell>
+           <Table.Cell> <Statistic value={formatCurrency(this.state.estimate, options)} label="Estimated Value" /></Table.Cell>
            :
            <Table.Cell> <div className="transactionLoader"> < Loader size="massive" active inline="centered" /></div></Table.Cell>
          }
@@ -303,7 +306,7 @@ class NewTransactionForm extends Component {
        <Table.Row>
           <Table.Cell> Estimated Cash Value </Table.Cell>
           {this.state.resultingBalance > 0 || this.state.resultingBalance < 0 ?
-            <Table.Cell> <Statistic value={`$${this.state.resultingBalance.toLocaleString()}`} label="Estimated Resulting Cash Balance" /></Table.Cell>
+            <Table.Cell> <Statistic value={formatCurrency(this.state.resultingBalance)} label="Estimated Resulting Cash Balance" /></Table.Cell>
             :
             <Table.Cell> <div className="transactionLoader"> < Loader size="massive" active inline="centered" /></div></Table.Cell>
           }
@@ -359,6 +362,7 @@ class NewTransactionForm extends Component {
     ]
 
 
+
     return (
       <div className="accountscontainer">
       {this.renderModal()}
@@ -402,7 +406,7 @@ class NewTransactionForm extends Component {
           null}
         </Grid.Column>
         </Grid.Row>
-        
+
       </Grid>
       {this.state.status ? < Redirect to="/balancesandholdings" /> : null}
       </div>

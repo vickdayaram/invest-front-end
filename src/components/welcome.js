@@ -60,7 +60,7 @@ class Welcome extends React.Component {
         <Grid.Row>
         <Grid.Column stretched={true}>
         {Object.keys(this.props.chartData).length > 0 ?
-          < Doughnut data={this.props.chartData} options={chartOptions} height={600} width={600}/>
+          < Doughnut data={this.props.chartData} options={chartOptions} height={500} width={500}/>
           :
         <div className="welcomeLoader"> < Loader size="massive" active inline="centered" /> </div>
         }

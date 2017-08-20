@@ -50,7 +50,6 @@ class AppContainer extends React.Component {
     let backgroundColor = this.generateGradient(rawData)
     let label = ""
     let value = ""
-    let val = Math.floor(1000 + Math.random() * 9000)
     for(let i = 0; i < rawData.length; i++){
       let label = Object.keys(rawData[i]).pop()
       let value = Object.values(rawData[i]).pop().toFixed(2)
@@ -65,6 +64,7 @@ class AppContainer extends React.Component {
                 backgroundColor: backgroundColor,
                 borderColor: '#000',
                 data: data,
+                borderWidth: 1
             }]
         }
     this.setState({

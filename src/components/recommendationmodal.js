@@ -166,6 +166,9 @@ class RecommendationModal extends Component {
           <p>All investment details come from Vanguard.coms website.</p>
           <p>This recommendation do not substitute an over all financial planning assesment.</p>
           <p>If are uncertain about any of this please seek the help of a financial advisor.</p>
+          <h3>Important Notice</h3>
+          <h4>You will not have trading access to this account!! it is intended to </h4>
+          <h4>grow indefinitly and show you how an index based approach can work. </h4>
           <h3>All investing is subject to risk, including the possible </h3>
           <h3>loss of the money you invest.</h3>
           <h3>Diversification does not ensure a profit or protect against a loss.</h3>

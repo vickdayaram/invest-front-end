@@ -9,6 +9,14 @@ body {
   margin-left: 200px;
   margin-right: 200px;
   margin-top: 125px;
+  background-color: rgb(247,247,247);
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+  border-radius: 25px;
+  border-style: solid;
+  border-color: #F4E409;
 }
 
 .accountdisplay {
@@ -171,4 +179,7 @@ body {
   margin-right: 200px;
   height: 800px;
   padding-top: 50px;
+  border-radius: 25px;
+  border-style: solid;
+  border-color: #F4E409;
 }

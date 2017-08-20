@@ -45,11 +45,13 @@ class NewTransactionForm extends Component {
     let accountOptions = []
     let accounts = jsonObject.accounts
     for(let i = 0; i < accounts.length; i++ ){
+      if(!accounts[i].account.account_type.includes("Managed")){
       accountOptions.push({
         key: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + "-" + accounts[i].account.id + " Funds Available To Trade: " + formatCurrency(accounts[i].holdings[0].holding.shares, options),
         text: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + "-" + accounts[i].account.id + " Funds Available To Trade: " + formatCurrency(accounts[i].holdings[0].holding.shares, options),
         value: accounts[i].account.account_type + " Account Number: " + accounts[i].account.account_number + "-" + accounts[i].account.id + " Funds Available To Trade: " + formatCurrency(accounts[i].holdings[0].holding.shares, options)
       })
+     }
     }
     this.setState({
       accountOptions: accountOptions,

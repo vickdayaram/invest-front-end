@@ -176,7 +176,7 @@ class PerformanceData extends Component {
       </Grid>
       <div>
       {this.state.range.length > 0 ?
-        <div className="center performanceSearch performanceContainer">
+        <div className="center">
         < HorizontalBar data={this.state.chartData} width={700}
           height={500}
           options={chartOptions}

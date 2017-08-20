@@ -2,16 +2,38 @@ import React from 'react'
 import { getTransactions } from '../apiAdapter'
 import { Form, Grid, Statistic, Image, Table } from 'semantic-ui-react'
 import TransactionEntry from '../components/transactionentry'
+import FuzzySearch from 'fuzzy-search'
 
 class Transactions extends React.Component {
 
   state = {
-    transactions: {}
+    transactions: {},
+    search: ""
   }
 
   componentDidMount = () => {
     getTransactions()
     .then((json) => this.structureData(json))
+  }
+
+  handleTransactionSearch = (event) => {
+    let search = event.target.value
+    let transactionData = this.state.transactionData
+    let searcher = new FuzzySearch(transactionData, ['holding', 'price', 'shares', 'date'], {
+    caseSensitive: false,
+    });
+    if(search.length > 0){
+      let result = searcher.search(search)
+      this.setState({
+        search: search,
+        filteredData: result
+      })
+    } else {
+      this.setState({
+        search: search,
+        filteredData: transactionData
+      })
+    }
   }
 
   structureData = (json) => {
@@ -30,9 +52,9 @@ class Transactions extends React.Component {
     let accountSelect = event.target.innerText
     let transactionData = this.state.allTransactions[accountSelect].reverse()
     this.setState({
-      transactionData: transactionData
+      transactionData: transactionData,
+      filteredData: transactionData
     })
-    console.log(transactionData)
   }
 
   render(){
@@ -56,6 +78,9 @@ class Transactions extends React.Component {
 
         {this.state.transactionData ?
         <div className="transactionDisplay">
+        <Form>
+        <Form.Input placeholder="Search Transactions" onChange={this.handleTransactionSearch}/>
+        </Form>
         <Table celled>
         <Table.Header >
           <Table.Row>
@@ -74,7 +99,7 @@ class Transactions extends React.Component {
             <Table.HeaderCell textAlign="center"> Date </Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-        {this.state.transactionData.map((data) => {
+        { this.state.filteredData.map((data) => {
           return < TransactionEntry data={data} />
         })}
 

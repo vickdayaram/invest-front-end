@@ -1,6 +1,7 @@
 import React from 'react'
 import Holding from './holding'
 import { Menu, Segment, Table } from 'semantic-ui-react'
+import formatCurrency from 'format-currency'
 
 
 class AccountBody extends React.Component {
@@ -11,7 +12,7 @@ class AccountBody extends React.Component {
   }
 
   calculateTotal = (balance) => {
-    let addingBalance = this.state.accountBalance + parseInt(balance)
+    let addingBalance = this.state.accountBalance + parseFloat(balance)
     this.setState({
       accountBalance: addingBalance
     })
@@ -21,6 +22,7 @@ class AccountBody extends React.Component {
     const account_type = this.props.account.account.account_type
     const account_number = this.props.account.account.account_number
     const account_id = this.props.account.account.id
+    let options = { format: '%s%v', symbol: '$' }
     return(
       <div className="accountdisplay">
         <Segment attached='bottom'>
@@ -48,7 +50,7 @@ class AccountBody extends React.Component {
             <Table.Cell active="true"> </Table.Cell>
             <Table.Cell active="true"> </Table.Cell>
             <Table.Cell textAlign="center" active="true"> Account Balance </Table.Cell>
-            <Table.Cell textAlign="center" active="true"> $ {this.state.accountBalance.toLocaleString()} </Table.Cell>
+            <Table.Cell textAlign="center" active="true">{formatCurrency(this.state.accountBalance, options)} </Table.Cell>
           </Table.Row>
         </Table>
         </Segment>

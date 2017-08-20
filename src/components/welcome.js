@@ -2,6 +2,7 @@ import React from 'react'
 import { Doughnut } from 'react-chartjs-2'
 import { Table, Statistic, Loader, Grid } from 'semantic-ui-react'
 import Gradient from 'gradient-color'
+import formatCurrency from 'format-currency'
 
 const sample =  {
             labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -38,6 +39,7 @@ class Welcome extends React.Component {
 
 
   render(){
+    let options = { format: '%s%v', symbol: '$' }
     return(
       <div className="welcomebackground">
         <Grid textAlign="center">
@@ -48,7 +50,7 @@ class Welcome extends React.Component {
 
         <Grid.Column width={8}>
         {Object.keys(this.props.chartData).length > 0 ?
-          <Statistic label="Total Portfolio Value" size="small" value={`$${parseInt(this.props.portfolioTotal).toLocaleString()}`} />
+          <Statistic label="Total Portfolio Value" size="small" value={formatCurrency(this.props.portfolioTotal, options)} />
           :
           <div> < Loader size="massive" active inline="centered" /> </div>
         }

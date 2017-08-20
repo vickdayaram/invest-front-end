@@ -72,7 +72,6 @@ class StockPerformanceData extends Component {
   }
 
   handleSymbolSelect = (symbol) => {
-
     this.setState({
       symbol: symbol
     })
@@ -134,7 +133,7 @@ class StockPerformanceData extends Component {
             <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
           </div>
         }
-      
+
       </div>
       </div>
 

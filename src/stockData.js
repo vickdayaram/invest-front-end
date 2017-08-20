@@ -2,52 +2,8 @@ import React from 'react'
 
 export const stockData = [
   {
-    "title": "PIH",
-    "description": "1347 Property Insurance Holdings, Inc.",
-    "LastSale": 7.1,
-    "MarketCap": 42293038.6,
-    "ADR TSO": "n/a",
-    "IPOyear": 2014,
-    "Sector": "Finance",
-    "Industry": "Property-Casualty Insurers",
-    "Summary Quote": "http://www.nasdaq.com/title/pih",
-    "": ""
-  },
-  {
-    "title": "TURN",
-    "description": "180 Degree Capital Corp.",
-    "LastSale": 1.51,
-    "MarketCap": 46993558.62,
-    "ADR TSO": "n/a",
-    "IPOyear": "n/a",
-    "Sector": "Finance",
-    "Industry": "Finance/Investors Services",
-    "Summary Quote": "http://www.nasdaq.com/title/turn",
-    "": ""
-  },
-  {
-    "title": "FLWS",
-    "description": "1-800 FLOWERS.COM, Inc.",
-    "LastSale": 8.85,
-    "MarketCap": 578215626.15,
-    "ADR TSO": "n/a",
-    "IPOyear": 1999,
-    "Sector": "Consumer Services",
-    "Industry": "Other Specialty Stores",
-    "Summary Quote": "http://www.nasdaq.com/title/flws",
-    "": ""
-  },
-  {
-    "title": "FCCY",
-    "description": "1st Constitution Bancorp (NJ)",
-    "LastSale": 17,
-    "MarketCap": 136785349,
-    "ADR TSO": "n/a",
-    "IPOyear": "n/a",
-    "Sector": "Finance",
-    "Industry": "Savings Institutions",
-    "Summary Quote": "http://www.nasdaq.com/title/fccy",
-    "": ""
+    "title": "GOOGL",
+    "description": "Google"
   },
   {
     "title": "SRCE",
@@ -122,30 +78,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "AVHI",
-    "description": "A V Homes, Inc.",
-    "LastSale": 15.4,
-    "MarketCap": 345817610.6,
-    "ADR TSO": "n/a",
-    "IPOyear": "n/a",
-    "Sector": "Capital Goods",
-    "Industry": "Homebuilding",
-    "Summary Quote": "http://www.nasdaq.com/title/avhi",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "SHLM",
     "description": "A. Schulman, Inc.",
     "LastSale": 26.85,
@@ -155,18 +87,6 @@ export const stockData = [
     "Sector": "Basic Industries",
     "Industry": "Major Chemicals",
     "Summary Quote": "http://www.nasdaq.com/title/shlm",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -182,18 +102,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ABAX",
     "description": "ABAXIS, Inc.",
     "LastSale": 46.65,
@@ -203,18 +111,6 @@ export const stockData = [
     "Sector": "Capital Goods",
     "Industry": "Industrial Machinery/Components",
     "Summary Quote": "http://www.nasdaq.com/title/abax",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -230,18 +126,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ABEOW",
     "description": "Abeona Therapeutics Inc.",
     "LastSale": 4.6,
@@ -251,18 +135,6 @@ export const stockData = [
     "Sector": "Health Care",
     "Industry": "Major Pharmaceuticals",
     "Summary Quote": "http://www.nasdaq.com/title/abeow",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -278,18 +150,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ABMD",
     "description": "ABIOMED, Inc.",
     "LastSale": 151.37,
@@ -299,18 +159,6 @@ export const stockData = [
     "Sector": "Health Care",
     "Industry": "Medical/Dental Instruments",
     "Summary Quote": "http://www.nasdaq.com/title/abmd",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -326,18 +174,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ACIU",
     "description": "AC Immune SA",
     "LastSale": 7.12,
@@ -347,18 +183,6 @@ export const stockData = [
     "Sector": "Health Care",
     "Industry": "Major Pharmaceuticals",
     "Summary Quote": "http://www.nasdaq.com/title/aciu",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -374,18 +198,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ACTG",
     "description": "Acacia Research Corporation",
     "LastSale": 3,
@@ -395,18 +207,6 @@ export const stockData = [
     "Sector": "Miscellaneous",
     "Industry": "Multi-Sector Companies",
     "Summary Quote": "http://www.nasdaq.com/title/actg",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -422,18 +222,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ACAD",
     "description": "ACADIA Pharmaceuticals Inc.",
     "LastSale": 31.21,
@@ -443,18 +231,6 @@ export const stockData = [
     "Sector": "Health Care",
     "Industry": "Major Pharmaceuticals",
     "Summary Quote": "http://www.nasdaq.com/title/acad",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -470,18 +246,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "AXDX",
     "description": "Accelerate Diagnostics, Inc.",
     "LastSale": 21.3,
@@ -491,18 +255,6 @@ export const stockData = [
     "Sector": "Capital Goods",
     "Industry": "Biotechnology: Laboratory Analytical Instruments",
     "Summary Quote": "http://www.nasdaq.com/title/axdx",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -518,18 +270,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ACCPW",
     "description": "Accelerated Pharma, Inc.",
     "LastSale": "n/a",
@@ -539,18 +279,6 @@ export const stockData = [
     "Sector": "Health Care",
     "Industry": "Major Pharmaceuticals",
     "Summary Quote": "http://www.nasdaq.com/title/accpw",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -566,18 +294,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ANCX",
     "description": "Access National Corporation",
     "LastSale": 25.16,
@@ -587,18 +303,6 @@ export const stockData = [
     "Sector": "Finance",
     "Industry": "Savings Institutions",
     "Summary Quote": "http://www.nasdaq.com/title/ancx",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -614,18 +318,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ACRX",
     "description": "AcelRx Pharmaceuticals, Inc.",
     "LastSale": 2.95,
@@ -635,18 +327,6 @@ export const stockData = [
     "Sector": "Health Care",
     "Industry": "Major Pharmaceuticals",
     "Summary Quote": "http://www.nasdaq.com/title/acrx",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -662,18 +342,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "AKAO",
     "description": "Achaogen, Inc.",
     "LastSale": 16.65,
@@ -683,18 +351,6 @@ export const stockData = [
     "Sector": "Health Care",
     "Industry": "Major Pharmaceuticals",
     "Summary Quote": "http://www.nasdaq.com/title/akao",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -710,18 +366,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ACHN",
     "description": "Achillion Pharmaceuticals, Inc.",
     "LastSale": 4.695,
@@ -731,18 +375,6 @@ export const stockData = [
     "Sector": "Health Care",
     "Industry": "Major Pharmaceuticals",
     "Summary Quote": "http://www.nasdaq.com/title/achn",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -758,18 +390,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ACRS",
     "description": "Aclaris Therapeutics, Inc.",
     "LastSale": 25.08,
@@ -779,18 +399,6 @@ export const stockData = [
     "Sector": "Health Care",
     "Industry": "Major Pharmaceuticals",
     "Summary Quote": "http://www.nasdaq.com/title/acrs",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -806,18 +414,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ACOR",
     "description": "Acorda Therapeutics, Inc.",
     "LastSale": 21.35,
@@ -827,18 +423,6 @@ export const stockData = [
     "Sector": "Health Care",
     "Industry": "Biotechnology: Biological Products (No Diagnostic Substances)",
     "Summary Quote": "http://www.nasdaq.com/title/acor",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -854,18 +438,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ATVI",
     "description": "Activision Blizzard, Inc",
     "LastSale": 60.74,
@@ -875,18 +447,6 @@ export const stockData = [
     "Sector": "Technology",
     "Industry": "Computer Software: Prepackaged Software",
     "Summary Quote": "http://www.nasdaq.com/title/atvi",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -902,18 +462,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ACXM",
     "description": "Acxiom Corporation",
     "LastSale": 22.97,
@@ -923,18 +471,6 @@ export const stockData = [
     "Sector": "Technology",
     "Industry": "EDP Services",
     "Summary Quote": "http://www.nasdaq.com/title/acxm",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -950,18 +486,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ADMP",
     "description": "Adamis Pharmaceuticals Corporation",
     "LastSale": 4.8,
@@ -971,18 +495,6 @@ export const stockData = [
     "Sector": "Health Care",
     "Industry": "Major Pharmaceuticals",
     "Summary Quote": "http://www.nasdaq.com/title/admp",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -998,18 +510,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ADUS",
     "description": "Addus HomeCare Corporation",
     "LastSale": 34.25,
@@ -1019,18 +519,6 @@ export const stockData = [
     "Sector": "Health Care",
     "Industry": "Medical/Nursing Services",
     "Summary Quote": "http://www.nasdaq.com/title/adus",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -1046,18 +534,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "IOTS",
     "description": "Adesto Technologies Corporation",
     "LastSale": 5.45,
@@ -1067,18 +543,6 @@ export const stockData = [
     "Sector": "Technology",
     "Industry": "Semiconductors",
     "Summary Quote": "http://www.nasdaq.com/title/iots",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -1094,18 +558,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ADBE",
     "description": "Adobe Systems Incorporated",
     "LastSale": 146.47,
@@ -1115,18 +567,6 @@ export const stockData = [
     "Sector": "Technology",
     "Industry": "Computer Software: Prepackaged Software",
     "Summary Quote": "http://www.nasdaq.com/title/adbe",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -1142,18 +582,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ADTN",
     "description": "ADTRAN, Inc.",
     "LastSale": 21.8,
@@ -1163,18 +591,6 @@ export const stockData = [
     "Sector": "Public Utilities",
     "Industry": "Telecommunications Equipment",
     "Summary Quote": "http://www.nasdaq.com/title/adtn",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -1190,18 +606,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "AAAP",
     "description": "Advanced Accelerator Applications S.A.",
     "LastSale": 48.91,
@@ -1211,18 +615,6 @@ export const stockData = [
     "Sector": "Health Care",
     "Industry": "Major Pharmaceuticals",
     "Summary Quote": "http://www.nasdaq.com/title/aaap",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -1238,18 +630,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "AEIS",
     "description": "Advanced Energy Industries, Inc.",
     "LastSale": 71.17,
@@ -1259,18 +639,6 @@ export const stockData = [
     "Sector": "Capital Goods",
     "Industry": "Industrial Machinery/Components",
     "Summary Quote": "http://www.nasdaq.com/title/aeis",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -1286,18 +654,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ADXS",
     "description": "Advaxis, Inc.",
     "LastSale": 6.26,
@@ -1307,18 +663,6 @@ export const stockData = [
     "Sector": "Health Care",
     "Industry": "Major Pharmaceuticals",
     "Summary Quote": "http://www.nasdaq.com/title/adxs",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -1334,18 +678,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "ADVM",
     "description": "Adverum Biotechnologies, Inc.",
     "LastSale": 2.55,
@@ -1355,18 +687,6 @@ export const stockData = [
     "Sector": "Health Care",
     "Industry": "Biotechnology: Biological Products (No Diagnostic Substances)",
     "Summary Quote": "http://www.nasdaq.com/title/advm",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -1382,18 +702,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "AGLE",
     "description": "Aeglea BioTherapeutics, Inc.",
     "LastSale": 2.91,
@@ -1403,18 +711,6 @@ export const stockData = [
     "Sector": "Health Care",
     "Industry": "Major Pharmaceuticals",
     "Summary Quote": "http://www.nasdaq.com/title/agle",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -1430,18 +726,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "AMTX",
     "description": "Aemetis, Inc",
     "LastSale": 1.17,
@@ -1451,18 +735,6 @@ export const stockData = [
     "Sector": "Basic Industries",
     "Industry": "Major Chemicals",
     "Summary Quote": "http://www.nasdaq.com/title/amtx",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -1478,18 +750,6 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
-  },
-  {
     "title": "AVAV",
     "description": "AeroVironment, Inc.",
     "LastSale": 38.31,
@@ -1499,18 +759,6 @@ export const stockData = [
     "Sector": "Capital Goods",
     "Industry": "Aerospace",
     "Summary Quote": "http://www.nasdaq.com/title/avav",
-    "": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
     "": ""
   },
   {
@@ -1526,16 +774,8 @@ export const stockData = [
     "": ""
   },
   {
-    "title": "",
-    "description": "",
-    "LastSale": "",
-    "MarketCap": "",
-    "ADR TSO": "",
-    "IPOyear": "",
-    "Sector": "",
-    "Industry": "",
-    "Summary Quote": "",
-    "": ""
+    "title": "VTI",
+    "description": "Vanguard Total Stock Market ETF"
   },
   {
     "title": "AEMD",

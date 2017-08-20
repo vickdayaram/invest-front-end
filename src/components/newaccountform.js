@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { Form, Grid, Image, Modal, Button, Message } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
 import { sendNewAccount } from '../apiAdapter'
+import NumberFormat from 'react-number-format'
 
 
 const options = [
-  { key: 'IRA', text: 'IRA', value: 'IRA' },
-  { key: 'Individual', text: 'Individual', value: 'Individual' },
+  { key: 'Individual', text: 'Individual', value: 'Individual' }
 ]
 
 class NewAccountForm extends Component {
@@ -16,7 +16,16 @@ class NewAccountForm extends Component {
     type: "",
     status: false,
     openModal: false,
-    errors: false
+    errors: false,
+    riskTolerance: ""
+  }
+
+  componentDidMount = () => {
+    if(this.props.riskTolerance != undefined){
+      this.setState({
+        riskTolerance: this.props.riskTolerance
+      })
+    }
   }
 
   handleBankName = (event) => {
@@ -27,7 +36,7 @@ class NewAccountForm extends Component {
   }
 
   handleDeposit = (event) => {
-    let deposit = event.target.value.split(",").join("")
+    let deposit = event.target.value.split(",").join("").slice(1)
     this.setState({
       deposit: deposit,
       errors: false
@@ -112,11 +121,14 @@ class NewAccountForm extends Component {
         <Grid.Row>
         <Grid.Column>
           <Form onSubmit={this.handleSubmit}>
-            <Form.Input label='Where the money is coming from?' placeholder='Bank Name' onChange={this.handleBankName} />
-            <Form.Input label='Initial Deposit' placeholder='$' onChange={this.handleDeposit}  />
+            <Form.Input label='Where the money is coming from?' placeholder='Pretend Bank Name' onChange={this.handleBankName} />
+            <NumberFormat value={this.state.deposit} onChange={this.handleDeposit} thousandSeparator={true} prefix="$" placeholder="$"/>
             <Form.Select label='Account Type' options={options} placeholder='Account Type' onChange={this.handleAccountType} />
-            <Form.Checkbox label='I agree to the Terms and Conditions' />
             <Form.Button primary={true} fluid={true}>Submit</Form.Button>
+            {this.state.riskTolerance.length > 0 ?
+            <Form.Button primary={true} fluid={true} onClick={this.props.cancel}> Back to Recommendation </Form.Button>
+            : null
+            }
           </Form>
         </Grid.Column>
         <Grid.Column>
@@ -130,7 +142,7 @@ class NewAccountForm extends Component {
           null}
         </Grid.Row>
       </Grid>
-      {this.state.status ? < Redirect to="/home" /> : null}
+      {this.state.status ? < Redirect to="/balancesandholdings" /> : null}
       </div>
 
     )

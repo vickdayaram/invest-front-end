@@ -1,6 +1,7 @@
 import React from 'react'
 import { Icon, Label, Menu, Table } from 'semantic-ui-react'
 import { fetchAlphaVantage } from '../apiAdapter'
+import formatCurrency from 'format-currency'
 
 class Holding extends React.Component {
 
@@ -34,19 +35,24 @@ class Holding extends React.Component {
     let sharePrice = jsonObject["Time Series (1min)"][firstKey][secondKey]
     let value = (sharePrice * this.props.holding.holding.shares).toFixed(2)
     this.setState({
-      value: parseInt(value)
+      value: value
     })
     this.props.calculateTotal(value)
   }
 
   render(){
+    let options = { format: '%s%v', symbol: '$' }
     return(
 
         <Table.Row>
           <Table.Cell textAlign="center"> {this.props.holding.holding.symbol} </Table.Cell>
           <Table.Cell textAlign="center"> {this.props.holding.holding.name} </Table.Cell>
+          {this.props.holding.holding.symbol === "MM" ?
           <Table.Cell textAlign="center"> {this.props.holding.holding.shares.toLocaleString()} </Table.Cell>
-          <Table.Cell textAlign="center"> $ {this.state.value.toLocaleString()} </Table.Cell>
+          :
+          <Table.Cell textAlign="center"> {parseInt(this.props.holding.holding.shares)} </Table.Cell>
+          }
+          <Table.Cell textAlign="center"> {formatCurrency(this.state.value, options)} </Table.Cell>
         </Table.Row>
 
     )

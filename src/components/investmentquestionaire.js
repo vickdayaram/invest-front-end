@@ -1,59 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Button, Form, Segment, Divider, Image } from 'semantic-ui-react'
-import { Doughnut } from 'react-chartjs-2'
-
-
-const conservative =  {
-            labels: ["VTI", "VXUS", "BND", "BNDX"],
-            datasets: [{
-            label: "Conservative Allocation",
-            backgroundColor: ["#C61919", "#C61919", "#202759", "#202759"],
-            borderColor: 'rgb(255, 99, 132)',
-            data: [24, 16, 42, 18]
-        }]
-    }
-const moderate =  {
-            labels: ["VTI", "VXUS", "BND", "BNDX"],
-            datasets: [{
-            label: "Moderate Allocation",
-            backgroundColor: ["#C61919", "#C61919", "#202759", "#202759"],
-            borderColor: 'rgb(255, 99, 132)',
-            data: [30, 20, 35, 15]
-        }]
-    }
-const aggressive =  {
-            labels: ["VTI", "VXUS", "BND", "BNDX"],
-            datasets: [{
-            label: "Aggressive Allocation",
-            backgroundColor: ["#C61919", "#C61919", "#202759", "#202759"],
-            borderColor: 'rgb(255, 99, 132)',
-            data: [36, 14, 24, 16]
-        }]
-    }
-
-const chartOptions = {
-      maintainAspectRatio: false,
-      title:{
-        display: false,
-        text: "Recommended Allocation",
-        fontSize: 25,
-        position: "top",
-        fontColor: "black"
-      },
-      legend:{
-        display: true,
-        position: "bottom",
-        fullWidth: false,
-        boxWidth: 15
-      },
-      cutoutPercentage: 0,
-      label: {
-        display: true
-      }
-    }
-
-
-
+import RecommendationModal from './recommendationmodal'
+import NewAccountForm from './newaccountform'
 
 class InvestorQuestionaire extends Component {
 
@@ -63,6 +11,8 @@ class InvestorQuestionaire extends Component {
     thirdQuestion: "",
     riskTolerance: "",
     chartData: {},
+    openModal: false,
+    implement: false
   }
 
 
@@ -72,6 +22,27 @@ class InvestorQuestionaire extends Component {
     let thirdScore = parseInt(this.state.thirdQuestion)
     let totalScore = firstScore + secondScore + thirdScore
     this.makeRecommendation(totalScore)
+    this.setState({
+      openModal: true
+    })
+  }
+
+  handleClose = () => {
+    this.setState({
+      openModal: false
+    })
+  }
+
+  implement = () => {
+    this.setState({
+      implement: true
+    })
+  }
+
+  cancelImplement = () => {
+    this.setState({
+      implement: false
+    })
   }
 
   makeRecommendation = (totalScore) => {
@@ -83,43 +54,6 @@ class InvestorQuestionaire extends Component {
       this.setState({riskTolerance: "Aggressive"})
     }
   }
-
-  displayAggressive = () => {
-    return(
-      <div className="recommendation">
-        <div className="recommendationText"> Recommended Allocation: {this.state.riskTolerance} </div>
-        <Doughnut data={aggressive} options={chartOptions} height={200} width={200}/>
-      </div>
-    )
-  }
-  displayModerate = () => {
-    return(
-      <div className="recommendation">
-        <div className="recommendationText"> Recommended Allocation: {this.state.riskTolerance} </div>
-        <Doughnut data={moderate} options={chartOptions} height={200} width={200}/>
-      </div>
-    )
-  }
-  displayConservative = () => {
-    return(
-      <div className="recommendation">
-        <div className="recommendationText"> Recommended Allocation: {this.state.riskTolerance} </div>
-        <Doughnut data={conservative} options={chartOptions} height={200} width={200}/>
-      </div>
-    )
-  }
-
-  displayRecommendation = () => {
-    if(this.state.riskTolerance === "Conservative"){
-      return this.displayConservative()
-    } else if(this.state.riskTolerance === "Moderate"){
-      return this.displayModerate()
-    } else if(this.state.riskTolerance === "Aggressive"){
-      return this.displayAggressive()
-    }
-  }
-
-
 
   handleFirstQuestionChange = (e, { value }) => {
     this.setState({ firstQuestion: value })
@@ -142,7 +76,14 @@ class InvestorQuestionaire extends Component {
 
     return (
       <div className="background">
+        {this.state.implement ?
+        < NewAccountForm riskTolerance={this.state.riskTolerance} cancel={this.cancelImplement} />
+        :
         <Grid centered columns={3}>
+          <Grid.Row>
+          <div className="portfolioHeader"> Retirement Portfolio Generator </div>
+          </Grid.Row>
+          <Grid.Row>
           <Grid.Column>
             <Form onSubmit={this.handleSubmit}>
               <Form.Field>
@@ -169,13 +110,16 @@ class InvestorQuestionaire extends Component {
             </Form>
           </Grid.Column>
           <Grid.Column textAlign="center">
+          <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
           {this.state.riskTolerance.length > 0 ?
-           this.displayRecommendation()
+           < RecommendationModal open={this.state.openModal} closeModal={this.handleClose} riskTolerance={this.state.riskTolerance} implement={this.implement}/>
            :
-           <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
+           null
           }
           </Grid.Column>
+          </Grid.Row>
         </Grid>
+        }
       </div>
     )
   }

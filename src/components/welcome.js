@@ -1,35 +1,27 @@
 import React from 'react'
 import { Doughnut } from 'react-chartjs-2'
-import { Table, Statistic, Loader } from 'semantic-ui-react'
-
-const sample =  {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [{
-            label: "My First dataset",
-            backgroundColor: 'rgb(60, 180, 75)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
-        }]
-    }
+import { Table, Statistic, Loader, Grid } from 'semantic-ui-react'
+import Gradient from 'gradient-color'
+import formatCurrency from 'format-currency'
 
     const chartOptions = {
       // Elements options apply to all of the options unless overridden in a dataset
       // In this case, we are setting the border of each bar to be 2px wide and green
       maintainAspectRatio: false,
       title:{
-        display: false,
-        text: "Current Allocation",
+        display: true,
+        text: "Current Portfolio Allocation",
         fontSize: 25,
         position: "top",
         fontColor: "black"
       },
       legend:{
         display: true,
-        position: "bottom",
+        position: "top",
         fullWidth: false,
-        boxWidth: 15
+        boxWidth: 10
       },
-      cutoutPercentage: 0,
+      cutoutPercentage: 35,
     }
 
 class Welcome extends React.Component {
@@ -37,42 +29,39 @@ class Welcome extends React.Component {
 
 
   render(){
+    let options = { format: '%s%v', symbol: '$' }
     return(
-      <div className="welcome2">
-        <div className="welcomeText"> Welcome {this.props.current_user} </div>
+      <div className="welcomebackground">
+        <Grid textAlign="center">
+        <Grid.Row>
+        <Grid.Column width={8}>
+        {this.props.current_user.length > 0 ?
+        <div className="welcomeText3"> Welcome {this.props.current_user} </div>
+        :
+        null
+        }
+        </Grid.Column>
 
-        <div className="dashboard">
-        <Table size="small">
-          <Table.Header >
-            <Table.HeaderCell
-            className="accountHeader"
-            colSpan="2"
-            textAlign="left"
-            > <div className="portfolioHeader">Portfolio Dashboard </div>
-            </Table.HeaderCell>
-            <Table.Row textAlign="center">
-              <Table.HeaderCell width={8}>Current Portfolio Allocation</Table.HeaderCell>
-              <Table.HeaderCell width={8}>Total Portfolio Value</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
+        <Grid.Column width={8}>
+        {Object.keys(this.props.chartData).length > 0 ?
+          <Statistic label="Total Portfolio Value" size="small" value={formatCurrency(this.props.portfolioTotal, options)} />
+          :
+          null
+        }
+        </Grid.Column>
+        </Grid.Row>
 
-          <Table.Body>
-            <Table.Row>
-              {Object.keys(this.props.chartData).length > 0 ?
-                <Table.Cell textAlign="center" width={8}> < Doughnut data={this.props.chartData} options={chartOptions} height={200} width={200}/> </Table.Cell>
-                :
-                <Table.Cell textAlign="center" width={8}> <div className="welcomeLoader"> < Loader size="massive" active inline="centered" /> </div> </Table.Cell>
-              }
-              {Object.keys(this.props.chartData).length > 0 ?
-                <Table.Cell textAlign="center" width={8}> <Statistic size="small" value={`$${parseInt(this.props.portfolioTotal).toLocaleString()}`} /> </Table.Cell>
-                :
-                <Table.Cell textAlign="center" width={8}> <div className="welcomeLoader"> < Loader size="massive" active inline="centered" /> </div> </Table.Cell>
-              }
+        <Grid.Row>
+        <Grid.Column stretched={true}>
+        {Object.keys(this.props.chartData).length > 0 ?
+          < Doughnut data={this.props.chartData} options={chartOptions} height={500} width={500}/>
+          :
+        <div className="welcomeLoader"> < Loader size="massive" active inline="centered" /> </div>
+        }
+        </Grid.Column>
+        </Grid.Row>
+        </Grid>
 
-            </Table.Row>
-          </Table.Body>
-        </Table>
-        </div>
       </div>
     )
   }

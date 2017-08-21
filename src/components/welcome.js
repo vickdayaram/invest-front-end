@@ -34,8 +34,8 @@ class Welcome extends React.Component {
         <Grid textAlign="center">
         <Grid.Row>
         <Grid.Column width={8}>
-        {this.props.current_user.length > 0 ?
-        <div className="welcomeText3"> Welcome {this.props.current_user} </div>
+        {this.props.currentUser.length > 0 ?
+        <div className="welcomeText3"> Welcome {this.props.currentUser} </div>
         :
         null
         }
@@ -43,7 +43,11 @@ class Welcome extends React.Component {
 
         <Grid.Column width={8}>
         {Object.keys(this.props.chartData).length > 0 ?
-          <Statistic label="Total Portfolio Value" size="small" value={formatCurrency(this.props.portfolioTotal, options)} />
+          <div>
+            <Statistic label="Total Portfolio Value" size="small" value={formatCurrency(this.props.portfolioTotal, options)} />
+            <Statistic label="Total Portfolio Contributions" size="small" value={formatCurrency(this.props.totalContributions, options)} />
+            <Statistic label="Gain or Loss" size="small" value={formatCurrency(this.props.gainOrLoss, options)} />
+          </div>
           :
           null
         }

@@ -5,23 +5,27 @@ import PerformanceContainer from './performancecontainer'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { fetchTotalAndAllocation } from '../apiAdapter'
 import { Image } from 'semantic-ui-react'
+import gradientColor from 'gradient-color'
 
 
 class AppContainer extends React.Component {
 
   state = {
-    current_user: "",
+    currentUser: "",
     portfolioTotal: 0,
     currentAllocation: {},
+    totalCcontributions: 0,
     chartData: {}
   }
 
   componentDidMount = () => {
     fetchTotalAndAllocation()
     .then((json) => this.setState({
-      current_user: json["username"],
+      currentUser: json["username"],
       portfolioTotal: json["portfolio_total"],
-      currentAllocation: json["allocation"]
+      currentAllocation: json["allocation"],
+      totalContributions: json["total_contributions"],
+      gainOrLoss: json["portfolio_total"] - json["total_contributions"]
     }))
     .then(() => {
       if(!this.state.portfolioTotal){
@@ -34,12 +38,10 @@ class AppContainer extends React.Component {
 
   generateGradient = (rawData) => {
     let n = rawData.length
+    let colorStops = ['#0071bc', '#662d91', '#e5005d'];
+    let grad = gradientColor(colorStops, n)
     return (
-      [
-        '#313B72',
-        '#3E92CC',
-        '#EBEBEB'
-      ]
+        grad
     )
   }
 
@@ -47,7 +49,7 @@ class AppContainer extends React.Component {
     let rawData = this.state.currentAllocation
     let labels = []
     let data = []
-    let backgroundColor = ['#313B72']
+    let backgroundColor = this.generateGradient(rawData)
     let label = ""
     let value = ""
     for(let i = 0; i < rawData.length; i++){
@@ -83,7 +85,12 @@ class AppContainer extends React.Component {
           </div>
               :
           <div>
-          < Welcome current_user={this.state.current_user} portfolioTotal={this.state.portfolioTotal} chartData={this.state.chartData}/>
+          < Welcome
+          currentUser={this.state.currentUser}
+          portfolioTotal={this.state.portfolioTotal}
+          chartData={this.state.chartData}
+          totalContributions={this.state.totalContributions}
+          gainOrLoss={this.state.gainOrLoss}/>
           </div>
           }
       </div>

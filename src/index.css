@@ -180,5 +180,9 @@ body {
   height: 1100px;
   padding-top: 50px;
   border-radius: 25px;
+}
 
+.welcomePerformance {
+  margin-left: 35px;
+  margin-right: 35px;
 }

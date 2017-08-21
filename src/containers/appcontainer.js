@@ -20,13 +20,20 @@ class AppContainer extends React.Component {
 
   componentDidMount = () => {
     fetchTotalAndAllocation()
-    .then((json) => this.setState({
+    .then((json) => {
+      let color = "red"
+      if(json["portfolio_total"] - json["total_contributions"] > 0){
+        color = "green"
+      }
+      this.setState({
       currentUser: json["username"],
       portfolioTotal: json["portfolio_total"],
       currentAllocation: json["allocation"],
       totalContributions: json["total_contributions"],
-      gainOrLoss: json["portfolio_total"] - json["total_contributions"]
-    }))
+      gainOrLoss: json["portfolio_total"] - json["total_contributions"],
+      color: color
+    })
+    })
     .then(() => {
       if(!this.state.portfolioTotal){
         return
@@ -90,7 +97,9 @@ class AppContainer extends React.Component {
           portfolioTotal={this.state.portfolioTotal}
           chartData={this.state.chartData}
           totalContributions={this.state.totalContributions}
-          gainOrLoss={this.state.gainOrLoss}/>
+          gainOrLoss={this.state.gainOrLoss}
+          color={this.state.color}
+          />
           </div>
           }
       </div>

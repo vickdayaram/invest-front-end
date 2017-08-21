@@ -53,7 +53,7 @@ class Welcome extends React.Component {
         <Grid.Column stretched={true}>
 
         {Object.keys(this.props.chartData).length > 0 ?
-          <div>
+          <div className="welcomePerformance">
 
           <Table size="large" textAlign="center">
           <Table.Header>
@@ -63,7 +63,7 @@ class Welcome extends React.Component {
             className="accountHeader"
             colSpan="4"
             textAlign="left"
-            > Portfolio Performance Details
+            > Performance Details
             </Table.HeaderCell>
             </Table.Row>
 
@@ -77,7 +77,10 @@ class Welcome extends React.Component {
          <Table.Row>
            <Table.Cell> Current Portfolio Value </Table.Cell>
 
-             <Table.Cell><Statistic label="Total Portfolio Value" size="small" value={formatCurrency(this.props.portfolioTotal, options)} /></Table.Cell>
+             <Table.Cell><Statistic
+                          label="Total Portfolio Value"
+                          size="small"
+                          value={formatCurrency(this.props.portfolioTotal, options)}/></Table.Cell>
 
          </Table.Row>
          <Table.Row>
@@ -87,7 +90,11 @@ class Welcome extends React.Component {
          </Table.Row>
          <Table.Row>
             <Table.Cell> Gain or Loss </Table.Cell>
-            <Table.Cell> <Statistic label="Gain or Loss" size="small" value={formatCurrency(this.props.gainOrLoss, options)} /></Table.Cell>
+            <Table.Cell> <Statistic
+                          label="Gain or Loss"
+                          size="small"
+                          value={formatCurrency(this.props.gainOrLoss, options)}
+                          color={this.props.color}/></Table.Cell>
 
          </Table.Row>
 

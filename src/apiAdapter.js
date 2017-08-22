@@ -17,6 +17,13 @@ export const getAccounts = () => {
   }).then(res => res.json()))
 }
 
+export const getAccountPerformance = () => {
+  return (fetch(`${baseUrl}/accountperformance`, {
+    method: 'GET',
+    headers: headers(),
+  }).then(res => res.json()))
+}
+
 export const getTransactions = () => {
   return (fetch(`${baseUrl}/transactions`, {
     method: 'GET',

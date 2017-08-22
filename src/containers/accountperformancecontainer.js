@@ -1,6 +1,6 @@
 import React from 'react'
 import PerformanceDisplay from '../components/performancedisplay'
-import { getAccounts } from '../apiAdapter'
+import { getAccountPerformance } from '../apiAdapter'
 
 class AccountPerformanceContainer extends React.Component {
 
@@ -11,7 +11,7 @@ class AccountPerformanceContainer extends React.Component {
 
 
   componentDidMount = () => {
-    getAccounts()
+    getAccountPerformance()
     .then((jsonObject) => {
       this.setState({
       accounts: jsonObject

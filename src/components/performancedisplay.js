@@ -54,6 +54,7 @@ class PerformanceDisplay extends React.Component {
     for(let i = 0; i < chartData.length; i++){
       currentBalance = (currentBalance + parseFloat(chartData[i]))
     }
+    debugger
     let gainOrLoss = currentBalance - initialInvestment
     let chartDataFormat  =  {
                 labels: chartLabels,

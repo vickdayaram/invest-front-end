@@ -123,7 +123,7 @@ class RecommendationModal extends Component {
           <h2>Investment Details:</h2>
           <h3>Vanguard Total Stock Market ETF </h3>
           <h4>Symbol: VTI </h4>
-          <h4>Expense Ratio: .04% </h4>
+          <h4>Expense Ratio: 0.04% </h4>
           <p>Seeks to track the performance of the CRSP US Total Market Index.</p>
           <p>Large-, mid-, and small-cap equity diversified across growth and value styles.</p>
           <p>Employs a passively managed, index-sampling strategy.</p>
@@ -132,7 +132,7 @@ class RecommendationModal extends Component {
           <br/>
           <h3>Vanguard Total International Stock Market ETF</h3>
           <h4>Symbol: VXUS </h4>
-          <h4>Expense Ratio: .11% </h4>
+          <h4>Expense Ratio: 0.11% </h4>
           <p>Seeks to track the performance of the FTSE Global All Cap ex US Index,</p>
           <p>which measures the investment return of stocks issued by companies</p>
           <p>located outside the United States.</p>
@@ -141,7 +141,7 @@ class RecommendationModal extends Component {
           <br/>
           <h3>Vanguard Total Bond Market ETF </h3>
           <h4>Symbol: BND </h4>
-          <h4>Expense Ratio: .05% </h4>
+          <h4>Expense Ratio: 0.05% </h4>
           <p>Provides broad exposure to U.S. investment grade bonds.</p>
           <p>Goal is to keep pace with U.S. bond market returns.</p>
           <p>Offers relatively high potential for investment income; </p>
@@ -152,7 +152,7 @@ class RecommendationModal extends Component {
           <br/>
           <h3>Vanguard Total International Bond Market ETF </h3>
           <h4>Symbol: BNDX </h4>
-          <h4>Expense Ratio: .12% </h4>
+          <h4>Expense Ratio: 0.12% </h4>
           <p>Attempts to track the performance of the Bloomberg Barclays Global</p>
           <p>Aggregate ex-USD Float Adjusted RIC Capped Index (USD Hedged).</p>
           <p>Employs hedging strategies to protect against uncertainty in exchange rates.</p>

@@ -14,9 +14,17 @@ body {
   padding-left: 50px;
   padding-right: 50px;
   padding-bottom: 50px;
-  border-radius: 25px;
-  border-style: solid;
-  border-color: #F4E409;
+}
+
+.newusertransactiondisplay {
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 25px;
+  background-color: rgb(247,247,247);
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
 }
 
 .accountdisplay {
@@ -30,7 +38,7 @@ body {
 }
 
 .landingHeader {
-  margin-top: 35px;
+  margin-top: 200px;
   font-family: 'Saira Condensed', sans-serif;
   font-size: 60px;
 }
@@ -41,11 +49,12 @@ body {
   margin-top: 30px;
 }
 
-.background {
-  height: 800px;
+.questionairebackground {
+  height: 700px;
   margin-top: 115px;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 200px;
+  margin-right: 200px;
+  background-color: rgb(247,247,247);
 }
 
 .home {
@@ -130,6 +139,8 @@ body {
   margin-top: 50px;
   margin-left: 75px;
   margin-right: 75px;
+  background-color: rgb(247,247,247);
+  height: auto;
 }
 
 .modal {
@@ -177,16 +188,65 @@ body {
   background-color: rgb(247,247,247);
   margin-left: 100px;
   margin-right: 100px;
-  height: 1100px;
+  height: 700px;
   padding-top: 50px;
-  border-radius: 25px;
 }
 
 .welcomePerformance {
   margin-left: 35px;
   margin-right: 35px;
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 20px;
+  padding-top: 120px;
 }
 
 .accountperformance {
   margin-top: 30px;
 }
+
+.welcomeMenu {
+  height: 500px;
+}
+
+.newusermessage {
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 30px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.newusermessagebody {
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 18px;
+}
+
+.newuserlandingheader {
+    margin-top: 5px;
+    font-family: 'Saira Condensed', sans-serif;
+    font-size: 60px;
+}
+
+.newuserlandingimage {
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 30px;
+    background-color: rgb(247,247,247);
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+}
+
+.performanceSearchDisplay {
+  margin-top: 50px;
+  background-color: rgb(247,247,247);
+  height: 500px;
+}
+
+form label{
+  font-weight:bold;
+}
+
+ .signupandlogin {
+   margin-top: 125px;
+ }

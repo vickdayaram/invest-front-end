@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, Label, Menu, Table } from 'semantic-ui-react'
+import { Icon, Label, Menu, Table, Loader } from 'semantic-ui-react'
 import { fetchAlphaVantage } from '../apiAdapter'
 import formatCurrency from 'format-currency'
 
@@ -48,11 +48,15 @@ class Holding extends React.Component {
           <Table.Cell textAlign="center"> {this.props.holding.holding.symbol} </Table.Cell>
           <Table.Cell textAlign="center"> {this.props.holding.holding.name} </Table.Cell>
           {this.props.holding.holding.symbol === "MM" ?
-          <Table.Cell textAlign="center"> {this.props.holding.holding.shares.toLocaleString()} </Table.Cell>
+          <Table.Cell textAlign="center"> {formatCurrency(this.props.holding.holding.shares)} </Table.Cell>
           :
           <Table.Cell textAlign="center"> {parseInt(this.props.holding.holding.shares)} </Table.Cell>
           }
+          {this.state.value.length > 0 ?
           <Table.Cell textAlign="center"> {formatCurrency(this.state.value, options)} </Table.Cell>
+          :
+          <Table.Cell textAlign="center"> < Loader size="mini" active inline="centered" /> </Table.Cell>
+          }
         </Table.Row>
 
     )

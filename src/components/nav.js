@@ -14,7 +14,7 @@ class Nav extends React.Component {
     const { activeItem } = this.state
 
     return (
-      <Menu className="ui inverted menu nav" color="blue" fixed="top">
+      <Menu className="ui inverted menu nav" fixed="top">
       <Menu.Item
       as={Link}
       to='/home'

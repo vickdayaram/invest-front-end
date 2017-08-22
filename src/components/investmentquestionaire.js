@@ -75,10 +75,11 @@ class InvestorQuestionaire extends Component {
     const thirdQuestion = this.state.thirdQuestion
 
     return (
-      <div className="background">
+      <div>
         {this.state.implement ?
         < NewAccountForm riskTolerance={this.state.riskTolerance} cancel={this.cancelImplement} />
         :
+        <div className="questionairebackground">
         <Grid centered columns={3}>
           <Grid.Row>
           <div className="portfolioHeader"> Retirement Portfolio Generator </div>
@@ -119,6 +120,7 @@ class InvestorQuestionaire extends Component {
           </Grid.Column>
           </Grid.Row>
         </Grid>
+        </div>
         }
       </div>
     )

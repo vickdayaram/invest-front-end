@@ -106,7 +106,9 @@ class Transactions extends React.Component {
         </Table>
         </div>
         :
-        null
+        <div className="newusertransactiondisplay">
+          <Image className="newusermessage" src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
+        </div>
         }
       </div>
       </div>

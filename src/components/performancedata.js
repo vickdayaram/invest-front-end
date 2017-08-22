@@ -142,55 +142,45 @@ class PerformanceData extends Component {
     const { value } = this.state
     return (
       <div>
-
       <div className="performanceSearch">
       <Grid centered columns={3}>
+        <Grid.Row>
+          <Grid.Column width={2}>
+          </Grid.Column>
+          <Grid.Column width={12}>
+          <Form >
+            <Form.Select options={options} placeholder='Performance Range' onChange={this.handlePerformanceRange} />
+          </Form>
+          </Grid.Column>
+          <Grid.Column width={2}>
+          </Grid.Column>
+        </Grid.Row>
 
-
-      <Grid.Row>
-        <Grid.Column width={2}>
-        </Grid.Column>
-        <Grid.Column width={12}>
-        <Form >
-          <Form.Select options={options} placeholder='Performance Range' onChange={this.handlePerformanceRange} />
-        </Form>
-        </Grid.Column>
-        <Grid.Column width={2}>
-        </Grid.Column>
-      </Grid.Row>
-
-      <Grid.Row>
-      <Grid.Column width={1} textAlign="left">
-
-      </Grid.Column>
-
-      <Grid.Column width={14} textAlign="center">
-      {this.state.range.length > 0 ?
-      <div className="performance"> Top Sector: {this.state.topSector + " "} <Statistic size="small"color="green" value={this.state.topSectorPercentGain + "%"} /> </div> : <div className="performance"> </div>}
-      </Grid.Column>
-
-      <Grid.Column width={1} textAlign="center">
-
-      </Grid.Column>
-     </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={14} textAlign="center">
+          {this.state.range.length > 0 ?
+          <div className="performance"> Top Sector: {this.state.topSector + " "} <Statistic size="small"color="green" value={this.state.topSectorPercentGain + "%"} /> </div> : null}
+          </Grid.Column>
+        </Grid.Row>
       </Grid>
       <div>
       {this.state.range.length > 0 ?
-        <div className="center">
+        <div className="center performanceSearchDisplay performanceContainer">
         < HorizontalBar data={this.state.chartData} width={700}
           height={500}
           options={chartOptions}
           />
         </div>
         :
-        <div className="loaderDisplay">
-          <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
+        <div className="center performanceSearchDisplay performanceContainer">
+          <div className="loaderDisplay">
+            <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
+          </div>
         </div>
       }
       </div>
-      </div>
-      </div>
-
+    </div>
+  </div>
     )
   }
 }

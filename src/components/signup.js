@@ -38,7 +38,7 @@ class SignUpForm extends Component {
 
   render () {
     return (
-      <div className="background">
+      <div className="signupandlogin">
         <Grid centered columns={3}>
           <Grid.Row>
           <Grid.Column>

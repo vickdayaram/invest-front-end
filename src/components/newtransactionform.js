@@ -6,6 +6,7 @@ import { sendTransaction } from '../apiAdapter'
 import { fetchAlphaVantage } from '../apiAdapter'
 import TransactionSearch from './transactionsearch'
 import formatCurrency from 'format-currency'
+import NumberFormat from 'react-number-format'
 
 const options = { format: '%s%v', symbol: '$' }
 
@@ -382,7 +383,7 @@ class NewTransactionForm extends Component {
             :
             <Form.Select label='Select Investment' options={investmentOptions} placeholder='Select Investment' onChange={this.handleCurrentInvestmentSelect} />
              }
-            <Form.Input label='Shares'onChange={this.handleShares}  />
+            <Form.Input label='Shares' onChange={this.handleShares} />
             <Form.Button primary={true} fluid={true} color="green"> Estimate Transaction Total </Form.Button>
           </Form>
         </Grid.Column>

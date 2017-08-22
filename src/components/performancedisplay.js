@@ -54,12 +54,17 @@ class PerformanceDisplay extends React.Component {
     for(let i = 0; i < chartData.length; i++){
       currentBalance = (currentBalance + parseFloat(chartData[i]))
     }
-    debugger
     let gainOrLoss = currentBalance - initialInvestment
+    let color = ""
+    if(gainOrLoss > 0){
+      color = "green"
+    } else {
+      color = "red"
+    } 
     let chartDataFormat  =  {
                 labels: chartLabels,
                 datasets: [{
-                backgroundColor: ['#0071bc', '#662d91', '#e5005d'],
+                backgroundColor: ['#0A2463', '#009DDC', '#F5E2C8'],
                 borderColor: '#000',
                 data: chartData,
                 borderWidth: 1
@@ -69,7 +74,8 @@ class PerformanceDisplay extends React.Component {
       initialInvestment: initialInvestment,
       chartData: chartDataFormat,
       currentBalance: currentBalance,
-      gainOrLoss: gainOrLoss
+      gainOrLoss: gainOrLoss,
+      color: color
     })
 
   }
@@ -119,6 +125,7 @@ class PerformanceDisplay extends React.Component {
             <Table.Cell textAlign="center"> <Statistic
                           label="Gain Or Loss"
                           size="tiny"
+                          color={this.state.color}
                           value={formatCurrency(this.state.gainOrLoss, options)}
                           /> </Table.Cell>
           </Table.Row>

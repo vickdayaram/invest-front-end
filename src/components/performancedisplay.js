@@ -60,11 +60,11 @@ class PerformanceDisplay extends React.Component {
       color = "green"
     } else {
       color = "red"
-    }
+    } 
     let chartDataFormat  =  {
                 labels: chartLabels,
                 datasets: [{
-                backgroundColor: ['#0071bc', '#662d91', '#e5005d'],
+                backgroundColor: ['#0A2463', '#009DDC', '#F5E2C8'],
                 borderColor: '#000',
                 data: chartData,
                 borderWidth: 1

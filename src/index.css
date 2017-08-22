@@ -242,3 +242,11 @@ body {
   background-color: rgb(247,247,247);
   height: 500px;
 }
+
+form label{
+  font-weight:bold;
+}
+
+ .signupandlogin {
+   margin-top: 125px;
+ }

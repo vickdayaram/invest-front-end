@@ -5,7 +5,7 @@ import PerformanceContainer from './performancecontainer'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { fetchTotalAndAllocation } from '../apiAdapter'
 import { Image, Container } from 'semantic-ui-react'
-import gradientColor from 'gradient-color'
+
 
 
 class AppContainer extends React.Component {
@@ -45,8 +45,8 @@ class AppContainer extends React.Component {
 
   generateGradient = (rawData) => {
     let n = rawData.length
-    let colorStops = ['#0071bc', '#662d91', '#e5005d'];
-    let grad = gradientColor(colorStops, n)
+    let colorStops = ['#345995', '#0CF574'];
+    let grad = []
     return (
         grad
     )
@@ -56,7 +56,7 @@ class AppContainer extends React.Component {
     let rawData = this.state.currentAllocation
     let labels = []
     let data = []
-    let backgroundColor = this.generateGradient(rawData)
+    let backgroundColor = ['#0A2463', '#009DDC', '#F5E2C8']
     let label = ""
     let value = ""
     for(let i = 0; i < rawData.length; i++){

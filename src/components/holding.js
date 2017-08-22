@@ -48,7 +48,7 @@ class Holding extends React.Component {
           <Table.Cell textAlign="center"> {this.props.holding.holding.symbol} </Table.Cell>
           <Table.Cell textAlign="center"> {this.props.holding.holding.name} </Table.Cell>
           {this.props.holding.holding.symbol === "MM" ?
-          <Table.Cell textAlign="center"> {this.props.holding.holding.shares.toLocaleString()} </Table.Cell>
+          <Table.Cell textAlign="center"> {formatCurrency(this.props.holding.holding.shares)} </Table.Cell>
           :
           <Table.Cell textAlign="center"> {parseInt(this.props.holding.holding.shares)} </Table.Cell>
           }

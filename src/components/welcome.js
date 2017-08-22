@@ -32,11 +32,6 @@ class Welcome extends React.Component {
     return (
       <div className="welcomePerformance">
         <Table size="large" textAlign="center">
-          <Table.Header>
-            <Table.Row>
-
-             </Table.Row>
-          </Table.Header>
 
          <Table.Body>
            <Table.Row>

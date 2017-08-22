@@ -85,12 +85,12 @@ class AppContainer extends React.Component {
     return (
       <div className="home">
           {isNaN(this.state.portfolioTotal) ?
-          <div>
+          <div className="accountscontainer">
           <Container text>
             <div className="newuserlandingheader center"> Thanks for Signing Up!</div>
             <div className="newusermessagebody"> Note: Currently Investment Tracker does not account for market hours. Which means you can trade anytime. </div>
             <div className="newusermessagebody"> All trades that are executed while the market is closed will receive the last available closing price for the security. Check out the Nav links above to get started.</div>
-            <Image className="accountscontainer" src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
+            <Image className="newuserlandingimage" src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
           </Container>
           </div>
               :

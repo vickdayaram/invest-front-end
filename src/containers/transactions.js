@@ -106,11 +106,7 @@ class Transactions extends React.Component {
         </Table>
         </div>
         :
-        <div>
-          <div className="newusermessage">
-          <p>You have not opened an account yet! </p>
-          <p>You can open one by navigating with the links above! </p>
-          </div>
+        <div className="newusertransactiondisplay">
           <Image className="newusermessage" src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
         </div>
         }

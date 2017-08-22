@@ -120,7 +120,7 @@ class StockPerformanceData extends Component {
       </Grid>
       </div>
 
-        <div className="center performanceSearch performanceContainer">
+        <div className="center performanceSearchDisplay performanceContainer">
         {this.state.symbol ?
           < Line
           data={this.state.chartData}

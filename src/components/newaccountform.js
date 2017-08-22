@@ -67,7 +67,7 @@ class NewAccountForm extends Component {
     let deposit = this.state.deposit
     let type = this.state.type
     let bankname = this.state.bankname
-    if(!(parseInt(deposit) > 0)){
+    if(!(parseInt(deposit) >= 10000)){
       return true
     } else if(type.length === 0){
       return true
@@ -108,7 +108,7 @@ class NewAccountForm extends Component {
 
   renderErrors = () => {
     return (
-          <Message negative><Message.Header><div className="center"> {"Please Make Sure to fill out all fields. Also make sure to enter a positive number for your deposit"} </div></Message.Header></Message>
+          <Message negative><Message.Header><div className="center"> {"Please Make Sure to fill out all fields. Also make sure to enter a minimum deposit of $10,000"} </div></Message.Header></Message>
     )
   }
 

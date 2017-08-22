@@ -36,14 +36,6 @@ class Welcome extends React.Component {
         <Table size="large" textAlign="center">
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell
-              className="accountHeader"
-              colSpan="4"
-              textAlign="left"
-              > Performance Details
-              </Table.HeaderCell>
-            </Table.Row>
-            <Table.Row>
                <Table.HeaderCell>Details</Table.HeaderCell>
                <Table.HeaderCell>Values</Table.HeaderCell>
              </Table.Row>

@@ -16,7 +16,7 @@ class AccountPerformanceContainer extends React.Component {
       this.setState({
       accounts: jsonObject
     })
-      console.log(this.state.accounts)})
+   })
   }
 
   render(){

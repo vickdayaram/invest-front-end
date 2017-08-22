@@ -3,25 +3,23 @@ import { Doughnut } from 'react-chartjs-2'
 import { Table, Statistic, Loader, Grid, Menu, Segment, Image } from 'semantic-ui-react'
 import formatCurrency from 'format-currency'
 
-    const chartOptions = {
-      // Elements options apply to all of the options unless overridden in a dataset
-      // In this case, we are setting the border of each bar to be 2px wide and green
-      maintainAspectRatio: false,
-      title:{
-        display: true,
-        text: "Portfolio Allocation",
-        fontSize: 25,
-        position: "top",
-        fontColor: "black"
-      },
-      legend:{
-        display: true,
-        position: "top",
-        fullWidth: false,
-        boxWidth: 10
-      },
-      cutoutPercentage: 35,
-    }
+const chartOptions = {
+  maintainAspectRatio: false,
+  title:{
+    display: false,
+    text: "Portfolio Allocation",
+    fontSize: 25,
+    position: "top",
+    fontColor: "black"
+  },
+  legend:{
+    display: true,
+    position: "top",
+    fullWidth: false,
+    boxWidth: 10
+  },
+  cutoutPercentage: 35,
+}
 
 class Welcome extends React.Component {
 
@@ -36,23 +34,22 @@ class Welcome extends React.Component {
         <Table size="large" textAlign="center">
           <Table.Header>
             <Table.Row>
-               <Table.HeaderCell>Details</Table.HeaderCell>
-               <Table.HeaderCell>Values</Table.HeaderCell>
+
              </Table.Row>
           </Table.Header>
 
          <Table.Body>
            <Table.Row>
-             <Table.Cell> Portfolio Value </Table.Cell>
-             <Table.Cell><Statistic label="Total Portfolio Value" size="small" value={formatCurrency(this.props.portfolioTotal, options)}/></Table.Cell>
+             <Table.Cell textAlign="left"> Portfolio Value </Table.Cell>
+             <Table.Cell textAlign="right"><Statistic size="tiny" value={formatCurrency(this.props.portfolioTotal, options)}/></Table.Cell>
            </Table.Row>
            <Table.Row>
-              <Table.Cell> Portfolio Contributions </Table.Cell>
-              <Table.Cell> <Statistic label="Total Portfolio Contributions" size="small" value={formatCurrency(this.props.totalContributions, options)} /></Table.Cell>
+              <Table.Cell textAlign="left"> Portfolio Contributions </Table.Cell>
+              <Table.Cell textAlign="right"> <Statistic size="tiny" value={formatCurrency(this.props.totalContributions, options)} /></Table.Cell>
            </Table.Row>
            <Table.Row>
-              <Table.Cell> Gain or Loss </Table.Cell>
-              <Table.Cell> <Statistic label="Gain or Loss" size="small" value={formatCurrency(this.props.gainOrLoss, options)} color={this.props.color}/></Table.Cell>
+              <Table.Cell textAlign="left"> Gain or Loss </Table.Cell>
+              <Table.Cell textAlign="right"> <Statistic size="tiny" value={formatCurrency(this.props.gainOrLoss, options)} color={this.props.color}/></Table.Cell>
            </Table.Row>
          </Table.Body>
          </Table>

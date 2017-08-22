@@ -1,6 +1,7 @@
 import React from 'react'
 import PerformanceDisplay from '../components/performancedisplay'
 import { getAccountPerformance } from '../apiAdapter'
+import { Loader } from 'semantic-ui-react'
 
 class AccountPerformanceContainer extends React.Component {
 
@@ -26,7 +27,7 @@ class AccountPerformanceContainer extends React.Component {
         {this.state.accounts.accounts ?
         this.state.accounts.accounts.map((account) =>{
           return < PerformanceDisplay account={account} />})
-        : <div> Loading </div>}
+        : <div className="welcomeLoader"> < Loader size="massive" active inline="centered" /> </div>}
       </div>
     )
   }

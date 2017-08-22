@@ -177,16 +177,23 @@ body {
   background-color: rgb(247,247,247);
   margin-left: 100px;
   margin-right: 100px;
-  height: 1100px;
+  height: 700px;
   padding-top: 50px;
   border-radius: 25px;
 }
 
 .welcomePerformance {
+  margin-top: 35px;
   margin-left: 35px;
   margin-right: 35px;
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 20px;
 }
 
 .accountperformance {
   margin-top: 30px;
+}
+
+.welcomeMenu {
+  height: 500px;
 }

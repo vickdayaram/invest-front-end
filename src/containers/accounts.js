@@ -1,6 +1,7 @@
 import React from 'react'
 import AccountBody from '../components/accountbody'
 import { getAccounts } from '../apiAdapter'
+import { Loader } from 'semantic-ui-react'
 
 class Accounts extends React.Component {
 
@@ -26,7 +27,7 @@ class Accounts extends React.Component {
         {this.state.accounts.accounts ?
         this.state.accounts.accounts.map((account) =>{
           return < AccountBody account={account} />})
-        : <div> Loading </div>}
+        : <div className="welcomeLoader"> < Loader size="massive" active inline="centered" /> </div>}
       </div>
     )
   }

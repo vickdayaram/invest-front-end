@@ -34,10 +34,11 @@ class Nav extends React.Component {
       : null
      }
       {this.props.isLoggedIn ?
-        <Dropdown item text='Market Performance'>
+        <Dropdown item text='Performance'>
         <Dropdown.Menu>
           <Dropdown.Item as={Link} to="/stockperformance">US Performance by Stock</Dropdown.Item>
           <Dropdown.Item as={Link} to="/performance">US Performance by Sector</Dropdown.Item>
+          <Dropdown.Item as={Link} to="/accountperformance">Account Performance</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       : null

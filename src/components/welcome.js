@@ -75,7 +75,7 @@ class Welcome extends React.Component {
 
          <Table.Body>
          <Table.Row>
-           <Table.Cell> Current Portfolio Value </Table.Cell>
+           <Table.Cell> Portfolio Value </Table.Cell>
 
              <Table.Cell><Statistic
                           label="Total Portfolio Value"
@@ -84,7 +84,7 @@ class Welcome extends React.Component {
 
          </Table.Row>
          <Table.Row>
-            <Table.Cell> Total Portfolio Contributions </Table.Cell>
+            <Table.Cell> Portfolio Contributions </Table.Cell>
             <Table.Cell> <Statistic label="Total Portfolio Contributions" size="small" value={formatCurrency(this.props.totalContributions, options)} /></Table.Cell>
 
          </Table.Row>

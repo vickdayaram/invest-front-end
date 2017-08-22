@@ -4,7 +4,7 @@ import Accounts from './accounts'
 import PerformanceContainer from './performancecontainer'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { fetchTotalAndAllocation } from '../apiAdapter'
-import { Image } from 'semantic-ui-react'
+import { Image, Container } from 'semantic-ui-react'
 import gradientColor from 'gradient-color'
 
 
@@ -85,10 +85,13 @@ class AppContainer extends React.Component {
     return (
       <div className="home">
           {isNaN(this.state.portfolioTotal) ?
-          <div className="landingHeader center">
-            <div> Thanks for signing up! </div>
-            <div className="landingBody"> Check out the Nav links above to get Started </div>
+          <div>
+          <Container text>
+            <div className="newuserlandingheader center"> Thanks for Signing Up!</div>
+            <div className="newusermessagebody"> Note: Currently Investment Tracker does not account for market hours. Which means you can trade anytime. </div>
+            <div className="newusermessagebody"> All trades that are executed while the market is closed will receive the last available closing price for the security. Check out the Nav links above to get started.</div>
             <Image className="accountscontainer" src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>
+          </Container>
           </div>
               :
           <div>

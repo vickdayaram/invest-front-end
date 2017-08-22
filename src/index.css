@@ -27,7 +27,7 @@ body {
 }
 
 .landingHeader {
-  margin-top: 35px;
+  margin-top: 200px;
   font-family: 'Saira Condensed', sans-serif;
   font-size: 60px;
 }
@@ -192,4 +192,22 @@ body {
 
 .welcomeMenu {
   height: 500px;
+}
+
+.newusermessage {
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 30px;
+  margin-top: 75px;
+  text-align: center;
+}
+
+.newusermessagebody {
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 18px;
+}
+
+.newuserlandingheader {
+    margin-top: 100px;
+    font-family: 'Saira Condensed', sans-serif;
+    font-size: 60px;
 }

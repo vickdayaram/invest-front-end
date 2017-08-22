@@ -9,7 +9,7 @@ import formatCurrency from 'format-currency'
       maintainAspectRatio: false,
       title:{
         display: true,
-        text: "Current Portfolio Allocation",
+        text: "Portfolio Allocation",
         fontSize: 25,
         position: "top",
         fontColor: "black"
@@ -34,8 +34,8 @@ class Welcome extends React.Component {
         <Grid textAlign="center">
         <Grid.Row>
         <Grid.Column width={8}>
-        {this.props.current_user.length > 0 ?
-        <div className="welcomeText3"> Welcome {this.props.current_user} </div>
+        {this.props.currentUser.length > 0 ?
+        <div className="welcomeText3"> Welcome {this.props.currentUser} </div>
         :
         null
         }
@@ -47,6 +47,64 @@ class Welcome extends React.Component {
           :
           null
         }
+        </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+        <Grid.Column stretched={true}>
+
+        {Object.keys(this.props.chartData).length > 0 ?
+          <div className="welcomePerformance">
+
+          <Table size="large" textAlign="center">
+          <Table.Header>
+
+            <Table.Row>
+            <Table.HeaderCell
+            className="accountHeader"
+            colSpan="4"
+            textAlign="left"
+            > Performance Details
+            </Table.HeaderCell>
+            </Table.Row>
+
+             <Table.Row>
+               <Table.HeaderCell>Details</Table.HeaderCell>
+               <Table.HeaderCell>Values</Table.HeaderCell>
+             </Table.Row>
+          </Table.Header>
+
+         <Table.Body>
+         <Table.Row>
+           <Table.Cell> Portfolio Value </Table.Cell>
+
+             <Table.Cell><Statistic
+                          label="Total Portfolio Value"
+                          size="small"
+                          value={formatCurrency(this.props.portfolioTotal, options)}/></Table.Cell>
+
+         </Table.Row>
+         <Table.Row>
+            <Table.Cell> Portfolio Contributions </Table.Cell>
+            <Table.Cell> <Statistic label="Total Portfolio Contributions" size="small" value={formatCurrency(this.props.totalContributions, options)} /></Table.Cell>
+
+         </Table.Row>
+         <Table.Row>
+            <Table.Cell> Gain or Loss </Table.Cell>
+            <Table.Cell> <Statistic
+                          label="Gain or Loss"
+                          size="small"
+                          value={formatCurrency(this.props.gainOrLoss, options)}
+                          color={this.props.color}/></Table.Cell>
+
+         </Table.Row>
+
+         </Table.Body>
+         </Table>
+          </div>
+          :
+          null
+        }
+
         </Grid.Column>
         </Grid.Row>
 

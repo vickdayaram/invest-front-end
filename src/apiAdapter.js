@@ -1,6 +1,6 @@
 const localhost = 'http://localhost:3000/api/v1'
 const herokuUrl = 'https://hidden-sea-22172.herokuapp.com/api/v1'
-let baseUrl = herokuUrl
+let baseUrl = localhost
 
 const headers = () => {
   return {
@@ -12,6 +12,13 @@ const headers = () => {
 
 export const getAccounts = () => {
   return (fetch(`${baseUrl}/getaccounts`, {
+    method: 'GET',
+    headers: headers(),
+  }).then(res => res.json()))
+}
+
+export const getAccountPerformance = () => {
+  return (fetch(`${baseUrl}/accountperformance`, {
     method: 'GET',
     headers: headers(),
   }).then(res => res.json()))

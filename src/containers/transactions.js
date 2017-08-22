@@ -81,7 +81,7 @@ class Transactions extends React.Component {
         <Form>
         <Form.Input placeholder="Search Transactions" onChange={this.handleTransactionSearch}/>
         </Form>
-        <Table celled>
+        <Table celled selectable>
         <Table.Header >
           <Table.Row>
           <Table.HeaderCell

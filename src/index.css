@@ -175,11 +175,18 @@ body {
 
 .welcomebackground {
   background-color: rgb(247,247,247);
-  margin-left: 200px;
-  margin-right: 200px;
-  height: 800px;
+  margin-left: 100px;
+  margin-right: 100px;
+  height: 1100px;
   padding-top: 50px;
   border-radius: 25px;
-  border-style: solid;
-  border-color: #F4E409;
+}
+
+.welcomePerformance {
+  margin-left: 35px;
+  margin-right: 35px;
+}
+
+.accountperformance {
+  margin-top: 30px;
 }

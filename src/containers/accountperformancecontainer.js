@@ -1,8 +1,8 @@
 import React from 'react'
-import AccountBody from '../components/accountbody'
-import { getAccounts } from '../apiAdapter'
+import PerformanceDisplay from '../components/performancedisplay'
+import { getAccountPerformance } from '../apiAdapter'
 
-class Accounts extends React.Component {
+class AccountPerformanceContainer extends React.Component {
 
 
   state = {
@@ -11,25 +11,25 @@ class Accounts extends React.Component {
 
 
   componentDidMount = () => {
-    getAccounts()
+    getAccountPerformance()
     .then((jsonObject) => {
       this.setState({
       accounts: jsonObject
     })
-      console.log(this.state.accounts)})
+   })
   }
 
   render(){
     return (
       <div className="accountscontainer">
-        <div className="balancesText"> Balances and Holdings </div>
+        <div className="balancesText"> Account Performance </div>
         {this.state.accounts.accounts ?
         this.state.accounts.accounts.map((account) =>{
-          return < AccountBody account={account} />})
+          return < PerformanceDisplay account={account} />})
         : <div> Loading </div>}
       </div>
     )
   }
 }
 
-export default Accounts
+export default AccountPerformanceContainer

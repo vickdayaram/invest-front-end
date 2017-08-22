@@ -14,9 +14,6 @@ body {
   padding-left: 50px;
   padding-right: 50px;
   padding-bottom: 50px;
-  border-radius: 25px;
-  border-style: solid;
-  border-color: #F4E409;
 }
 
 .accountdisplay {
@@ -179,7 +176,6 @@ body {
   margin-right: 100px;
   height: 700px;
   padding-top: 50px;
-  border-radius: 25px;
 }
 
 .welcomePerformance {

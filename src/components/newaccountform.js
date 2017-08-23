@@ -59,13 +59,15 @@ class NewAccountForm extends Component {
         errors: true
       })
       return
-    } else {
-      this.setState({
-        submitted: true
-      })
+    }
+    if(this.state.submitted){
+      return
     }
     sendNewAccount(this.state)
     .then(() => this.displayModal())
+    this.setState({
+      submitted: true
+    })
   }
 
   checkForErrors = () => {

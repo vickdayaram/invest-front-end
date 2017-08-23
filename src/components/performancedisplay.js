@@ -92,7 +92,6 @@ class PerformanceDisplay extends React.Component {
   }
 
   render(){
-    let options = { format: '%s%v', symbol: '$' }
     return(
         <div className="accountperformance">
           <Table celled>

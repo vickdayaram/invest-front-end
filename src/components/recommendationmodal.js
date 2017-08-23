@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
+import { Button, Header, Icon, Image, Modal, Container } from 'semantic-ui-react'
 import { Doughnut } from 'react-chartjs-2'
 
 
@@ -50,7 +50,20 @@ const chartOptions = {
       cutoutPercentage: 0,
       label: {
         display: true
-      }
+      },
+      tooltips: {
+                  enabled: true,
+                  legend: false,
+                  backgroundColor: 'rgba(0,0,0,0.8)',
+                  bodyFontSize: 16,
+                  callbacks: {
+                    label: function(tooltipItem, data) {
+                       let label = data.labels[tooltipItem.index]
+                       let value = data.datasets[0].data[tooltipItem.index]
+                       return label + " " + value + "%"
+                    }
+                  }
+                }
     }
 
 const displayAggressive = () => {
@@ -110,7 +123,7 @@ class RecommendationModal extends Component {
   render(){
   return (
   <Modal open={this.props.open}>
-    <Modal.Header>We Recommend a {this.props.riskTolerance} portfolio</Modal.Header>
+    <Modal.Header>We Recommend a {this.props.riskTolerance} portfolio. Note: Managed portfolios do not have trading enabled. </Modal.Header>
     <Modal.Content image scrolling>
       {this.handleDisplay()}
 
@@ -167,8 +180,8 @@ class RecommendationModal extends Component {
           <p>This recommendation do not substitute an over all financial planning assesment.</p>
           <p>If are uncertain about any of this please seek the help of a financial advisor.</p>
           <h3>Important Notice</h3>
-          <h4>You will not have trading access to this account!! it is intended to </h4>
-          <h4>grow indefinitly and show you how an index based approach can work. </h4>
+          <h3>You will not have trading access to this account!! it is intended to </h3>
+          <h3>grow indefinitly and show you how an index based approach can work. </h3>
           <h3>All investing is subject to risk, including the possible </h3>
           <h3>loss of the money you invest.</h3>
           <h3>Diversification does not ensure a profit or protect against a loss.</h3>

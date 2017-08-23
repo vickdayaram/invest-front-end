@@ -32,7 +32,8 @@ class NewTransactionForm extends Component {
     investmentOptions: [],
     openModal: false,
     errors: false,
-    name: ""
+    name: "",
+    submitted: false
   }
 
 
@@ -223,8 +224,13 @@ class NewTransactionForm extends Component {
       name: this.state.investmentName,
       shares: this.state.shares
     }
-    sendTransaction(transactionRequest)
-    .then(() => this.displayModal())
+    if(!this.state.submitted){
+      sendTransaction(transactionRequest)
+      .then(() => this.displayModal())
+    }
+    this.setState({
+      submitted: true
+    })
   }
 
   redirectToHome = () => {

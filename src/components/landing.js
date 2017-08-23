@@ -17,7 +17,7 @@ class Landing extends React.Component {
           <Grid.Row textAlign="center">
             <Grid.Column >
             <div className="landingHeader"> Investment Tracker </div>
-            <div className="landingBody"> Track your investments, and view market data </div>
+            <div className="landingBody"> Track your investments, and view market data. </div>
             </Grid.Column>
           </Grid.Row>
 
@@ -37,6 +37,11 @@ class Landing extends React.Component {
                  </Button.Group>
                 </div>
               </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column textAlign="center" >
+
+            </Grid.Column>
           </Grid.Row>
       </Grid>
     </div>

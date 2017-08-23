@@ -17,7 +17,8 @@ class NewAccountForm extends Component {
     status: false,
     openModal: false,
     errors: false,
-    riskTolerance: ""
+    riskTolerance: "",
+    submitted: false
   }
 
   componentDidMount = () => {
@@ -59,8 +60,14 @@ class NewAccountForm extends Component {
       })
       return
     }
+    if(this.state.submitted){
+      return
+    }
     sendNewAccount(this.state)
     .then(() => this.displayModal())
+    this.setState({
+      submitted: true
+    })
   }
 
   checkForErrors = () => {
@@ -112,6 +119,12 @@ class NewAccountForm extends Component {
     )
   }
 
+  renderProcessingMessage = () => {
+    return (
+          <Message positive><Message.Header><div className="center"> {"Processing Trades, this may take a few seconds..."} </div></Message.Header></Message>
+    )
+  }
+
   render() {
     const { value } = this.state
     return (
@@ -136,10 +149,16 @@ class NewAccountForm extends Component {
         </Grid.Column>
         </Grid.Row>
         <Grid.Row>
+          <Grid.Column stretched={true}>
           {this.state.errors ?
           this.renderErrors()
           :
           null}
+          {this.state.submitted && this.state.riskTolerance.length > 0 ?
+          this.renderProcessingMessage()
+          :
+          null}
+          </Grid.Column>
         </Grid.Row>
       </Grid>
       {this.state.status ? < Redirect to="/balancesandholdings" /> : null}

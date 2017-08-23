@@ -3,24 +3,14 @@ import { Icon, Label, Menu, Table, Statistic } from 'semantic-ui-react'
 import { fetchAlphaVantage } from '../apiAdapter'
 import formatCurrency from 'format-currency'
 import { Doughnut } from 'react-chartjs-2'
+import { colors } from '../Colors'
 
-
-const sample =  {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [{
-            label: "My First dataset",
-            backgroundColor: 'rgb(60, 180, 75)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
-        }]
-    }
+const options = { format: '%s%v', symbol: '$' }
 
 const chartOptions = {
-  // Elements options apply to all of the options unless overridden in a dataset
-  // In this case, we are setting the border of each bar to be 2px wide and green
   maintainAspectRatio: false,
   title:{
-    display: true,
+    display: false,
     text: "Portfolio Allocation",
     fontSize: 25,
     position: "top",
@@ -33,7 +23,21 @@ const chartOptions = {
     boxWidth: 10
   },
   cutoutPercentage: 35,
+  tooltips: {
+              enabled: true,
+              legend: false,
+              backgroundColor: 'rgba(0,0,0,0.8)',
+              bodyFontSize: 16,
+              callbacks: {
+                label: function(tooltipItem, data) {
+                   let label = data.labels[tooltipItem.index]
+                   let value = data.datasets[0].data[tooltipItem.index]
+                   return label + " " + formatCurrency(value, options)
+                }
+              }
+            }
 }
+
 
 class PerformanceDisplay extends React.Component {
 
@@ -56,15 +60,15 @@ class PerformanceDisplay extends React.Component {
     }
     let gainOrLoss = currentBalance - initialInvestment
     let color = ""
-    if(gainOrLoss > 0){
+    if(gainOrLoss >= 0){
       color = "green"
     } else {
       color = "red"
-    } 
+    }
     let chartDataFormat  =  {
                 labels: chartLabels,
                 datasets: [{
-                backgroundColor: ['#0A2463', '#009DDC', '#F5E2C8'],
+                backgroundColor: colors,
                 borderColor: '#000',
                 data: chartData,
                 borderWidth: 1
@@ -88,7 +92,6 @@ class PerformanceDisplay extends React.Component {
   }
 
   render(){
-    let options = { format: '%s%v', symbol: '$' }
     return(
         <div className="accountperformance">
           <Table celled>
@@ -113,17 +116,14 @@ class PerformanceDisplay extends React.Component {
           <Table.Row>
             <Table.Cell textAlign="center"> < Doughnut data={this.state.chartData} options={chartOptions} height={200} width={200}/></Table.Cell>
             <Table.Cell textAlign="center"> <Statistic
-                          label="Initial Investment"
                           size="tiny"
                           value={formatCurrency(this.state.initialInvestment, options)}
                           /> </Table.Cell>
             <Table.Cell textAlign="center"> <Statistic
-                          label="Current Balance"
                           size="tiny"
                           value={formatCurrency(this.state.currentBalance, options)}
                           /> </Table.Cell>
             <Table.Cell textAlign="center"> <Statistic
-                          label="Gain Or Loss"
                           size="tiny"
                           color={this.state.color}
                           value={formatCurrency(this.state.gainOrLoss, options)}

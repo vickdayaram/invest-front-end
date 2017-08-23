@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
+import { Button, Header, Icon, Image, Modal, Container } from 'semantic-ui-react'
 import { Doughnut } from 'react-chartjs-2'
 
 
@@ -110,7 +110,7 @@ class RecommendationModal extends Component {
   render(){
   return (
   <Modal open={this.props.open}>
-    <Modal.Header>We Recommend a {this.props.riskTolerance} portfolio</Modal.Header>
+    <Modal.Header>We Recommend a {this.props.riskTolerance} portfolio. Note: Managed portfolios do not have trading enabled. </Modal.Header>
     <Modal.Content image scrolling>
       {this.handleDisplay()}
 

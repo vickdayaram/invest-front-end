@@ -3,6 +3,8 @@ import { Doughnut } from 'react-chartjs-2'
 import { Table, Statistic, Loader, Grid, Menu, Segment, Image } from 'semantic-ui-react'
 import formatCurrency from 'format-currency'
 
+const options = { format: '%s%v', symbol: '$' }
+
 const chartOptions = {
   maintainAspectRatio: false,
   title:{
@@ -19,6 +21,20 @@ const chartOptions = {
     boxWidth: 10
   },
   cutoutPercentage: 35,
+  tooltips: {
+              enabled: true,
+              legend: false,
+              backgroundColor: 'rgba(0,0,0,0.8)',
+              bodyFontSize: 16,
+              callbacks: {
+                label: function(tooltipItem, data) {
+                   let label = data.labels[tooltipItem.index]
+                   let value = data.datasets[0].data[tooltipItem.index]
+                   return label + " " + formatCurrency(value, options)
+                }
+              }
+            }
+
 }
 
 class Welcome extends React.Component {

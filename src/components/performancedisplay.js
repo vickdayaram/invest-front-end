@@ -20,7 +20,7 @@ const chartOptions = {
   // In this case, we are setting the border of each bar to be 2px wide and green
   maintainAspectRatio: false,
   title:{
-    display: true,
+    display: false,
     text: "Portfolio Allocation",
     fontSize: 25,
     position: "top",
@@ -56,11 +56,11 @@ class PerformanceDisplay extends React.Component {
     }
     let gainOrLoss = currentBalance - initialInvestment
     let color = ""
-    if(gainOrLoss > 0){
+    if(gainOrLoss >= 0){
       color = "green"
     } else {
       color = "red"
-    } 
+    }
     let chartDataFormat  =  {
                 labels: chartLabels,
                 datasets: [{
@@ -113,17 +113,14 @@ class PerformanceDisplay extends React.Component {
           <Table.Row>
             <Table.Cell textAlign="center"> < Doughnut data={this.state.chartData} options={chartOptions} height={200} width={200}/></Table.Cell>
             <Table.Cell textAlign="center"> <Statistic
-                          label="Initial Investment"
                           size="tiny"
                           value={formatCurrency(this.state.initialInvestment, options)}
                           /> </Table.Cell>
             <Table.Cell textAlign="center"> <Statistic
-                          label="Current Balance"
                           size="tiny"
                           value={formatCurrency(this.state.currentBalance, options)}
                           /> </Table.Cell>
             <Table.Cell textAlign="center"> <Statistic
-                          label="Gain Or Loss"
                           size="tiny"
                           color={this.state.color}
                           value={formatCurrency(this.state.gainOrLoss, options)}

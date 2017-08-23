@@ -53,6 +53,7 @@ class SignUpForm extends Component {
               </Form.Field>
                 <Button fluid={true} size='huge' type='submit' primary={true} color="green">Sign Up</Button>
             </Form>
+            <Message positive><Message.Header><div> As a new User you will start with a $10,000 Investment Tracker Cash Balance! </div></Message.Header></Message>
             </Grid.Column>
             <Grid.Column textAlign="center">
             <Image src="https://d13yacurqjgara.cloudfront.net/users/110995/screenshots/2094316/pig-animation-final_final2.gif" size="large" centered={true}/>

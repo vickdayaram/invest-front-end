@@ -22,7 +22,7 @@ class AppContainer extends React.Component {
     fetchTotalAndAllocation()
     .then((json) => {
       let color = "red"
-      if(json["portfolio_total"] - json["total_contributions"] > 0){
+      if(json["portfolio_total"] - json["total_contributions"] >= 0){
         color = "green"
       }
       this.setState({

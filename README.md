@@ -10,9 +10,9 @@ Please visit: https://investment-tracker.herokuapp.com/ to view a live version o
 
 Built With
 
+Front-end
 React, v15.6.1
 Semantic-ui-react, v0.71.3
-Ruby-On-Rails
 Format-Currency, v1.0.0
 Fuzzy-Search, 1.4.0
 React-chartjs-2, v2.5.6
@@ -22,6 +22,11 @@ React-Router-Dom, v4.1.2
 React-Scripts, 1.0.11
 Alpha-Vantage - API for market data.
 Unsplash - API to generate random photos for the photo of the moment feature.
+
+Back-end
+Ruby-On-Rails, v5.1.3
+Ruby, v2.3.1
+Postgres, 0.18
 
 Authors
 

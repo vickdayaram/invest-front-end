@@ -115,7 +115,7 @@ class NewAccountForm extends Component {
 
   renderErrors = () => {
     return (
-          <Message negative><Message.Header><div className="center"> {"Please Make Sure to fill out all fields. Also make sure to enter a minimum deposit of $10,000"} </div></Message.Header></Message>
+          <Message negative><Message.Header><div className="center"> {"Please Make Sure to fill out all fields and a minimum deposit of $10,000"} </div></Message.Header></Message>
     )
   }
 

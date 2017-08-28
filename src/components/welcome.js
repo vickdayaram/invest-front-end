@@ -1,6 +1,6 @@
 import React from 'react'
 import { Doughnut } from 'react-chartjs-2'
-import { Table, Statistic, Loader, Grid, Menu, Segment, Image } from 'semantic-ui-react'
+import { Table, Statistic, Loader, Grid, Menu, Segment, Image, Message } from 'semantic-ui-react'
 import formatCurrency from 'format-currency'
 
 const options = { format: '%s%v', symbol: '$' }
@@ -133,7 +133,10 @@ class Welcome extends React.Component {
                 </div>
             </div>
                 :
+            <div>
             <div className="welcomeLoader"> < Loader size="massive" active inline="centered" /> </div>
+            <Message compact> <p> Fetching most recent portfolio data, this could take a few seconds... </p> </Message>
+            </div>
               }
         </Grid.Column>
         </Grid.Row>

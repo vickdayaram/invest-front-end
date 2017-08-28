@@ -1,7 +1,7 @@
 import React from 'react'
 import PerformanceDisplay from '../components/performancedisplay'
 import { getAccountPerformance } from '../apiAdapter'
-import { Loader, Image } from 'semantic-ui-react'
+import { Loader, Image, Message } from 'semantic-ui-react'
 
 class AccountPerformanceContainer extends React.Component {
 
@@ -27,7 +27,11 @@ class AccountPerformanceContainer extends React.Component {
         {this.state.accounts.accounts ?
         this.state.accounts.accounts.map((account) =>{
           return < PerformanceDisplay account={account} />})
-        : <div className="welcomeLoader"> < Loader size="massive" active inline="centered" /> </div>}
+        :
+        <div>
+        <div className="welcomeLoader"> < Loader size="massive" active inline="centered" /></div>
+        <div className="center"><Message compact> <p> Fetching most recent portfolio data, this could take a few seconds... </p> </Message></div>
+        </div>}
       </div>
     )
   }

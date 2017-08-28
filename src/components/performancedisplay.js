@@ -60,7 +60,7 @@ class PerformanceDisplay extends React.Component {
     }
     let gainOrLoss = currentBalance - initialInvestment
     let color = ""
-    if(gainOrLoss >= 0){
+    if(gainOrLoss >= 0.00){
       color = "green"
     } else {
       color = "red"

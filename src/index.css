@@ -246,3 +246,8 @@ body {
  .signupandlogin {
    margin-top: 125px;
  }
+
+ .results{
+ max-height: 300px!important;
+ overflow-y: auto!important;
+}

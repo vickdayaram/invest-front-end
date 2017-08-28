@@ -100,14 +100,14 @@ class StockPerformanceData extends Component {
   render() {
     const { value } = this.state
     return (
-      <div className="performanceContainer">
+      <div className="">
 
-      <div className="performanceSearch">
+      <div className="performanceSearch center">
       <Grid centered columns={3}>
       <Grid.Row>
-        <Grid.Column width={2}>
+        <Grid.Column width={4}>
         </Grid.Column>
-        <Grid.Column width={12}>
+        <Grid.Column width={10}>
         <Form >
           <Form.Input>
           <TransactionSearch handleSymbolSelect={this.handleSymbolSelect} />

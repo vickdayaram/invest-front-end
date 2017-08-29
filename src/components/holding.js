@@ -5,8 +5,11 @@ import formatCurrency from 'format-currency'
 
 class Holding extends React.Component {
 
-  state = {
-    value: ""
+  constructor(props){
+    super(props)
+    this.state = {
+      value: ""
+    }
   }
 
   componentDidMount = () => {

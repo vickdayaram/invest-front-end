@@ -1,10 +1,13 @@
 import React from 'react'
-import { Menu, Segment, Image, Dropdown } from 'semantic-ui-react'
+import { Menu, Dropdown } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 class Nav extends React.Component {
 
-  state = {}
+  constructor(props){
+    super(props)
+    this.state = {}
+  }
 
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name })

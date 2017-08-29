@@ -1,12 +1,9 @@
 import React from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Button, Grid, Image } from 'semantic-ui-react'
 
 
 class Landing extends React.Component {
-
-  state = {
-  }
 
   render(){
   return(

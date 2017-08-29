@@ -39,7 +39,12 @@ const chartOptions = {
 
 class Welcome extends React.Component {
 
-  state = { activeItem: 'Photo of the Moment' }
+  constructor(props){
+    super(props)
+    this.state = {
+      activeItem: 'Photo of the Moment'
+    }
+  }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 

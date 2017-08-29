@@ -41,9 +41,12 @@ const chartOptions = {
 
 class PerformanceDisplay extends React.Component {
 
-  state = {
-    value: "",
-    data: []
+  constructor(props){
+    super(props)
+    this.state = {
+      value: "",
+      data: []
+    }
   }
 
   componentDidMount = () => {

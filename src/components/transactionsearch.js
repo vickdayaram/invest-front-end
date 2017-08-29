@@ -4,6 +4,7 @@ import { stockData } from '../stockData'
 import _ from 'lodash'
 
 class TransactionSearch extends Component {
+
   componentWillMount() {
     this.resetComponent()
   }

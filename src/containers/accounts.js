@@ -5,11 +5,12 @@ import { Loader, Image } from 'semantic-ui-react'
 
 class Accounts extends React.Component {
 
-
-  state = {
+  constructor(props){
+    super(props)
+    this.state = {
       accounts: {}
     }
-
+  }
 
   componentDidMount = () => {
     getAccounts()

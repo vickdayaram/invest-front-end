@@ -96,9 +96,12 @@ const displayConservative = () => {
 
 class RecommendationModal extends Component {
 
-  state = {
-    open: true,
-    redirect: false
+  constructor(props){
+    super(props)
+    this.state = {
+      open: true,
+      redirect: false
+    }
   }
 
   handleClose = () => {

@@ -10,17 +10,21 @@ const options = [
 ]
 
 class NewAccountForm extends Component {
-  state = {
-    bankname: "",
-    deposit: "",
-    type: "",
-    status: false,
-    openModal: false,
-    errors: false,
-    riskTolerance: "",
-    submitted: false
-  }
 
+  constructor(props){
+    super(props)
+    this.state = {
+      bankname: "",
+      deposit: "",
+      type: "",
+      status: false,
+      openModal: false,
+      errors: false,
+      riskTolerance: "",
+      submitted: false
+    }
+  }
+  
   componentDidMount = () => {
     if(this.props.riskTolerance != undefined){
       this.setState({

@@ -5,11 +5,12 @@ import { Loader, Image, Message } from 'semantic-ui-react'
 
 class AccountPerformanceContainer extends React.Component {
 
-
-  state = {
+  constructor(props){
+    super(props)
+    this.state = {
       accounts: {}
     }
-
+  }
 
   componentDidMount = () => {
     getAccountPerformance()

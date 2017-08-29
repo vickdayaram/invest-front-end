@@ -6,9 +6,12 @@ import formatCurrency from 'format-currency'
 
 class AccountBody extends React.Component {
 
-  state = {
-    holdings: [],
-    accountBalance: 0
+  constructor(props){
+    super(props)
+    this.state = {
+      holdings: [],
+      accountBalance: 0
+    }
   }
 
   calculateTotal = (balance) => {
@@ -47,10 +50,10 @@ class AccountBody extends React.Component {
           return < Holding holding={holding} calculateTotal={this.calculateTotal} />
         })}
           <Table.Row>
-            <Table.Cell active="true"> </Table.Cell>
-            <Table.Cell active="true"> </Table.Cell>
-            <Table.Cell textAlign="center" active="true"> Account Balance </Table.Cell>
-            <Table.Cell textAlign="center" active="true">{formatCurrency(this.state.accountBalance, options)} </Table.Cell>
+            <Table.Cell active={true}> </Table.Cell>
+            <Table.Cell active={true}> </Table.Cell>
+            <Table.Cell textAlign="center" active={true}> Account Balance </Table.Cell>
+            <Table.Cell textAlign="center" active={true}>{formatCurrency(this.state.accountBalance, options)} </Table.Cell>
           </Table.Row>
         </Table>
         </Segment>

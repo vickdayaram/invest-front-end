@@ -28,6 +28,12 @@ class Holding extends React.Component {
   }
 
   calculateValue = (jsonObject) => {
+    if(Object.keys(jsonObject).length === 0){
+      let symbol = this.props.holding.holding.symbol
+      fetchAlphaVantage(symbol)
+      .then(json => this.calculateValue(json))
+      return
+    }
     let keysArray = Object.keys(jsonObject["Time Series (1min)"])
     let firstKey = keysArray.shift()
     let secondKeysArray = Object.keys(jsonObject["Time Series (1min)"][firstKey])

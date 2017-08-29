@@ -50,7 +50,7 @@ class Transactions extends React.Component {
 
   handleAccountSelect = (event) => {
     let accountSelect = event.target.innerText
-    let transactionData = this.state.allTransactions[accountSelect].reverse()
+    let transactionData = this.state.allTransactions[accountSelect]
     this.setState({
       transactionData: transactionData,
       filteredData: transactionData

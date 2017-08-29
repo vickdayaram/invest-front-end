@@ -103,10 +103,9 @@ class StockPerformanceData extends Component {
       <div className="">
 
       <div className="performanceSearch center">
-      <Grid centered columns={3}>
+      <Grid centered>
       <Grid.Row>
-        <Grid.Column width={4}>
-        </Grid.Column>
+
         <Grid.Column width={10}>
         <Form >
           <Form.Input>
@@ -114,8 +113,7 @@ class StockPerformanceData extends Component {
           </Form.Input>
         </Form>
         </Grid.Column>
-        <Grid.Column width={2}>
-        </Grid.Column>
+
       </Grid.Row>
       </Grid>
       </div>

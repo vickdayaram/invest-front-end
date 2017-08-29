@@ -3,7 +3,6 @@ import Holding from './holding'
 import { Menu, Segment, Table } from 'semantic-ui-react'
 import formatCurrency from 'format-currency'
 
-
 class AccountBody extends React.Component {
 
   constructor(props){

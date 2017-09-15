@@ -4,21 +4,20 @@ import { Redirect } from 'react-router'
 import { sendNewAccount } from '../apiAdapter'
 import NumberFormat from 'react-number-format'
 
-
-const options = [
-  { key: 'Individual', text: 'Individual', value: 'Individual' }
-]
-
 class NewAccountForm extends Component {
-  state = {
-    bankname: "",
-    deposit: "",
-    type: "",
-    status: false,
-    openModal: false,
-    errors: false,
-    riskTolerance: "",
-    submitted: false
+
+  constructor(props){
+    super(props)
+    this.state = {
+      bankname: "",
+      deposit: "",
+      type: "",
+      status: false,
+      openModal: false,
+      errors: false,
+      riskTolerance: "",
+      submitted: false
+    }
   }
 
   componentDidMount = () => {
@@ -127,6 +126,7 @@ class NewAccountForm extends Component {
 
   render() {
     const { value } = this.state
+    const options = [{ key: 'Individual', text: 'Individual', value: 'Individual' }]
     return (
       <div className="accountscontainer">
       {this.renderModal()}

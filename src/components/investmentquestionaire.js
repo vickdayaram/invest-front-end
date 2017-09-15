@@ -1,20 +1,22 @@
 import React, { Component } from 'react'
-import { Grid, Button, Form, Segment, Divider, Image } from 'semantic-ui-react'
+import { Grid, Button, Form, Image } from 'semantic-ui-react'
 import RecommendationModal from './recommendationmodal'
 import NewAccountForm from './newaccountform'
 
 class InvestorQuestionaire extends Component {
 
-  state = {
-    firstQuestion: "",
-    secondQuestion: "",
-    thirdQuestion: "",
-    riskTolerance: "",
-    chartData: {},
-    openModal: false,
-    implement: false
+  constructor(props){
+    super(props)
+    this.state = {
+      firstQuestion: "",
+      secondQuestion: "",
+      thirdQuestion: "",
+      riskTolerance: "",
+      chartData: {},
+      openModal: false,
+      implement: false
+    }
   }
-
 
   handleSubmit = (event) => {
     let firstScore = parseInt(this.state.firstQuestion)

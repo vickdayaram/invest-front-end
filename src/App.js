@@ -8,9 +8,9 @@ import Login from './components/login'
 import Landing from './components/landing'
 import NewAccountForm from './components/newaccountform'
 import InvestmentQuestionaire from './components/investmentquestionaire'
-import {BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
+import {BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import NewTransactionForm from './components/newtransactionform'
-import PerformanceContainer from './containers/performancecontainer'
+import PerformanceData from './components/performancedata'
 import StockPerformanceData from './components/stockperformancedata'
 import Transactions from './containers/transactions'
 import TransactionSearch from './components/transactionsearch'
@@ -59,7 +59,6 @@ class App extends Component {
         })
       }
       //if error render login again
-      //else set the jwt token and forward user to /giphs
     })
   }
 
@@ -81,7 +80,6 @@ class App extends Component {
         })
       }
       //if error render login again
-      //else set the jwt token and forward user to /giphs
     })
   }
 
@@ -118,7 +116,7 @@ class App extends Component {
 
             <Route exact path="/newaccount" component={Authorize(NewAccountForm)}/>
             <Route exact path="/transact" component={Authorize(NewTransactionForm)}/>
-            <Route exact path="/performance" component={Authorize(PerformanceContainer)}/>
+            <Route exact path="/performance" component={Authorize(PerformanceData)}/>
             <Route exact path="/stockperformance" component={Authorize(StockPerformanceData)}/>
             <Route exact path="/investmentquestionaire" component={Authorize(InvestmentQuestionaire)}/>
             <Route exact path="/transactions" component={Authorize(Transactions)}/>

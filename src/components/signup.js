@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import { Grid, Button, Form, Segment, Divider, Image, Message } from 'semantic-ui-react'
+import { Grid, Button, Form, Image, Message } from 'semantic-ui-react'
 
 class SignUpForm extends Component {
 
-  state = {
-    username: "",
-    password: ""
+  constructor(props){
+    super(props)
+    this.state = {
+      username: "",
+      password: ""
+    }
   }
 
   handleUsername = (event) => {

@@ -2,89 +2,18 @@ import React, { Component } from 'react'
 import { Form, Grid, Statistic, Image } from 'semantic-ui-react'
 import { fetchSectorPerformance } from '../apiAdapter'
 import { HorizontalBar } from 'react-chartjs-2'
-
-const sample =  {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [{
-            label: "My First dataset",
-            backgroundColor: 'rgb(60, 180, 75)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
-        }]
-    }
-
-
-const chartOptions = {
-  // Elements options apply to all of the options unless overridden in a dataset
-  // In this case, we are setting the border of each bar to be 2px wide and green
-  maintainAspectRatio: false,
-  title:{
-    display: true,
-    text: "US Sector Performance Data",
-    fontSize: 25,
-    position: "top",
-    fontColor: "black"
-  },
-  scales: {
-            xAxes: [
-              {
-                  ticks: {
-                     callback: function(label, index, labels) {
-                       return label.toFixed(2) + "%";
-                     }
-                  }
-              }
-            ],
-            yAxes: [
-              {
-                  ticks: {
-                     callback: function(label, index, labels) {
-                       return label;
-                     },
-                     fontSize: 18,
-                     fontColor: 'black'
-                  },
-
-                  display: true,
-
-              }
-            ]
-        },
-  legend:{
-    display: false,
-    position: "right",
-    labels: {
-      fontColor: 'rgb(60, 180, 75)'
-    }
-  },
-  tooltips: {
-    enabled: true,
-    titleFontSize: 24,
-  }
-
-}
-
-
-const options = [
-  { key: 'Real-Time Performance', text: 'Real-Time Performance', value: 'Real-Time Performance' },
-  { key: '1 Day Performance', text: '1 Day Performance', value: '1 Day Performance' },
-  { key: '5 Day Performance', text: '5 Day Performance', value: '5 Day Performance' },
-  { key: '1 Month Performance', text: '1 Month Performance', value: '1 Month Performance' },
-  { key: '3 Month Performance', text: '3 Month Performance', value: '3 Month Performance' },
-  { key: 'Year-to-Date (YTD) Performance', text: 'Year-to-Date (YTD) Performance', value: 'Year-to-Date (YTD) Performance' },
-  { key: '1 Year Performance', text: '1 Year Performance', value: '1 Year Performance' },
-  { key: '3 Year Performance', text: '3 Year Performance', value: '3 Year Performance' },
-  { key: '5 Year Performance', text: '5 Year Performance', value: '5 Year Performance' },
-  { key: '10 Year Performance', text: '10 Year Performance', value: '10 Year Performance' }
-]
+import { chartOptions, rangeOptions } from '../helpers/performancedatahelpers'
 
 class PerformanceData extends Component {
 
-  state = {
-    data: [],
-    range: "",
-    chartData:[],
-    topSector: ""
+  constructor(props){
+    super(props)
+    this.state = {
+      data: [],
+      range: "",
+      chartData:[],
+      topSector: ""
+    }
   }
 
   componentDidMount = () => {
@@ -141,7 +70,7 @@ class PerformanceData extends Component {
   render() {
     const { value } = this.state
     return (
-      <div>
+      <div className="performanceContainer">
       <div className="performanceSearch">
       <Grid centered columns={3}>
         <Grid.Row>
@@ -149,7 +78,7 @@ class PerformanceData extends Component {
           </Grid.Column>
           <Grid.Column width={12}>
           <Form >
-            <Form.Select options={options} placeholder='Performance Range' onChange={this.handlePerformanceRange} />
+            <Form.Select options={rangeOptions} placeholder='Performance Range' onChange={this.handlePerformanceRange} />
           </Form>
           </Grid.Column>
           <Grid.Column width={2}>

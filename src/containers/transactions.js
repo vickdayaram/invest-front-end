@@ -6,9 +6,12 @@ import FuzzySearch from 'fuzzy-search'
 
 class Transactions extends React.Component {
 
-  state = {
-    transactions: {},
-    search: ""
+  constructor(props){
+    super(props)
+    this.state = {
+      transactions: {},
+      search: ""
+    }
   }
 
   componentDidMount = () => {
@@ -63,47 +66,45 @@ class Transactions extends React.Component {
       <div className="performanceSearch">
         <div className="accountDisplay">
         <Grid centered columns={3}>
-        <Grid.Row>
-          <Grid.Column width={2}>
-          </Grid.Column>
-          <Grid.Column width={12}>
-          <Form >
-            <Form.Select label='Account' options={accounts} placeholder='Select Account' onChange={this.handleAccountSelect} />
-          </Form>
-          </Grid.Column>
-          <Grid.Column width={2}>
-          </Grid.Column>
-        </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={2}>
+            </Grid.Column>
+            <Grid.Column width={12}>
+            <Form >
+              <Form.Select label='Account' options={accounts} placeholder='Select Account' onChange={this.handleAccountSelect} />
+            </Form>
+            </Grid.Column>
+            <Grid.Column width={2}>
+            </Grid.Column>
+          </Grid.Row>
         </Grid>
-
         {this.state.transactionData ?
         <div className="transactionDisplay">
         <Form>
         <Form.Input placeholder="Search Transactions" onChange={this.handleTransactionSearch}/>
         </Form>
-        <Table celled selectable>
-        <Table.Header >
-          <Table.Row>
-          <Table.HeaderCell
-          className="accountHeader"
-          colSpan="5"
-          textAlign="center"
-          > Transactions
-          </Table.HeaderCell>
-          </Table.Row>
-          <Table.Row>
-            <Table.HeaderCell textAlign="center"> Symbol </Table.HeaderCell>
-            <Table.HeaderCell textAlign="center"> Transaction </Table.HeaderCell>
-            <Table.HeaderCell textAlign="center"> Share Price </Table.HeaderCell>
-            <Table.HeaderCell textAlign="center"> Shares </Table.HeaderCell>
-            <Table.HeaderCell textAlign="center"> Date </Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        { this.state.filteredData.map((data) => {
-          return < TransactionEntry data={data} />
-        })}
-
-        </Table>
+          <Table celled selectable>
+            <Table.Header >
+              <Table.Row>
+                <Table.HeaderCell
+                className="accountHeader"
+                colSpan="5"
+                textAlign="center"
+                > Transactions
+                </Table.HeaderCell>
+              </Table.Row>
+              <Table.Row>
+                <Table.HeaderCell textAlign="center"> Symbol </Table.HeaderCell>
+                <Table.HeaderCell textAlign="center"> Transaction </Table.HeaderCell>
+                <Table.HeaderCell textAlign="center"> Share Price </Table.HeaderCell>
+                <Table.HeaderCell textAlign="center"> Shares </Table.HeaderCell>
+                <Table.HeaderCell textAlign="center"> Date </Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            { this.state.filteredData.map((data) => {
+              return < TransactionEntry data={data} />
+            })}
+          </Table>
         </div>
         :
         <div className="newusertransactiondisplay">

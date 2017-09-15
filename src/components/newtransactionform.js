@@ -12,30 +12,32 @@ const options = { format: '%s%v', symbol: '$' }
 
 class NewTransactionForm extends Component {
 
-  state = {
-    accounts: [],
-    accountOptions: [],
-    account: "",
-    account_id: 0,
-    transaction: "",
-    investment: "",
-    currentInvestment: "",
-    currentShares: 0,
-    amount: "",
-    status: false,
-    checkedPrice: false,
-    shares: 0,
-    estimate: 0,
-    fundsAvailable: 0,
-    resultingBalance: 0,
-    selectedAccountNumber: 0,
-    investmentOptions: [],
-    openModal: false,
-    errors: false,
-    name: "",
-    submitted: false
+  constructor(props){
+    super(props)
+    this.state = {
+      accounts: [],
+      accountOptions: [],
+      account: "",
+      account_id: 0,
+      transaction: "",
+      investment: "",
+      currentInvestment: "",
+      currentShares: 0,
+      amount: "",
+      status: false,
+      checkedPrice: false,
+      shares: 0,
+      estimate: 0,
+      fundsAvailable: 0,
+      resultingBalance: 0,
+      selectedAccountNumber: 0,
+      investmentOptions: [],
+      openModal: false,
+      errors: false,
+      name: "",
+      submitted: false
+    }
   }
-
 
   componentDidMount = () => {
     getAccounts()
@@ -115,7 +117,6 @@ class NewTransactionForm extends Component {
   }
 
 
-
   handleAmount = (event) => {
     this.setState({
         amount: event.target.value,
@@ -187,11 +188,11 @@ class NewTransactionForm extends Component {
   }
 
   calculateValue = (jsonObject) => {
-    let keysArray = Object.keys(jsonObject["Time Series (1min)"])
+    let keysArray = Object.keys(jsonObject["Time Series (Daily)"])
     let firstKey = keysArray.shift()
-    let secondKeysArray = Object.keys(jsonObject["Time Series (1min)"][firstKey])
+    let secondKeysArray = Object.keys(jsonObject["Time Series (Daily)"][firstKey])
     let secondKey = secondKeysArray.filter((key) => key.includes("open"))
-    let sharePrice = jsonObject["Time Series (1min)"][firstKey][secondKey]
+    let sharePrice = jsonObject["Time Series (Daily)"][firstKey][secondKey]
     let estimate = this.state.shares * sharePrice
     let resultingBalance
     let resultingShares = 0
@@ -260,39 +261,32 @@ class NewTransactionForm extends Component {
 
   whatShouldWeDisplay = () => {
     if(this.state.transaction === "BUY"){
-    if(this.state.checkedPrice === true && this.state.resultingBalance < 0){
-      return(
-        "Not Enough Cash"
-        )
-      } else if(this.state.checkedPrice === true && this.state.resultingBalance > 0) {
-      return(
-        "Display Button"
-        )
-     }
+        if(this.state.checkedPrice === true && this.state.resultingBalance < 0){
+          return(
+            "Not Enough Cash"
+            )
+          } else if(this.state.checkedPrice === true && this.state.resultingBalance > 0) {
+          return(
+            "Display Button"
+            )
+         }
    } else {
-     if(this.state.checkedPrice === true && this.state.resultingShares < 0){
-       return(
-       "Not Enough Shares"
-       )
-     } else if(this.state.checkedPrice === true && this.state.resultingShares > 0){
-       return(
-       "Display Button"
-       )
-     }
+         if(this.state.checkedPrice === true && this.state.resultingShares < 0){
+           return(
+           "Not Enough Shares"
+           )
+         } else if(this.state.checkedPrice === true && this.state.resultingShares > 0){
+           return(
+           "Display Button"
+           )
+         }
    }
   }
 
 
-  renderTable = (renderFunction) => {
-    let message = ""
-    let whatShouldWeDisplay = this.whatShouldWeDisplay()
-    if(whatShouldWeDisplay === "Not Enough Cash"){
-      message = "Not Enough Cash"
-    } else if(whatShouldWeDisplay === "Not Enough Shares"){
-      message = "Not Enough Shares"
-    } else {
-      message = "Display Button"
-    }
+  renderTable = () => {
+    let message = this.whatShouldWeDisplay()
+
     return (
       <div className="estimate">
         <Table celled size="large" textAlign="center">
@@ -340,7 +334,7 @@ class NewTransactionForm extends Component {
 
   renderModal = () => {
     return (
-      <Modal size="small" open={this.state.openModal} onClose={this.close}>
+      <Modal size="small" open={this.state.openModal}>
           <Modal.Header>
           <div className="center"> Transaction Submitted </div>
           </Modal.Header>
@@ -363,63 +357,46 @@ class NewTransactionForm extends Component {
       { key: 'BUY', text: 'BUY', value: 'BUY' },
       { key: 'SELL', text: 'SELL', value: 'SELL' },
     ]
-    const investmentsConst = [
-      { key: 'VTI', text: 'VTI', value: 'VTI' },
-      { key: 'BND', text: 'BND', value: 'BND' },
-      { key: 'VXUS', text: 'VXUS', value: 'VXUS' },
-      { key: 'BNDX', text: 'BNDX', value: 'BNDX' },
-    ]
-
-
 
     return (
       <div className="accountscontainer">
       {this.renderModal()}
       <Grid centered columns={2}>
-      <Grid.Row>
-        <Grid.Column>
-          <Form onSubmit={this.handlePriceCheck}>
-            <Form.Select label='Select Your Account' options={options} placeholder='Select Your Account' onChange={this.handleAccountSelect} />
-            <Form.Select label='Select Your Transaction' options={transactionType} placeholder='Select Transaction' onChange={this.handleTransactionSelect} />
-            {this.state.transaction === "BUY" ?
-            <div>
-            <div className="transactionsearch"><TransactionSearch handleSymbolSelect={this.handleInvestmentSelect} /></div>
-            </div>
-
-            :
-            <Form.Select label='Select Investment' options={investmentOptions} placeholder='Select Investment' onChange={this.handleCurrentInvestmentSelect} />
+        <Grid.Row>
+          <Grid.Column>
+            <Form onSubmit={this.handlePriceCheck}>
+              <Form.Select label='Select Your Account' options={options} placeholder='Select Your Account' onChange={this.handleAccountSelect} />
+              <Form.Select label='Select Your Transaction' options={transactionType} placeholder='Select Transaction' onChange={this.handleTransactionSelect} />
+              {this.state.transaction === "BUY" ?
+              <div>
+              <div className="transactionsearch"><TransactionSearch handleSymbolSelect={this.handleInvestmentSelect} /></div>
+              </div>
+              :
+              <Form.Select label='Select Investment' options={investmentOptions} placeholder='Select Investment' onChange={this.handleCurrentInvestmentSelect} />
+               }
+              <Form.Input label='Shares' onChange={this.handleShares} />
+              <Form.Button primary={true} fluid={true} color="green"> Estimate Transaction Total </Form.Button>
+            </Form>
+          </Grid.Column>
+          <Grid.Column textAlign="center">
+             {this.state.checkedPrice === false ?
+             this.renderImage()
+             :
+             this.renderTable()
              }
-            <Form.Input label='Shares' onChange={this.handleShares} />
-            <Form.Button primary={true} fluid={true} color="green"> Estimate Transaction Total </Form.Button>
-          </Form>
-        </Grid.Column>
-
-
-        <Grid.Column textAlign="center" verticalAlign="center">
-           {this.state.checkedPrice === false ?
-           this.renderImage()
-           :
-           this.renderTable()
-           }
-        </Grid.Column>
-
-
-
-
+          </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-        <Grid.Column>
-          {this.state.errors ?
-          this.renderErrors()
-          :
-          null}
-        </Grid.Column>
+          <Grid.Column>
+              {this.state.errors ?
+              this.renderErrors()
+              :
+              null}
+          </Grid.Column>
         </Grid.Row>
-
       </Grid>
       {this.state.status ? < Redirect to="/balancesandholdings" /> : null}
       </div>
-
     )
   }
 }

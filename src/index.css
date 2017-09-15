@@ -75,6 +75,11 @@ body {
   margin-top: 100px;
 }
 
+.automargin {
+  display: block;
+  margin-left: 12%;
+}
+
 .performanceContainer {
   margin-left: 50px;
   margin-right: 50px;

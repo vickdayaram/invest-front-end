@@ -47,20 +47,12 @@ class StockPerformanceData extends Component {
     return (
       <div className="">
 
-      <div className="performanceSearch center">
-        <Grid centered>
-        <Grid.Row>
-
-          <Grid.Column width={10}>
+      <div className="performanceSearch automargin">
           <Form >
             <Form.Input>
             <TransactionSearch handleSymbolSelect={this.handleSymbolSelect} />
             </Form.Input>
           </Form>
-          </Grid.Column>
-
-        </Grid.Row>
-        </Grid>
       </div>
 
         <div className="center performanceSearchDisplay performanceContainer">

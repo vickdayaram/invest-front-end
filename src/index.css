@@ -43,6 +43,18 @@ body {
   font-size: 60px;
 }
 
+.ui.menu .ui.dropdown .menu>.item{
+  font-size: 20px !important;
+}
+
+.ui.top.fixed.ui.inverted.menu.nav.menu {
+  font-size: 20px !important;
+}
+
+.ui.top.attached.tabular.menu {
+  font-size: 20px !important;
+}
+
 .landingBody {
   font-family: 'Saira Condensed', sans-serif;
   font-size: 30px;

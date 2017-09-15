@@ -27,7 +27,7 @@ class Nav extends React.Component {
       {this.props.isLoggedIn ?
         <Dropdown item text='Accounts'>
         <Dropdown.Menu>
-          <Dropdown.Item as={Link} to="/home">Accounts Overview</Dropdown.Item>
+          <Dropdown.Item as={Link} to="/home" className="dropdownmenuitem">Accounts Overview</Dropdown.Item>
           <Dropdown.Item as={Link} to="/balancesandholdings">Balances and Holdings </Dropdown.Item>
           <Dropdown.Item as={Link} to="/transactions">Transaction History </Dropdown.Item>
           <Dropdown.Item as={Link} to="/newaccount">Open an Account</Dropdown.Item>

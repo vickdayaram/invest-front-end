@@ -32,8 +32,8 @@ class StockPerformanceData extends Component {
     let chartData = {
                 labels: labels.reverse(),
                 datasets: [{
-                backgroundColor: 'rgb(60, 180, 75)',
-                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: 'rgba(65,105,225, 0.5)',
+                borderColor: 'rgb(0,0,139)',
                 data: data.reverse(),
             }]
         }

@@ -188,11 +188,11 @@ class NewTransactionForm extends Component {
   }
 
   calculateValue = (jsonObject) => {
-    let keysArray = Object.keys(jsonObject["Time Series (1min)"])
+    let keysArray = Object.keys(jsonObject["Time Series (Daily)"])
     let firstKey = keysArray.shift()
-    let secondKeysArray = Object.keys(jsonObject["Time Series (1min)"][firstKey])
+    let secondKeysArray = Object.keys(jsonObject["Time Series (Daily)"][firstKey])
     let secondKey = secondKeysArray.filter((key) => key.includes("open"))
-    let sharePrice = jsonObject["Time Series (1min)"][firstKey][secondKey]
+    let sharePrice = jsonObject["Time Series (Daily)"][firstKey][secondKey]
     let estimate = this.state.shares * sharePrice
     let resultingBalance
     let resultingShares = 0

@@ -1,4 +1,5 @@
 
+
 export const chartOptions = {
   maintainAspectRatio: false,
   title:{
@@ -41,9 +42,17 @@ export const chartOptions = {
     }
   },
   tooltips: {
-    enabled: true,
-    titleFontSize: 24,
-  }
+              enabled: true,
+              legend: false,
+              backgroundColor: 'rgba(0,0,0,0.8)',
+              bodyFontSize: 16,
+              callbacks: {
+                label: function(tooltipItem, data) {
+                   let value = data.datasets[0].data[tooltipItem.index]
+                   return value + "%"
+                }
+              }
+            }
 
 }
 

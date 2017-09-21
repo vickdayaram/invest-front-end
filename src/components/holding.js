@@ -37,11 +37,11 @@ class Holding extends React.Component {
       .then(json => this.calculateValue(json))
       return
     }
-    let keysArray = Object.keys(jsonObject["Time Series (Daily)"])
+    let keysArray = Object.keys(jsonObject["Time Series (1min)"])
     let firstKey = keysArray.shift()
-    let secondKeysArray = Object.keys(jsonObject["Time Series (Daily)"][firstKey])
+    let secondKeysArray = Object.keys(jsonObject["Time Series (1min)"][firstKey])
     let secondKey = secondKeysArray.filter((key) => key.includes("open"))
-    let sharePrice = jsonObject["Time Series (Daily)"][firstKey][secondKey]
+    let sharePrice = jsonObject["Time Series (1min)"][firstKey][secondKey]
     let value = (sharePrice * this.props.holding.holding.shares).toFixed(2)
     this.setState({
       value: value

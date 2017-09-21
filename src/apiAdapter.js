@@ -57,7 +57,7 @@ export const fetchTotalAndAllocation = () => {
 }
 
 export const fetchAlphaVantage = (symbol) => {
-  let url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&interval=1min&outputsize=compact&apikey=NKIEQH9ZHQ1ZFJVL`
+  let url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=1min&outputsize=compact&apikey=NKIEQH9ZHQ1ZFJVL`
   return (fetch(url)
   .then( res => res.json()))
 }

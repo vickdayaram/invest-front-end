@@ -17,7 +17,7 @@ export const chartOptions = {
     fullWidth: false,
     boxWidth: 10
   },
-  cutoutPercentage: 35,
+  cutoutPercentage: 65,
   tooltips: {
               enabled: true,
               legend: false,

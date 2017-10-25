@@ -17,8 +17,8 @@ class Accounts extends React.Component {
     .then((jsonObject) => {
       this.setState({
       accounts: jsonObject
+      })
     })
-      console.log(this.state.accounts)})
   }
 
   render(){
@@ -27,8 +27,9 @@ class Accounts extends React.Component {
         <div className="balancesText"> Balances and Holdings </div>
         {this.state.accounts.accounts ?
         this.state.accounts.accounts.map((account) =>{
-          return < AccountBody account={account} />})
-        : <div className="welcomeLoader"> < Loader size="massive" active inline="centered" /> </div>}
+        return < AccountBody account={account} />})
+        :
+        <div className="welcomeLoader"> < Loader size="massive" active inline="centered" /> </div>}
       </div>
     )
   }

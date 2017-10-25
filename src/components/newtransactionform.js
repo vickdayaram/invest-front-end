@@ -265,7 +265,7 @@ class NewTransactionForm extends Component {
           return(
             "Not Enough Cash"
             )
-          } else if(this.state.checkedPrice === true && this.state.resultingBalance > 0) {
+          } else if(this.state.checkedPrice === true && this.state.resultingBalance >= 0) {
           return(
             "Display Button"
             )
@@ -275,7 +275,7 @@ class NewTransactionForm extends Component {
            return(
            "Not Enough Shares"
            )
-         } else if(this.state.checkedPrice === true && this.state.resultingShares > 0){
+         } else if(this.state.checkedPrice === true && this.state.resultingShares >= 0){
            return(
            "Display Button"
            )
